@@ -1,0 +1,21 @@
+﻿@model System.String
+@using Kendo.Mvc.UI;
+@(Html.Kendo().DropDownListFor(e => e).BindTo(new string[]{
+      "BQ4"
+      ,
+      "Q1"
+      ,
+      "Q2"
+      ,
+      "Q3"
+      ,
+      "Q4"
+      ,
+      "LQ1"
+
+  }).HtmlAttributes(new { style = "width:100%" }))
+@*
+    有“Annual Budget Id”的不能为空,可选
+    BQ4/Q1/Q2/Q3/Q4/LQ1
+
+*@

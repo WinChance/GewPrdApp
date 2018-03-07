@@ -1,0 +1,105 @@
+﻿@using Kendo.Mvc.UI
+
+@{
+    ViewBag.Title = "IdelAssetCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@(Html.Kendo().Grid<PrdDb.DAL.GmoIdelAsset>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.DeptName).Title("部门名称")
+              .EditorTemplateName("DeptOfIdelAsset")
+              .Width(100);
+          columns.Bound(c => c.ZicanId).Title("资产编号").Width(100);
+          columns.Bound(c => c.ZicanName).Title("资产名称").Width(100);
+          columns.Bound(c => c.Pinpai).Title("品牌").Width(100);
+          columns.Bound(c => c.Xinghao).Title("型号").Width(100);
+          columns.Bound(c => c.CunfangDidian).Title("存放地点").Width(100);
+          columns.Bound(c => c.QidongDate).Title("启用日期").Format("{0:yyyy/MM/dd}").Width(100).EditorTemplateName("Date");
+          columns.Bound(c => c.BeginDate).Title("开始闲置时间").Format("{0:yyyy/MM/dd}").Width(100).EditorTemplateName("Date");
+          columns.Bound(c => c.Reason).Title("闲置原因说明").Width(100);
+          columns.Bound(c => c.Status).Title("处理状态").Width(100).EditorTemplateName("MyStatus");
+          columns.Bound(c => c.Fuzeren).Title("资产所属部门负责人").Width(150);
+          columns.Bound(c => c.Yuanzhi).Title("原值（RMB）").Width(100);
+          columns.Bound(c => c.LeijiZhejiu).Title("累计折旧（RMB）").Width(130);
+          columns.Bound(c => c.JingZhi).Title("净值（RMB）").Width(100);
+          columns.Bound(c => c.Inputer).Hidden(true);
+          columns.Bound(c => c.InputDatetime).Hidden(true);
+          columns.Bound(c => c.Modifier).Hidden(true);
+          columns.Bound(c => c.ModifyDatetime).Hidden(true);
+          columns.Command(command => { command.Destroy(); }).Width(150);
+
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Create();
+          toolbar.Save(); 
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InCell))
+          //.Events(events => events.DataBound("dataBound"))
+      .Pageable()
+      .Selectable(selectable =>
+      {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable(filterable => filterable.Mode(GridFilterMode.Row))
+      .Scrollable(s => s.Height(340))
+      .DataSource(dataSource => dataSource
+              .Ajax()
+              .Batch(true)
+              .Model(model =>
+                  {
+                      model.Id(p => p.Id);
+                      model.Field(p => p.DeptName).Editable(true);
+                      model.Field(p => p.ZicanId).Editable(true);
+                      model.Field(p => p.ZicanName).Editable(true);
+                      model.Field(p => p.Pinpai).Editable(true);
+                      model.Field(p => p.Xinghao).Editable(true);
+                      model.Field(p => p.CunfangDidian).Editable(true);
+                      model.Field(p => p.QidongDate).Editable(true);
+                      model.Field(p => p.BeginDate).Editable(true);
+                      model.Field(p => p.Reason).Editable(true);
+                      model.Field(p => p.Status).Editable(true);
+                      model.Field(p => p.Fuzeren).Editable(true);
+                      model.Field(p => p.Yuanzhi).Editable(true);
+                      model.Field(p => p.LeijiZhejiu).Editable(true);
+                      model.Field(p => p.JingZhi).Editable(true);
+                  })
+          .Read(read => read.Action("GmoIdelAssets_ReadLatest", "IdelAsset").Data("getFilter"))
+          .Create(create => create.Action("GmoIdelAssets_Create", "IdelAsset").Data("getFilter"))
+          .Update(create => create.Action("GmoIdelAssets_BatchUpdate", "IdelAsset").Data("getFilter"))
+          .Destroy(destroy => destroy.Action("GmoIdelAssets_Destroy", "IdelAsset"))
+          .ServerOperation(false)
+
+          )
+          .Resizable(resize => resize.Columns(true)) 
+)
+
+<script>
+    function dataBound() {
+        this.table.find(".k-grid-edit").hide();
+    }
+
+    var _userID=@GMS.Web.Admin.Common.AdminUserContext.Current.peAppLoginInfo.UserID.ToString();
+    function getFilter() {
+        var filter = {
+            userID:_userID
+        };
+        return filter;
+    }
+
+    function onAdditionalData() {
+        return {
+            text: $("#DeptName").val()
+        };
+    }
+</script>
+
+

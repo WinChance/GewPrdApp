@@ -1,0 +1,30 @@
+﻿@model System.String
+@using Kendo.Mvc.UI;
+@(Html.Kendo().DropDownListFor(e => e).BindTo(new string[]{
+      "YD"
+      ,
+      "PR"
+      ,
+      "WV"
+      ,
+      "FN"
+      ,
+      "QA/QI"
+      ,
+      "PE"
+      ,
+      "PPC"
+      ,
+      "PEM"
+      ,
+      "NPD"
+      ,
+      "GMO"
+
+  }).HtmlAttributes(new { style = "width:100%" }))
+
+@*
+
+    不能为空，为选择字段：YD/PR/WV/FN/QI/QA/PEM/PPC/PE/NPD/GMO
+
+*@

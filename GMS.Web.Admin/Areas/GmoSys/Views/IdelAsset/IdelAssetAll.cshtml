@@ -1,0 +1,95 @@
+﻿@using Kendo.Mvc.UI
+
+@{
+    ViewBag.Title = "IdelAssetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@(Html.Kendo().Grid<PrdDb.DAL.GmoIdelAsset>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.DeptName).Title("部门名称").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.ZicanId).Title("资产编号").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.ZicanName).Title("资产名称").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Pinpai).Title("品牌").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Xinghao).Title("型号").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.CunfangDidian).Title("存放地点").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.QidongDate).Title("启用日期").Format("{0:yyyy/MM/dd}").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("equal")));
+          columns.Bound(c => c.BeginDate).Title("开始闲置时间").Format("{0:yyyy/MM/dd}").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("equal")));
+          columns.Bound(c => c.Reason).Title("闲置原因说明").Width(100).Filterable(false);
+          columns.Bound(c => c.Status).Title("处理状态").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Fuzeren).Title("资产所属部门负责人").Width(150).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Yuanzhi).Title("原值（RMB）").Width(100).Filterable(false);
+          columns.Bound(c => c.LeijiZhejiu).Title("累计折旧（RMB）").Width(130).Filterable(false);
+          columns.Bound(c => c.JingZhi).Title("净值（RMB）").Width(100).Filterable(false);
+          //columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Template(@<text>
+            <div class="toolbar">
+                <label>
+                    <a class="k-button k-button-icontext k-grid-excel" href="#"><span class="k-icon k-i-excel"></span>导出Excel</a>
+                    <input id="showAllCheckBox" type="checkbox" value="" onclick="onClickHander(this)" />
+                    显示全部
+                </label>
+            </div>
+        </text>);
+      })
+          .Excel(excel => excel.FileName("Idel Assets.xlsx").ProxyURL(Url.Action("Excel_Export_Save", "IdelAsset")).AllPages(true))
+        //.Events(e => e.DataBound("onDataBound"))
+          .Editable(editable => editable.Mode(GridEditMode.InLine))
+          .Pageable()
+          .Selectable(selectable =>
+          {
+              selectable.Mode(GridSelectionMode.Single);
+              selectable.Type(GridSelectionType.Row);
+          })
+          .Sortable(sortable =>
+          {
+              sortable.SortMode(GridSortMode.SingleColumn);
+          })
+          .Filterable(filterable => filterable.Mode(GridFilterMode.Row))
+          .Scrollable(s => s.Height(340))
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("GmoIdelAssets_ReadAll", "IdelAsset").Data("getFilter"))
+        //.Create(create => create.Action("GmoIdelAssets_Create", "IdelAsset"))
+        //.Update(update => update.Action("GmoIdelAssets_Update", "IdelAsset"))
+        //.Destroy(destroy => destroy.Action("GmoIdelAssets_Destroy", "IdelAsset"))
+          )
+          .Resizable(resize => resize.Columns(true))
+)
+<script>
+    function onDataBound() {
+        var grid = $("#grid").data("kendoGrid");
+        for (var i = 0; i < grid.columns.length; i++) {
+            grid.autoFitColumn(i);
+        }
+
+    }
+
+    var _showAll = false;
+    function getFilter() {
+        var filter = {
+            // todo:增加“是否显示已报废和已启用”的过滤条件
+            showAll: _showAll
+        };
+        return filter;
+    }
+
+    // 重新从服务器读取数据
+    function onClickHander(obj) {
+        var grid = $("#grid");
+        if (obj.checked) {
+            _showAll = true;
+            grid.data("kendoGrid").dataSource.read();
+        } else {
+            _showAll = false;
+            grid.data("kendoGrid").dataSource.read();
+        }
+    }
+</script>
+

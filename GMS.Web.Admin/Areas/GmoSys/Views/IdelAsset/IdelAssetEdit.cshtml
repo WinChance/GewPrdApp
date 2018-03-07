@@ -1,0 +1,93 @@
+﻿@using System.Activities.Expressions
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "IdelAssetEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@(Html.Kendo().Grid<PrdDb.DAL.GmoIdelAsset>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.DeptName).Title("部门名称").Width(100).Filterable(false);
+          columns.Bound(c => c.ZicanId).Title("资产编号").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.ZicanName).Title("资产名称").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Pinpai).Title("品牌").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Xinghao).Title("型号").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.CunfangDidian).Title("存放地点").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.QidongDate).Title("启用日期").Format("{0:yyyy/MM/dd}").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("equal")));
+          columns.Bound(c => c.BeginDate).Title("开始闲置时间").Format("{0:yyyy/MM/dd}").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("equal")));
+          columns.Bound(c => c.Reason).Title("闲置原因说明").Width(100).Filterable(false);
+          columns.Bound(c => c.Status).Title("处理状态").EditorTemplateName("MyStatus").Width(100).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Fuzeren).Title("资产所属部门负责人").Width(150).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").ShowOperators(false)));
+          columns.Bound(c => c.Yuanzhi).Title("原值（RMB）").Width(100).Filterable(false);
+          columns.Bound(c => c.LeijiZhejiu).Title("累计折旧（RMB）").Width(130).Filterable(false);
+          columns.Bound(c => c.JingZhi).Title("净值（RMB）").Width(100).Filterable(false);
+          //columns.Bound(c => c.Inputer).Title("更新人");
+          //columns.Bound(c => c.InputDatetime).Title("");
+          //columns.Bound(c => c.Modifier).Title("");
+          //columns.Bound(c => c.ModifyDatetime).Title("");
+          columns.Command(command => { command.Edit(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Excel();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Selectable(selectable =>
+      {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable(filterable => filterable.Mode(GridFilterMode.Row))
+      .Scrollable(s => s.Height(340))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model =>
+          {
+              model.Id(p => p.Id);
+              model.Field(p => p.DeptName).Editable(false);
+              model.Field(p => p.ZicanId).Editable(false);
+              model.Field(p => p.ZicanName).Editable(false);
+              model.Field(p => p.Pinpai).Editable(false);
+              model.Field(p => p.Xinghao).Editable(false);
+              model.Field(p => p.CunfangDidian).Editable(false);
+              model.Field(p => p.QidongDate).Editable(false);
+              model.Field(p => p.BeginDate).Editable(false);
+              model.Field(p => p.Reason).Editable(false);
+              model.Field(p => p.Fuzeren).Editable(false);
+              model.Field(p => p.Yuanzhi).Editable(false);
+              model.Field(p => p.LeijiZhejiu).Editable(false);
+              model.Field(p => p.JingZhi).Editable(false);
+          })
+          .Read(read => read.Action("GmoIdelAssets_Read", "IdelAsset").Data("getFilter"))
+          .Update(update => update.Action("GmoIdelAssets_Update", "IdelAsset").Data("getFilter"))
+      )
+      .Resizable(resize => resize.Columns(true)) 
+)
+@{
+    var items = new List<SelectListItem>()
+    {
+                    (new SelectListItem() {Text = "报废中", Value = "报废中", Selected = false}),
+                    (new SelectListItem() {Text = "已报废", Value = "已报废", Selected = false}),
+                    (new SelectListItem() {Text = "转部门", Value = "转部门", Selected = false}),
+                    (new SelectListItem() {Text = "已启用", Value = "已启用", Selected = false})
+    };
+    ViewData["statuses"] = items;
+}
+<script>
+    var _userID=@GMS.Web.Admin.Common.AdminUserContext.Current.peAppLoginInfo.UserID.ToString();
+    function getFilter() {
+        var filter = {
+            userID:_userID
+        };
+        return filter;
+    }
+
+</script>

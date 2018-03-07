@@ -1,0 +1,47 @@
+﻿@using Kendo.Mvc.UI
+@using PrdDb.DAL
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@(Html.Kendo().Grid<peAppWvYield>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.inputdate).Title("日期").Format("{0:yy/MM/dd}");
+          columns.Bound(c => c.inputclass).Title("班次");
+          columns.Bound(c => c.name).Title("姓名");
+          columns.Bound(c => c.machineno).Title("机台号").Filterable(false).Width(55);
+          columns.Bound(c => c.gfno).Title("GF_NO").Filterable(false);
+          columns.Bound(c => c.itemname).Title("原因").Filterable(false);
+          columns.Bound(c => c.value1).Title("加产(分)").Filterable(false).Width(55);
+          columns.Bound(c => c.value2).Title("减产(分)").Filterable(false).Width(55);
+          columns.Bound(c => c.Reviewer).Title("审核人");
+          //columns.Bound(c => c.remark).Title("备注").Filterable(false);
+          columns.Bound(c => c.input_time).Title("输入时间").Format("{0:yy/MM/dd HH:mm}").Filterable(false);
+          columns.Bound(c => c.WorkerType).Title("工种");
+      })
+      .ToolBar(toolbar => {
+            toolbar.Excel();
+      })
+      .Pageable(pager => pager
+                      .PageSizes(true)
+                      .Messages(messages => messages.ItemsPerPage("项每页")))
+      .Selectable(selectable => {
+            selectable.Mode(GridSelectionMode.Single);
+            selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable(filter => filter.Mode(GridFilterMode.Row))
+          .Scrollable(s => s.Height(1000))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Read(read => read.Action("peAppWvYields_Read", "YieldExport"))
+          .PageSize(200)
+      )
+      )
+

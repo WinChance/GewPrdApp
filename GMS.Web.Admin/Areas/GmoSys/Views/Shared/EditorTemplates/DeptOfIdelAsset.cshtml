@@ -1,0 +1,9 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().AutoComplete()
+      .Name("DeptName")
+      .DataTextField("DeptName")
+          .Filter(FilterType.Contains)
+          .DataSource(dataSource => dataSource.Read(read => read.Action("GetAutocomplete", "IdelAsset").Data("onAdditionalData")).ServerFiltering(true))
+      .HtmlAttributes(new { @class = "k-widget k-autocomplete k-input", style = string.Format("width:200px") })
+      .Delay(500)
+      .HighlightFirst(true))

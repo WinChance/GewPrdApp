@@ -1,0 +1,2592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B2011FBA-17DB-4EF8-8F62-5E2AA0C9C487}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GMS.Web.Admin</RootNamespace>
+    <AssemblyName>GMS.Web.Admin</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\GMS.Web.Admin.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\GMS.Web.Admin.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Esquel.Util.Extention, Version=1.0.6159.26356, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Esquel.Util.Extention.dll</HintPath>
+    </Reference>
+    <Reference Include="Kendo.Mvc, Version=2017.2.504.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2017.2.504.545\Kendo.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler, Version=3.2.0.157, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.3.2.0.157\lib\net40\MiniProfiler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework6, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MiniProfiler.Mvc, Version=3.0.11.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\MiniProfiler.Mvc4.3.0.11\lib\net40\MiniProfiler.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcCheckBoxList, Version=1.4.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcCheckBoxList.1.4.5\lib\net45\MvcCheckBoxList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz, Version=2.6.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.6.1\lib\net40\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.5.3\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.7.8.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Plus.EF6.1.7.8\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="Assets\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="Assets\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="Assets\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="Assets\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="Assets\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Assets\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Assets\bootstrap-daterangepicker\date.js" />
+    <Content Include="Assets\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Assets\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Assets\bootstrap-daterangepicker\examples.html" />
+    <Content Include="Assets\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="Assets\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="Assets\bootstrap-timepicker\.gitignore" />
+    <Content Include="Assets\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="Assets\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="Assets\bootstrap-toggle-buttons\.gitignore" />
+    <Content Include="Assets\bootstrap-toggle-buttons\examples\index.html" />
+    <Content Include="Assets\bootstrap-toggle-buttons\static\js\jquery.min.js" />
+    <Content Include="Assets\bootstrap-toggle-buttons\static\js\jquery.toggle.buttons.js" />
+    <Content Include="Assets\bootstrap-toggle-buttons\static\stylesheets\bootstrap-toggle-buttons.css" />
+    <Content Include="Assets\bootstrap-tree\.gitignore" />
+    <Content Include="Assets\bootstrap-tree\bootstrap-tree\css\bootstrap-tree.css" />
+    <Content Include="Assets\bootstrap-tree\bootstrap-tree\img\ajax-loader.gif" />
+    <Content Include="Assets\bootstrap-tree\bootstrap-tree\img\bstree-halflings.png" />
+    <Content Include="Assets\bootstrap-tree\bootstrap-tree\img\bstree-halflings_.png" />
+    <Content Include="Assets\bootstrap-tree\bootstrap-tree\js\bootstrap-tree.js" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\css\bootstrap.css" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\js\bootstrap.js" />
+    <Content Include="Assets\bootstrap-tree\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\bootstrap-tree\example.js" />
+    <Content Include="Assets\bootstrap-tree\htmlexample.html" />
+    <Content Include="Assets\bootstrap-tree\index.html" />
+    <Content Include="Assets\bootstrap-tree\xmlexample.xml" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\css\bootstrap.css" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\js\bootstrap.js" />
+    <Content Include="Assets\bootstrap-wizard\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-custombuttons.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-custombuttonsfirstlast.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-disabletabclick.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-finishbutton.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-formvalidation.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-inverse.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-pills.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-progressbar.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic-tabsleft.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\basic.html" />
+    <Content Include="Assets\bootstrap-wizard\examples\multiple.html" />
+    <Content Include="Assets\bootstrap-wizard\index.html" />
+    <Content Include="Assets\bootstrap-wizard\jquery.bootstrap.wizard.js" />
+    <Content Include="Assets\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="Assets\bootstrap-wizard\prettify.css" />
+    <Content Include="Assets\bootstrap-wizard\prettify.js" />
+    <Content Include="Assets\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Assets\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Assets\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Assets\bootstrap\css\bootstrap.css" />
+    <Content Include="Assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Assets\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Assets\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Assets\bootstrap\js\bootstrap.js" />
+    <Content Include="Assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Assets\breakpoints\breakpoints.js" />
+    <Content Include="Assets\breakpoints\example.html" />
+    <Content Include="Assets\chosen-bootstrap\.gitignore" />
+    <Content Include="Assets\chosen-bootstrap\chosen\chosen-sprite.png" />
+    <Content Include="Assets\chosen-bootstrap\chosen\chosen.css" />
+    <Content Include="Assets\chosen-bootstrap\chosen\chosen.jquery.js" />
+    <Content Include="Assets\chosen-bootstrap\chosen\chosen.jquery.min.js" />
+    <Content Include="Assets\chosen-bootstrap\chosen\chosen.proto.js" />
+    <Content Include="Assets\chosen-bootstrap\chosen\chosen.proto.min.js" />
+    <Content Include="Assets\chosen-bootstrap\example.jquery.html" />
+    <Content Include="Assets\chosen-bootstrap\example.proto.html" />
+    <Content Include="Assets\ckeditor\build-config.js" />
+    <Content Include="Assets\ckeditor\ckeditor.js" />
+    <Content Include="Assets\ckeditor\config.js" />
+    <Content Include="Assets\ckeditor\contents.css" />
+    <Content Include="Assets\ckeditor\lang\af.js" />
+    <Content Include="Assets\ckeditor\lang\ar.js" />
+    <Content Include="Assets\ckeditor\lang\bg.js" />
+    <Content Include="Assets\ckeditor\lang\bn.js" />
+    <Content Include="Assets\ckeditor\lang\bs.js" />
+    <Content Include="Assets\ckeditor\lang\ca.js" />
+    <Content Include="Assets\ckeditor\lang\cs.js" />
+    <Content Include="Assets\ckeditor\lang\cy.js" />
+    <Content Include="Assets\ckeditor\lang\da.js" />
+    <Content Include="Assets\ckeditor\lang\de.js" />
+    <Content Include="Assets\ckeditor\lang\el.js" />
+    <Content Include="Assets\ckeditor\lang\en-au.js" />
+    <Content Include="Assets\ckeditor\lang\en-ca.js" />
+    <Content Include="Assets\ckeditor\lang\en-gb.js" />
+    <Content Include="Assets\ckeditor\lang\en.js" />
+    <Content Include="Assets\ckeditor\lang\eo.js" />
+    <Content Include="Assets\ckeditor\lang\es.js" />
+    <Content Include="Assets\ckeditor\lang\et.js" />
+    <Content Include="Assets\ckeditor\lang\eu.js" />
+    <Content Include="Assets\ckeditor\lang\fa.js" />
+    <Content Include="Assets\ckeditor\lang\fi.js" />
+    <Content Include="Assets\ckeditor\lang\fo.js" />
+    <Content Include="Assets\ckeditor\lang\fr-ca.js" />
+    <Content Include="Assets\ckeditor\lang\fr.js" />
+    <Content Include="Assets\ckeditor\lang\gl.js" />
+    <Content Include="Assets\ckeditor\lang\gu.js" />
+    <Content Include="Assets\ckeditor\lang\he.js" />
+    <Content Include="Assets\ckeditor\lang\hi.js" />
+    <Content Include="Assets\ckeditor\lang\hr.js" />
+    <Content Include="Assets\ckeditor\lang\hu.js" />
+    <Content Include="Assets\ckeditor\lang\is.js" />
+    <Content Include="Assets\ckeditor\lang\it.js" />
+    <Content Include="Assets\ckeditor\lang\ja.js" />
+    <Content Include="Assets\ckeditor\lang\ka.js" />
+    <Content Include="Assets\ckeditor\lang\km.js" />
+    <Content Include="Assets\ckeditor\lang\ko.js" />
+    <Content Include="Assets\ckeditor\lang\ku.js" />
+    <Content Include="Assets\ckeditor\lang\lt.js" />
+    <Content Include="Assets\ckeditor\lang\lv.js" />
+    <Content Include="Assets\ckeditor\lang\mk.js" />
+    <Content Include="Assets\ckeditor\lang\mn.js" />
+    <Content Include="Assets\ckeditor\lang\ms.js" />
+    <Content Include="Assets\ckeditor\lang\nb.js" />
+    <Content Include="Assets\ckeditor\lang\nl.js" />
+    <Content Include="Assets\ckeditor\lang\no.js" />
+    <Content Include="Assets\ckeditor\lang\pl.js" />
+    <Content Include="Assets\ckeditor\lang\pt-br.js" />
+    <Content Include="Assets\ckeditor\lang\pt.js" />
+    <Content Include="Assets\ckeditor\lang\ro.js" />
+    <Content Include="Assets\ckeditor\lang\ru.js" />
+    <Content Include="Assets\ckeditor\lang\sk.js" />
+    <Content Include="Assets\ckeditor\lang\sl.js" />
+    <Content Include="Assets\ckeditor\lang\sr-latn.js" />
+    <Content Include="Assets\ckeditor\lang\sr.js" />
+    <Content Include="Assets\ckeditor\lang\sv.js" />
+    <Content Include="Assets\ckeditor\lang\th.js" />
+    <Content Include="Assets\ckeditor\lang\tr.js" />
+    <Content Include="Assets\ckeditor\lang\ug.js" />
+    <Content Include="Assets\ckeditor\lang\uk.js" />
+    <Content Include="Assets\ckeditor\lang\vi.js" />
+    <Content Include="Assets\ckeditor\lang\zh-cn.js" />
+    <Content Include="Assets\ckeditor\lang\zh.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Assets\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Assets\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Assets\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Assets\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Assets\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Assets\ckeditor\plugins\fakeobjects\images\spacer.gif" />
+    <Content Include="Assets\ckeditor\plugins\icons.png" />
+    <Content Include="Assets\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Assets\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Assets\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Assets\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Assets\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Assets\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Assets\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Assets\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Assets\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Assets\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Assets\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Assets\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Assets\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Assets\ckeditor\samples\ajax.html" />
+    <Content Include="Assets\ckeditor\samples\api.html" />
+    <Content Include="Assets\ckeditor\samples\appendto.html" />
+    <Content Include="Assets\ckeditor\samples\assets\inlineall\logo.png" />
+    <Content Include="Assets\ckeditor\samples\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Assets\ckeditor\samples\assets\sample.css" />
+    <Content Include="Assets\ckeditor\samples\assets\sample.jpg" />
+    <Content Include="Assets\ckeditor\samples\assets\uilanguages\languages.js" />
+    <Content Include="Assets\ckeditor\samples\divreplace.html" />
+    <Content Include="Assets\ckeditor\samples\index.html" />
+    <Content Include="Assets\ckeditor\samples\inlineall.html" />
+    <Content Include="Assets\ckeditor\samples\inlinebycode.html" />
+    <Content Include="Assets\ckeditor\samples\plugins\dialog\assets\my_dialog.js" />
+    <Content Include="Assets\ckeditor\samples\plugins\dialog\dialog.html" />
+    <Content Include="Assets\ckeditor\samples\plugins\enterkey\enterkey.html" />
+    <Content Include="Assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.swf" />
+    <Content Include="Assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\swfobject.js" />
+    <Content Include="Assets\ckeditor\samples\plugins\htmlwriter\outputforflash.html" />
+    <Content Include="Assets\ckeditor\samples\plugins\htmlwriter\outputhtml.html" />
+    <Content Include="Assets\ckeditor\samples\plugins\magicline\magicline.html" />
+    <Content Include="Assets\ckeditor\samples\plugins\toolbar\toolbar.html" />
+    <Content Include="Assets\ckeditor\samples\plugins\wysiwygarea\fullpage.html" />
+    <Content Include="Assets\ckeditor\samples\readonly.html" />
+    <Content Include="Assets\ckeditor\samples\replacebyclass.html" />
+    <Content Include="Assets\ckeditor\samples\replacebycode.html" />
+    <Content Include="Assets\ckeditor\samples\sample.css" />
+    <Content Include="Assets\ckeditor\samples\sample.js" />
+    <Content Include="Assets\ckeditor\samples\tabindex.html" />
+    <Content Include="Assets\ckeditor\samples\uicolor.html" />
+    <Content Include="Assets\ckeditor\samples\uilanguages.html" />
+    <Content Include="Assets\ckeditor\samples\xhtmlstyle.html" />
+    <Content Include="Assets\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Assets\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Assets\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Assets\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Assets\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Assets\ckeditor\skins\moono\dialog_opera.css" />
+    <Content Include="Assets\ckeditor\skins\moono\editor.css" />
+    <Content Include="Assets\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Assets\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Assets\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Assets\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Assets\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Assets\ckeditor\skins\moono\icons.png" />
+    <Content Include="Assets\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Assets\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Assets\ckeditor\skins\moono\images\mini.png" />
+    <Content Include="Assets\ckeditor\styles.js" />
+    <Content Include="Assets\clockface\CHANGELOG.txt" />
+    <Content Include="Assets\clockface\css\clockface.css" />
+    <Content Include="Assets\clockface\js\clockface.js" />
+    <Content Include="Assets\css\metro.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\css\style_blue.css" />
+    <Content Include="Assets\css\style_brown.css" />
+    <Content Include="Assets\css\style_default.css" />
+    <Content Include="Assets\css\style_light.css" />
+    <Content Include="Assets\css\style_purple.css" />
+    <Content Include="Assets\css\style_responsive.css" />
+    <Content Include="Assets\data-tables\DT_bootstrap.css" />
+    <Content Include="Assets\data-tables\DT_bootstrap.js" />
+    <Content Include="Assets\data-tables\images\sort_asc.png" />
+    <Content Include="Assets\data-tables\images\sort_both.png" />
+    <Content Include="Assets\data-tables\images\sort_desc.png" />
+    <Content Include="Assets\data-tables\jquery.dataTables.js" />
+    <Content Include="Assets\dropzone\css\basic.css" />
+    <Content Include="Assets\dropzone\css\dropzone.css" />
+    <Content Include="Assets\dropzone\dropzone-amd-module.js" />
+    <Content Include="Assets\dropzone\dropzone.js" />
+    <Content Include="Assets\dropzone\images\spritemap%402x.png" />
+    <Content Include="Assets\dropzone\images\spritemap.png" />
+    <Content Include="Assets\element-ui\index.css" />
+    <Content Include="Assets\fancybox\.gitattributes" />
+    <Content Include="Assets\fancybox\demo\1_b.jpg" />
+    <Content Include="Assets\fancybox\demo\1_s.jpg" />
+    <Content Include="Assets\fancybox\demo\2_b.jpg" />
+    <Content Include="Assets\fancybox\demo\2_s.jpg" />
+    <Content Include="Assets\fancybox\demo\3_b.jpg" />
+    <Content Include="Assets\fancybox\demo\3_s.jpg" />
+    <Content Include="Assets\fancybox\demo\4_b.jpg" />
+    <Content Include="Assets\fancybox\demo\4_s.jpg" />
+    <Content Include="Assets\fancybox\demo\5_b.jpg" />
+    <Content Include="Assets\fancybox\demo\5_s.jpg" />
+    <Content Include="Assets\fancybox\demo\ajax.txt" />
+    <Content Include="Assets\fancybox\demo\iframe.html" />
+    <Content Include="Assets\fancybox\demo\index.html" />
+    <Content Include="Assets\fancybox\lib\jquery-1.8.2.min.js" />
+    <Content Include="Assets\fancybox\lib\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="Assets\fancybox\source\blank.gif" />
+    <Content Include="Assets\fancybox\source\fancybox_loading.gif" />
+    <Content Include="Assets\fancybox\source\fancybox_overlay.png" />
+    <Content Include="Assets\fancybox\source\fancybox_sprite.png" />
+    <Content Include="Assets\fancybox\source\helpers\fancybox_buttons.png" />
+    <Content Include="Assets\fancybox\source\helpers\jquery.fancybox-buttons.css" />
+    <Content Include="Assets\fancybox\source\helpers\jquery.fancybox-buttons.js" />
+    <Content Include="Assets\fancybox\source\helpers\jquery.fancybox-media.js" />
+    <Content Include="Assets\fancybox\source\helpers\jquery.fancybox-thumbs.css" />
+    <Content Include="Assets\fancybox\source\helpers\jquery.fancybox-thumbs.js" />
+    <Content Include="Assets\fancybox\source\jquery.fancybox.css" />
+    <Content Include="Assets\fancybox\source\jquery.fancybox.js" />
+    <Content Include="Assets\fancybox\source\jquery.fancybox.pack.js" />
+    <Content Include="Assets\flot\API.txt" />
+    <Content Include="Assets\flot\examples\ajax.html" />
+    <Content Include="Assets\flot\examples\annotating.html" />
+    <Content Include="Assets\flot\examples\arrow-down.gif" />
+    <Content Include="Assets\flot\examples\arrow-left.gif" />
+    <Content Include="Assets\flot\examples\arrow-right.gif" />
+    <Content Include="Assets\flot\examples\arrow-up.gif" />
+    <Content Include="Assets\flot\examples\basic.html" />
+    <Content Include="Assets\flot\examples\graph-types.html" />
+    <Content Include="Assets\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="Assets\flot\examples\image.html" />
+    <Content Include="Assets\flot\examples\index.html" />
+    <Content Include="Assets\flot\examples\interacting-axes.html" />
+    <Content Include="Assets\flot\examples\interacting.html" />
+    <Content Include="Assets\flot\examples\layout.css" />
+    <Content Include="Assets\flot\examples\multiple-axes.html" />
+    <Content Include="Assets\flot\examples\navigate.html" />
+    <Content Include="Assets\flot\examples\percentiles.html" />
+    <Content Include="Assets\flot\examples\pie.html" />
+    <Content Include="Assets\flot\examples\realtime.html" />
+    <Content Include="Assets\flot\examples\resize.html" />
+    <Content Include="Assets\flot\examples\selection.html" />
+    <Content Include="Assets\flot\examples\setting-options.html" />
+    <Content Include="Assets\flot\examples\stacking.html" />
+    <Content Include="Assets\flot\examples\symbols.html" />
+    <Content Include="Assets\flot\examples\thresholding.html" />
+    <Content Include="Assets\flot\examples\time.html" />
+    <Content Include="Assets\flot\examples\tracking.html" />
+    <Content Include="Assets\flot\examples\turning-series.html" />
+    <Content Include="Assets\flot\examples\visitors.html" />
+    <Content Include="Assets\flot\examples\zooming.html" />
+    <Content Include="Assets\flot\excanvas.js" />
+    <Content Include="Assets\flot\excanvas.min.js" />
+    <Content Include="Assets\flot\FAQ.txt" />
+    <Content Include="Assets\flot\jquery.colorhelpers.js" />
+    <Content Include="Assets\flot\jquery.flot.crosshair.js" />
+    <Content Include="Assets\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Assets\flot\jquery.flot.image.js" />
+    <Content Include="Assets\flot\jquery.flot.js" />
+    <Content Include="Assets\flot\jquery.flot.navigate.js" />
+    <Content Include="Assets\flot\jquery.flot.pie.js" />
+    <Content Include="Assets\flot\jquery.flot.resize.js" />
+    <Content Include="Assets\flot\jquery.flot.selection.js" />
+    <Content Include="Assets\flot\jquery.flot.stack.js" />
+    <Content Include="Assets\flot\jquery.flot.symbol.js" />
+    <Content Include="Assets\flot\jquery.flot.threshold.js" />
+    <Content Include="Assets\flot\jquery.js" />
+    <Content Include="Assets\flot\LICENSE.txt" />
+    <Content Include="Assets\flot\NEWS.txt" />
+    <Content Include="Assets\flot\PLUGINS.txt" />
+    <Content Include="Assets\flot\README.txt" />
+    <Content Include="Assets\font-awesome\.gitignore" />
+    <Content Include="Assets\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Assets\font-awesome\docs\assets\css\font-awesome-ie7.min.css" />
+    <Content Include="Assets\font-awesome\docs\assets\css\font-awesome.css" />
+    <Content Include="Assets\font-awesome\docs\assets\css\font-awesome.min.css" />
+    <Content Include="Assets\font-awesome\docs\assets\css\prettify.css" />
+    <Content Include="Assets\font-awesome\docs\assets\css\site.css" />
+    <Content Include="Assets\font-awesome\docs\assets\ico\favicon.ico" />
+    <Content Include="Assets\font-awesome\docs\assets\img\contribution-sample.png" />
+    <Content Include="Assets\font-awesome\docs\assets\img\fort_awesome.jpg" />
+    <Content Include="Assets\font-awesome\docs\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="Assets\font-awesome\docs\assets\img\glyphicons-halflings.png" />
+    <Content Include="Assets\font-awesome\docs\assets\js\backbone.min.js" />
+    <Content Include="Assets\font-awesome\docs\assets\js\bootstrap-222.min.js" />
+    <Content Include="Assets\font-awesome\docs\assets\js\index\index.js" />
+    <Content Include="Assets\font-awesome\docs\assets\js\jquery-1.7.1.min.js" />
+    <Content Include="Assets\font-awesome\docs\assets\js\prettify.min.js" />
+    <Content Include="Assets\font-awesome\docs\assets\js\underscore.min.js" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\buttons.html" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\css-tests.css" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\css-tests.html" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\forms-responsive.html" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\forms.html" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\navbar-fixed-top.html" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\navbar-static-top.html" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tests\navbar.html" />
+    <Content Include="Assets\font-awesome\docs\design.html" />
+    <Content Include="Assets\font-awesome\docs\index.html" />
+    <Content Include="Assets\font-awesome\docs\test.html" />
+    <Content Include="Assets\fullcalendar\changelog.txt" />
+    <Content Include="Assets\fullcalendar\demos\agenda-views.html" />
+    <Content Include="Assets\fullcalendar\demos\basic-views.html" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Assets\fullcalendar\demos\cupertino\theme.css" />
+    <Content Include="Assets\fullcalendar\demos\default.html" />
+    <Content Include="Assets\fullcalendar\demos\external-dragging.html" />
+    <Content Include="Assets\fullcalendar\demos\gcal.html" />
+    <Content Include="Assets\fullcalendar\demos\json.html" />
+    <Content Include="Assets\fullcalendar\demos\selectable.html" />
+    <Content Include="Assets\fullcalendar\demos\theme.html" />
+    <Content Include="Assets\fullcalendar\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="Assets\fullcalendar\fullcalendar\fullcalendar.css" />
+    <Content Include="Assets\fullcalendar\fullcalendar\fullcalendar.js" />
+    <Content Include="Assets\fullcalendar\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Assets\fullcalendar\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Assets\fullcalendar\fullcalendar\gcal.js" />
+    <Content Include="Assets\fullcalendar\GPL-LICENSE.txt" />
+    <Content Include="Assets\fullcalendar\jquery\jquery-1.8.1.min.js" />
+    <Content Include="Assets\fullcalendar\jquery\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="Assets\fullcalendar\MIT-LICENSE.txt" />
+    <Content Include="Assets\glyphicons\css\glyphicons.css" />
+    <Content Include="Assets\glyphicons\css\style.css" />
+    <Content Include="Assets\glyphicons\fonts\glyphicons-regular.svg" />
+    <Content Include="Assets\glyphicons\images\glyphicons-white.png" />
+    <Content Include="Assets\glyphicons\images\glyphicons-white.svg" />
+    <Content Include="Assets\glyphicons\images\glyphicons.png" />
+    <Content Include="Assets\glyphicons\images\glyphicons.svg" />
+    <Content Include="Assets\glyphicons\index.html" />
+    <Content Include="Assets\glyphicons\scripts\modernizr.js" />
+    <Content Include="Assets\glyphicons\scripts\modernizr_license.txt" />
+    <Content Include="Assets\glyphicons_halflings\css\halflings.css" />
+    <Content Include="Assets\glyphicons_halflings\css\style.css" />
+    <Content Include="Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.svg" />
+    <Content Include="Assets\glyphicons_halflings\images\glyphicons_halflings-white.png" />
+    <Content Include="Assets\glyphicons_halflings\images\glyphicons_halflings-white.svg" />
+    <Content Include="Assets\glyphicons_halflings\images\glyphicons_halflings.png" />
+    <Content Include="Assets\glyphicons_halflings\images\glyphicons_halflings.svg" />
+    <Content Include="Assets\glyphicons_halflings\index.html" />
+    <Content Include="Assets\glyphicons_halflings\scripts\modernizr.js" />
+    <Content Include="Assets\glyphicons_halflings\scripts\modernizr_license.txt" />
+    <Content Include="Assets\gritter\css\jquery.gritter.css" />
+    <Content Include="Assets\gritter\images\gritter-blue.png" />
+    <Content Include="Assets\gritter\images\gritter-brown.png" />
+    <Content Include="Assets\gritter\images\gritter-light.png" />
+    <Content Include="Assets\gritter\images\gritter-long.png" />
+    <Content Include="Assets\gritter\images\gritter-purple.png" />
+    <Content Include="Assets\gritter\images\gritter.png" />
+    <Content Include="Assets\gritter\images\ie-spacer.gif" />
+    <Content Include="Assets\gritter\images_original\gritter-light.png" />
+    <Content Include="Assets\gritter\images_original\gritter-long.png" />
+    <Content Include="Assets\gritter\images_original\gritter.png" />
+    <Content Include="Assets\gritter\images_original\ie-spacer.gif" />
+    <Content Include="Assets\gritter\images_original\trees.jpg" />
+    <Content Include="Assets\gritter\index.html" />
+    <Content Include="Assets\gritter\js\jquery.gritter.js" />
+    <Content Include="Assets\gritter\js\jquery.gritter.min.js" />
+    <Content Include="Assets\img\arrow-down.png" />
+    <Content Include="Assets\img\avatar.png" />
+    <Content Include="Assets\img\avatar1.jpg" />
+    <Content Include="Assets\img\avatar1_small.jpg" />
+    <Content Include="Assets\img\avatar2.jpg" />
+    <Content Include="Assets\img\avatar3.jpg" />
+    <Content Include="Assets\img\avatar3_small.jpg" />
+    <Content Include="Assets\img\dashboard\test.jpg" />
+    <Content Include="Assets\img\dashboard\test1.jpg" />
+    <Content Include="Assets\img\dashboard\test2.jpg" />
+    <Content Include="Assets\img\dashboard\test3.jpg" />
+    <Content Include="Assets\img\dashboard\test4.jpg" />
+    <Content Include="Assets\img\dashboard\user-feedback.jpg" />
+    <Content Include="Assets\img\gallery\image1.jpg" />
+    <Content Include="Assets\img\gallery\image2.jpg" />
+    <Content Include="Assets\img\gallery\image3.jpg" />
+    <Content Include="Assets\img\gallery\image4.jpg" />
+    <Content Include="Assets\img\gallery\image5.jpg" />
+    <Content Include="Assets\img\gallery\preview_02.png" />
+    <Content Include="Assets\img\gallery\preview_03.png" />
+    <Content Include="Assets\img\gallery\preview_04.png" />
+    <Content Include="Assets\img\gallery\preview_05.png" />
+    <Content Include="Assets\img\gallery\preview_06.png" />
+    <Content Include="Assets\img\gallery\preview_07.png" />
+    <Content Include="Assets\img\gallery\preview_08.png" />
+    <Content Include="Assets\img\gallery\preview_09.png" />
+    <Content Include="Assets\img\gallery\preview_10.png" />
+    <Content Include="Assets\img\gallery\preview_11.png" />
+    <Content Include="Assets\img\gallery\preview_12.png" />
+    <Content Include="Assets\img\gallery\preview_13.png" />
+    <Content Include="Assets\img\gallery\preview_14.png" />
+    <Content Include="Assets\img\gallery\preview_15.png" />
+    <Content Include="Assets\img\gallery\preview_16.png" />
+    <Content Include="Assets\img\gallery\preview_17.png" />
+    <Content Include="Assets\img\gallery\preview_18.png" />
+    <Content Include="Assets\img\icon-color-close.png" />
+    <Content Include="Assets\img\icon-color.png" />
+    <Content Include="Assets\img\icon-img-down.png" />
+    <Content Include="Assets\img\icon-img-up.png" />
+    <Content Include="Assets\img\invoice\walmart.png" />
+    <Content Include="Assets\img\loading.gif" />
+    <Content Include="Assets\img\logo-big.png" />
+    <Content Include="Assets\img\logo.png" />
+    <Content Include="Assets\img\menu-toggler.png" />
+    <Content Include="Assets\img\overlay-icon.png" />
+    <Content Include="Assets\img\photo1.jpg" />
+    <Content Include="Assets\img\photo2.jpg" />
+    <Content Include="Assets\img\portlet-collapse-icon-white.png" />
+    <Content Include="Assets\img\portlet-collapse-icon.png" />
+    <Content Include="Assets\img\portlet-config-icon-white.png" />
+    <Content Include="Assets\img\portlet-config-icon.png" />
+    <Content Include="Assets\img\portlet-expand-icon-white.png" />
+    <Content Include="Assets\img\portlet-expand-icon.png" />
+    <Content Include="Assets\img\portlet-reload-icon-white.png" />
+    <Content Include="Assets\img\portlet-reload-icon.png" />
+    <Content Include="Assets\img\portlet-remove-icon-white.png" />
+    <Content Include="Assets\img\portlet-remove-icon.png" />
+    <Content Include="Assets\img\profile\portfolio\logo_azteca.jpg" />
+    <Content Include="Assets\img\profile\portfolio\logo_conquer.jpg" />
+    <Content Include="Assets\img\profile\portfolio\logo_metronic.jpg" />
+    <Content Include="Assets\img\profile\profile-img.jpg" />
+    <Content Include="Assets\img\profile\profile-img.png" />
+    <Content Include="Assets\img\remove-icon-small.png" />
+    <Content Include="Assets\img\search-icon-blue.png" />
+    <Content Include="Assets\img\search-icon-brown.png" />
+    <Content Include="Assets\img\search-icon-purple.png" />
+    <Content Include="Assets\img\search-icon-red.png" />
+    <Content Include="Assets\img\search-icon-white.png" />
+    <Content Include="Assets\img\search-icon.png" />
+    <Content Include="Assets\img\search\img1.jpg" />
+    <Content Include="Assets\img\search\img2.jpg" />
+    <Content Include="Assets\img\search\img3.jpg" />
+    <Content Include="Assets\img\select-caret.png" />
+    <Content Include="Assets\img\sidebar-menu-arrow-green.png" />
+    <Content Include="Assets\img\sidebar-menu-arrow.png" />
+    <Content Include="Assets\img\sidebar-search-close-blue.png" />
+    <Content Include="Assets\img\sidebar-search-close-brown.png" />
+    <Content Include="Assets\img\sidebar-search-close-light.png" />
+    <Content Include="Assets\img\sidebar-search-close-purple.png" />
+    <Content Include="Assets\img\sidebar-search-close.png" />
+    <Content Include="Assets\img\sidebar-toggler-blue.jpg" />
+    <Content Include="Assets\img\sidebar-toggler-brown.jpg" />
+    <Content Include="Assets\img\sidebar-toggler-light.jpg" />
+    <Content Include="Assets\img\sidebar-toggler-purple.jpg" />
+    <Content Include="Assets\img\sidebar-toggler.jpg" />
+    <Content Include="Assets\img\sidebar-toggler.png" />
+    <Content Include="Assets\img\syncfusion-icons-white.png" />
+    <Content Include="Assets\img\syncfusion-icons.png" />
+    <Content Include="Assets\jquery-file-upload\.gitignore" />
+    <Content Include="Assets\jquery-file-upload\cors\postmessage.html" />
+    <Content Include="Assets\jquery-file-upload\cors\result.html" />
+    <Content Include="Assets\jquery-file-upload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Assets\jquery-file-upload\css\jquery.fileupload-ui.css" />
+    <Content Include="Assets\jquery-file-upload\css\style.css" />
+    <Content Include="Assets\jquery-file-upload\img\loading.gif" />
+    <Content Include="Assets\jquery-file-upload\img\progressbar.gif" />
+    <Content Include="Assets\jquery-file-upload\index.html" />
+    <Content Include="Assets\jquery-file-upload\js\cors\jquery.postmessage-transport.js" />
+    <Content Include="Assets\jquery-file-upload\js\cors\jquery.xdr-transport.js" />
+    <Content Include="Assets\jquery-file-upload\js\jquery.fileupload-fp.js" />
+    <Content Include="Assets\jquery-file-upload\js\jquery.fileupload-ui.js" />
+    <Content Include="Assets\jquery-file-upload\js\jquery.fileupload.js" />
+    <Content Include="Assets\jquery-file-upload\js\jquery.iframe-transport.js" />
+    <Content Include="Assets\jquery-file-upload\js\main.js" />
+    <Content Include="Assets\jquery-file-upload\js\vendor\canvas-to-blob.min.js" />
+    <Content Include="Assets\jquery-file-upload\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Assets\jquery-file-upload\js\vendor\load-image.min.js" />
+    <Content Include="Assets\jquery-file-upload\js\vendor\tmpl.min.js" />
+    <Content Include="Assets\jquery-file-upload\server\gae-go\static\favicon.ico" />
+    <Content Include="Assets\jquery-file-upload\server\gae-go\static\robots.txt" />
+    <Content Include="Assets\jquery-file-upload\server\gae-python\static\favicon.ico" />
+    <Content Include="Assets\jquery-file-upload\server\gae-python\static\robots.txt" />
+    <Content Include="Assets\jquery-file-upload\server\node\.gitignore" />
+    <Content Include="Assets\jquery-file-upload\server\node\public\files\thumbnail\.gitignore" />
+    <Content Include="Assets\jquery-file-upload\server\node\server.js" />
+    <Content Include="Assets\jquery-file-upload\server\node\tmp\.gitignore" />
+    <Content Include="Assets\jquery-file-upload\test\index.html" />
+    <Content Include="Assets\jquery-file-upload\test\test.js" />
+    <Content Include="Assets\jquery-knob\index.html" />
+    <Content Include="Assets\jquery-knob\js\jquery.knob.js" />
+    <Content Include="Assets\jquery-nestable\index.html" />
+    <Content Include="Assets\jquery-nestable\jquery.nestable.css" />
+    <Content Include="Assets\jquery-nestable\jquery.nestable.js" />
+    <Content Include="Assets\jquery-simpletree\jquery.simpletree.css" />
+    <Content Include="Assets\jquery-simpletree\jquery.simpletree.js" />
+    <Content Include="Assets\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="Assets\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <Content Include="Assets\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\rail.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="Assets\jquery-slimscroll\examples\style.css" />
+    <Content Include="Assets\jquery-slimscroll\examples\top-bottom-events.html" />
+    <Content Include="Assets\jquery-slimscroll\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Assets\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="Assets\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Assets\jquery-tags-input\example.html" />
+    <Content Include="Assets\jquery-tags-input\jquery.tagsinput.css" />
+    <Content Include="Assets\jquery-tags-input\jquery.tagsinput.js" />
+    <Content Include="Assets\jquery-tags-input\jquery.tagsinput.min.js" />
+    <Content Include="Assets\jquery-tags-input\test\fake_json_endpoint.html" />
+    <Content Include="Assets\jquery-tags-input\test\fake_plaintext_endpoint.html" />
+    <Content Include="Assets\jquery-ui-touch-punch\jquery.ui.touch-punch.js" />
+    <Content Include="Assets\jquery-ui-touch-punch\jquery.ui.touch-punch.min.js" />
+    <Content Include="Assets\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Assets\jquery-ui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Assets\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <Content Include="Assets\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="Assets\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Assets\jquery-ui\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="Assets\jquery-validation\changelog.txt" />
+    <Content Include="Assets\jquery-validation\demo\ajaxSubmit-intergration-demo.html" />
+    <Content Include="Assets\jquery-validation\demo\captcha\captcha.js" />
+    <Content Include="Assets\jquery-validation\demo\captcha\images\button.png" />
+    <Content Include="Assets\jquery-validation\demo\captcha\style.css" />
+    <Content Include="Assets\jquery-validation\demo\css\chili.css" />
+    <Content Include="Assets\jquery-validation\demo\css\cmxform.css" />
+    <Content Include="Assets\jquery-validation\demo\css\cmxformTemplate.css" />
+    <Content Include="Assets\jquery-validation\demo\css\core.css" />
+    <Content Include="Assets\jquery-validation\demo\css\reset.css" />
+    <Content Include="Assets\jquery-validation\demo\css\screen.css" />
+    <Content Include="Assets\jquery-validation\demo\custom-messages-data-demo.html" />
+    <Content Include="Assets\jquery-validation\demo\custom-methods-demo.html" />
+    <Content Include="Assets\jquery-validation\demo\dynamic-totals.html" />
+    <Content Include="Assets\jquery-validation\demo\errorcontainer-demo.html" />
+    <Content Include="Assets\jquery-validation\demo\file_input.html" />
+    <Content Include="Assets\jquery-validation\demo\images\bg.gif" />
+    <Content Include="Assets\jquery-validation\demo\images\checked.gif" />
+    <Content Include="Assets\jquery-validation\demo\images\cmxform-divider.gif" />
+    <Content Include="Assets\jquery-validation\demo\images\cmxform-fieldset.gif" />
+    <Content Include="Assets\jquery-validation\demo\images\loading.gif" />
+    <Content Include="Assets\jquery-validation\demo\images\unchecked.gif" />
+    <Content Include="Assets\jquery-validation\demo\index.html" />
+    <Content Include="Assets\jquery-validation\demo\jquerymobile.html" />
+    <Content Include="Assets\jquery-validation\demo\js\chili-1.7.pack.js" />
+    <Content Include="Assets\jquery-validation\demo\login\images\bg.gif" />
+    <Content Include="Assets\jquery-validation\demo\login\images\header1.jpg" />
+    <Content Include="Assets\jquery-validation\demo\login\images\page.gif" />
+    <Content Include="Assets\jquery-validation\demo\login\images\required_star.gif" />
+    <Content Include="Assets\jquery-validation\demo\login\index.html" />
+    <Content Include="Assets\jquery-validation\demo\login\screen.css" />
+    <Content Include="Assets\jquery-validation\demo\marketo\ie6.css" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\backRequiredGray.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\back_green-fade.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\back_nav_blue.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\blank.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\button-submit.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\favicon.ico" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\help.png" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\left-nav-callout-long.png" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\login-sprite.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\logo_marketo.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\sf.png" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\step1-24.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\step2-24.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\step3-24.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\tab-sprite.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\tab_green.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\time.png" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\toggle.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\images\warning.gif" />
+    <Content Include="Assets\jquery-validation\demo\marketo\index.html" />
+    <Content Include="Assets\jquery-validation\demo\marketo\jquery.maskedinput.js" />
+    <Content Include="Assets\jquery-validation\demo\marketo\mktSignup.js" />
+    <Content Include="Assets\jquery-validation\demo\marketo\step2.htm" />
+    <Content Include="Assets\jquery-validation\demo\marketo\stylesheet.css" />
+    <Content Include="Assets\jquery-validation\demo\milk\bg.gif" />
+    <Content Include="Assets\jquery-validation\demo\milk\index.html" />
+    <Content Include="Assets\jquery-validation\demo\milk\left_white.png" />
+    <Content Include="Assets\jquery-validation\demo\milk\milk.css" />
+    <Content Include="Assets\jquery-validation\demo\milk\milk.png" />
+    <Content Include="Assets\jquery-validation\demo\milk\right_white.png" />
+    <Content Include="Assets\jquery-validation\demo\multipart\index.html" />
+    <Content Include="Assets\jquery-validation\demo\multipart\js\jquery.maskedinput-1.0.js" />
+    <Content Include="Assets\jquery-validation\demo\multipart\js\ui.accordion.js" />
+    <Content Include="Assets\jquery-validation\demo\multipart\js\ui.core.js" />
+    <Content Include="Assets\jquery-validation\demo\multipart\style.css" />
+    <Content Include="Assets\jquery-validation\demo\radio-checkbox-select-demo.html" />
+    <Content Include="Assets\jquery-validation\demo\tabs\index.html" />
+    <Content Include="Assets\jquery-validation\demo\themerollered.html" />
+    <Content Include="Assets\jquery-validation\demo\tinymce\index.html" />
+    <Content Include="Assets\jquery-validation\demo\tinymce\themes\simple\editor_template.js" />
+    <Content Include="Assets\jquery-validation\demo\tinymce\themes\simple\img\icons.gif" />
+    <Content Include="Assets\jquery-validation\demo\tinymce\themes\simple\langs\en.js" />
+    <Content Include="Assets\jquery-validation\demo\tinymce\themes\simple\skins\default\ui.css" />
+    <Content Include="Assets\jquery-validation\demo\tinymce\tiny_mce.js" />
+    <Content Include="Assets\jquery-validation\dist\additional-methods.js" />
+    <Content Include="Assets\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="Assets\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="Assets\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="Assets\jquery-validation\grunt.js" />
+    <Content Include="Assets\jquery-validation\lib\jquery-1.6.4.js" />
+    <Content Include="Assets\jquery-validation\lib\jquery-1.7.2.js" />
+    <Content Include="Assets\jquery-validation\lib\jquery-1.8.3.js" />
+    <Content Include="Assets\jquery-validation\lib\jquery-1.9.0.js" />
+    <Content Include="Assets\jquery-validation\lib\jquery.form.js" />
+    <Content Include="Assets\jquery-validation\lib\jquery.js" />
+    <Content Include="Assets\jquery-validation\lib\jquery.mockjax.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_ar.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_bg.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_ca.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_cs.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_da.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_de.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_el.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_es.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_et.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_eu.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_fa.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_fi.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_fr.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_he.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_hr.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_hu.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_it.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_ja.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_ka.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_kk.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_lt.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_lv.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_my.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_nl.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_no.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_pl.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_pt_BR.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_pt_PT.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_ro.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_ru.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_si.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_sk.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_sl.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_sr.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_sv.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_th.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_tr.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_uk.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_vi.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_zh.js" />
+    <Content Include="Assets\jquery-validation\localization\messages_zh_TW.js" />
+    <Content Include="Assets\jquery-validation\localization\methods_de.js" />
+    <Content Include="Assets\jquery-validation\localization\methods_nl.js" />
+    <Content Include="Assets\jquery-validation\localization\methods_pt.js" />
+    <Content Include="Assets\jquery-validation\test\events.html" />
+    <Content Include="Assets\jquery-validation\test\firebug\errorIcon.png" />
+    <Content Include="Assets\jquery-validation\test\firebug\firebug.css" />
+    <Content Include="Assets\jquery-validation\test\firebug\firebug.html" />
+    <Content Include="Assets\jquery-validation\test\firebug\firebug.js" />
+    <Content Include="Assets\jquery-validation\test\firebug\firebugx.js" />
+    <Content Include="Assets\jquery-validation\test\firebug\infoIcon.png" />
+    <Content Include="Assets\jquery-validation\test\firebug\warningIcon.png" />
+    <Content Include="Assets\jquery-validation\test\index.html" />
+    <Content Include="Assets\jquery-validation\test\jquery.js" />
+    <Content Include="Assets\jquery-validation\test\large.html" />
+    <Content Include="Assets\jquery-validation\test\messages.js" />
+    <Content Include="Assets\jquery-validation\test\methods.js" />
+    <Content Include="Assets\jquery-validation\test\qunit\qunit.css" />
+    <Content Include="Assets\jquery-validation\test\qunit\qunit.js" />
+    <Content Include="Assets\jquery-validation\test\rules.js" />
+    <Content Include="Assets\jquery-validation\test\selects\index.html" />
+    <Content Include="Assets\jquery-validation\test\tabs.html" />
+    <Content Include="Assets\jquery-validation\test\test.js" />
+    <Content Include="Assets\jqvmap\.gitignore" />
+    <Content Include="Assets\jqvmap\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="Assets\jqvmap\jqvmap\jquery.vmap.js" />
+    <Content Include="Assets\jqvmap\jqvmap\jquery.vmap.min.js" />
+    <Content Include="Assets\jqvmap\jqvmap\jquery.vmap.packed.js" />
+    <Content Include="Assets\jqvmap\jqvmap\jqvmap.css" />
+    <Content Include="Assets\jqvmap\jqvmap\maps\jquery.vmap.europe.js" />
+    <Content Include="Assets\jqvmap\jqvmap\maps\jquery.vmap.germany.js" />
+    <Content Include="Assets\jqvmap\jqvmap\maps\jquery.vmap.russia.js" />
+    <Content Include="Assets\jqvmap\jqvmap\maps\jquery.vmap.usa.js" />
+    <Content Include="Assets\jqvmap\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="Assets\jqvmap\samples\europe.html" />
+    <Content Include="Assets\jqvmap\samples\germany.html" />
+    <Content Include="Assets\jqvmap\samples\multi.html" />
+    <Content Include="Assets\jqvmap\samples\russia.html" />
+    <Content Include="Assets\jqvmap\samples\usa.html" />
+    <Content Include="Assets\jqvmap\samples\world.html" />
+    <Content Include="Assets\js\app.js" />
+    <Content Include="Assets\js\demo.gmaps.js" />
+    <Content Include="Assets\js\excanvas.js" />
+    <Content Include="Assets\js\gmaps.js" />
+    <Content Include="Assets\js\jquery-1.8.3.min.js" />
+    <Content Include="Assets\js\jquery.blockui.js" />
+    <Content Include="Assets\js\jquery.cookie.js" />
+    <Content Include="Assets\js\jquery.pulsate.min.js" />
+    <Content Include="Assets\js\respond.js" />
+    <Content Include="Assets\uniform\css\uniform.default.css" />
+    <Content Include="Assets\uniform\demo\demo.html" />
+    <Content Include="Assets\uniform\images\bg-input-focus.png" />
+    <Content Include="Assets\uniform\images\bg-input.png" />
+    <Content Include="Assets\uniform\images\sprite.png" />
+    <Content Include="Assets\uniform\images\sprite_original.png" />
+    <Content Include="Assets\uniform\jquery.uniform.js" />
+    <Content Include="Assets\uniform\jquery.uniform.min.js" />
+    <Content Include="Config\AdminMenuConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\CacheConfig.xml" />
+    <Content Include="Config\DaoConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Log4net.xml" />
+    <Content Include="Config\SettingConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\SystemConfig.xml" />
+    <Content Include="Config\UploadConfig.xml" />
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\avatar.gif" />
+    <Content Include="Content\Images\ems-icon.png" />
+    <Content Include="Content\Images\error.gif" />
+    <Content Include="Content\Images\error.png" />
+    <Content Include="Content\Images\esquel_header_logo.gif" />
+    <Content Include="Content\Images\green_dot.png" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\loadingAnimation.gif" />
+    <Content Include="Content\Images\logo-big.png" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\no_picture.jpg" />
+    <Content Include="Content\Images\power-lightning-icon.png" />
+    <Content Include="Content\Images\red_dot.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Black\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Black\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Black\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Black\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Black\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Black\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Black\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\BlueOpal\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Bootstrap\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Default\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Default\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Default\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Default\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Default\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Default\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Default\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Fiori\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Flat\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Flat\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Flat\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Flat\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Flat\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Flat\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Flat\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\WebComponentsIcons.svg" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\HighContrast\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\images\back.png" />
+    <Content Include="Content\kendo\2017.2.504\images\kendoui.svg" />
+    <Content Include="Content\kendo\2017.2.504\images\wp8_icons.png" />
+    <Content Include="Content\kendo\2017.2.504\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendo\2017.2.504\kendo.black.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.black.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.blueopal.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.blueopal.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.bootstrap-v4.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.bootstrap.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.bootstrap.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-bootstrap.core.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-bootstrap.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-fiori.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-material.core.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-material.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-nova.core.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-nova.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-office365.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common.core.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.black.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.blueopal.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.bootstrap.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.default.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.fiori.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.flat.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.highcontrast.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.material.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.materialblack.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.metro.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.metroblack.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.moonlight.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.nova.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.office365.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.silver.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.uniform.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.default-v2.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.default.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.default.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.fiori.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.fiori.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.flat.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.flat.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.highcontrast.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.highcontrast.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.material.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.material.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.materialblack.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.materialblack.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metro.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metro.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metroblack.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metroblack.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.all.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.android.dark.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.android.light.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.blackberry.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.common.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.fiori.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.flat.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.ios.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.material.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.meego.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.nova.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.office365.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.wp8.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.moonlight.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.moonlight.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.nova.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.nova.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.office365.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.office365.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.rtl.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.silver.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.silver.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.uniform.min.css" />
+    <Content Include="Content\kendo\2017.2.504\kendo.uniform.mobile.min.css" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\MaterialBlack\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Material\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Material\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Material\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Material\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Material\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Material\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Material\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\MetroBlack\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Metro\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Metro\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Metro\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Metro\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Metro\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Metro\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Metro\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Moonlight\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Nova\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Nova\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Nova\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Nova\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Nova\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Nova\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Nova\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Office365\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Office365\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Office365\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Office365\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Office365\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Office365\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Office365\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Silver\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Silver\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Silver\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Silver\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Silver\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Silver\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Silver\sprite_kpi_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\brushed-metal.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots1.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots10.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots11.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots12.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots13.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots2.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots3.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots4.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots5.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots6.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots7.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots8.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\dots9.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\glass-lighter.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\glass.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\highlight.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\hsv-gradient.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\hue.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\leather1.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\leather2.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\noise.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\stripe1.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\stripe2.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\stripe3.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\stripe4.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\stripe5.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\stripe6.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\transparency.png" />
+    <Content Include="Content\kendo\2017.2.504\textures\transtexture.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\editor.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\imagebrowser.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\indeterminate.gif" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\loading-image.gif" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\loading.gif" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\loading_2x.gif" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\markers.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\markers_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\slider-h.gif" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\slider-v.gif" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\sprite.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\sprite_2x.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017.2.504\Uniform\sprite_kpi_2x.png" />
+    <Content Include="Content\Scripts\admin.edit.js" />
+    <Content Include="Content\Scripts\admin.main.js" />
+    <Content Include="Content\Scripts\flashupload.js" />
+    <Content Include="Content\Scripts\highcharts.exporting.js" />
+    <Content Include="Content\Scripts\highcharts.js" />
+    <Content Include="Content\Scripts\jquery-ui.combobox.js" />
+    <Content Include="Content\Scripts\jquery.numeric.js" />
+    <Content Include="Content\Scripts\jquery.powerFloat.js" />
+    <Content Include="Content\Scripts\jquery.thickbox.js" />
+    <Content Include="Content\Scripts\jquery.ui.datapicker-zh-CN.js" />
+    <Content Include="Content\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\Scripts\jquery.validate.js" />
+    <Content Include="Content\Scripts\jquery.validate.min.js" />
+    <Content Include="Content\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\Scripts\Silverlight.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\Styles\admin.main.css" />
+    <Content Include="Content\Styles\jquery.thickbox.css" />
+    <Content Include="Content\Uploadify\cancel.png" />
+    <Content Include="Content\Uploadify\jquery-1.4.2.min.js" />
+    <Content Include="Content\Uploadify\jquery.uploadify.v2.1.4.js" />
+    <Content Include="Content\Uploadify\jquery.uploadify.v2.1.4.min.js" />
+    <Content Include="Content\Uploadify\jquery.uploadify.v3.2.js" />
+    <Content Include="Content\Uploadify\jquery.uploadify.v3.2.min.js" />
+    <Content Include="Content\Uploadify\swfobject.js" />
+    <Content Include="Content\Uploadify\uploadbutton.png" />
+    <Content Include="Content\Uploadify\uploadify.cn.swf" />
+    <Content Include="Content\Uploadify\uploadify.css" />
+    <Content Include="Content\Uploadify\uploadify.swf" />
+    <Content Include="Content\Uploadify\uploadify.v3.2.css" />
+    <Content Include="Content\Uploadify\uploadify.v3.2.swf" />
+    <Content Include="Content\Xheditor\xheditor-1.1.6-zh-cn.js" />
+    <Content Include="Content\Xheditor\xheditor-1.1.6-zh-cn.min.js" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\angry.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\awkward.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\bye.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\config.txt" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\crazy.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\cry.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\curse.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\cute.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\despise.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\doubt.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\envy.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\fastcry.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\knock.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\laugh.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\mad.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\ohmy.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\panic.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\proud.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\quiet.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\sad.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\shutup.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\shy.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\sleep.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\smile.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\struggle.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\titter.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\tongue.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\wail.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\default\wronged.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\alien.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\angel.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\angry.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\bandit.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\biglaugh.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\blink.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\blush.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\config.txt" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\cool.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\cry.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\depres.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\devil.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\glare.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\heart.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\joyful.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\kiss.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\laugh.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\magician.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\ninja.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\pinch.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\police.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\sad.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\sick.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\sideways.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\sleep.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\smile.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\surprised.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\tongue.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\unsure.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\w00t.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\whistling.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\wondering.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\ipb\wub.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\1.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\10.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\11.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\12.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\13.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\14.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\15.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\16.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\17.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\18.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\19.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\2.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\20.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\21.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\22.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\23.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\24.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\25.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\26.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\27.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\28.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\29.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\3.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\30.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\31.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\32.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\33.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\34.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\35.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\36.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\37.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\38.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\39.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\4.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\40.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\5.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\6.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\7.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\8.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\msn\9.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\angry.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\bad.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\blush.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\brokenheart.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\bye.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\coffee.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\config.txt" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\cool.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\cry.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\curse.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\cute.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\devil.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\envy.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\gift.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\good.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\kiss.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\laugh.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\love.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\music.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\question.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\rose.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\sad.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\shocked.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\shout.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\sick.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\sleepy.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\smile.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\soccer.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\sweat.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\tired.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\tongue.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\victory.gif" />
+    <Content Include="Content\Xheditor\xheditor_emot\pidgin\wink.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\add.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\bg1.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\bg2.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\btnbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\btnbgr.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\clear.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\progressbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\img\start.gif" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\multiupload.css" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\multiupload.html" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\multiupload.js" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\swfupload\swfupload.js" />
+    <Content Include="Content\Xheditor\xheditor_plugins\multiupload\swfupload\swfupload.swf" />
+    <Content Include="Content\Xheditor\xheditor_plugins\ubb.min.js" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\iframe.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\close.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\flash.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\icons.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\loading.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\progress.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\progressbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-address.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-div.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-h1.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-h2.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-h3.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-h4.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-h5.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-h6.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-p.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\tag-pre.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\waiting.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\img\wmp.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\default\ui.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\iframe.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\close.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\flash.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\icons.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\loading.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\progress.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\progressbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-address.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-div.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-h1.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-h2.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-h3.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-h4.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-h5.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-h6.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-p.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\tag-pre.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\waiting.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\img\wmp.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\iframe.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\buttonbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\close.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\flash.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\icons.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\loading.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\progress.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\progressbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-address.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-div.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-h1.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-h2.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-h3.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-h4.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-h5.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-h6.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-p.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\tag-pre.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\waiting.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\img\wmp.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007blue\ui.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\iframe.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\buttonbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\close.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\flash.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\icons.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\loading.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\progress.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\progressbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-address.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-div.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-h1.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-h2.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-h3.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-h4.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-h5.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-h6.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-p.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\tag-pre.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\waiting.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\img\wmp.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\o2007silver\ui.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\iframe.css" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\buttonbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\close.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\flash.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\icons.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\loading.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\progress.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\progressbg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-address.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-div.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-h1.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-h2.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-h3.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-h4.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-h5.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-h6.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-p.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\tag-pre.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\titlebg.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\waiting.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\img\wmp.gif" />
+    <Content Include="Content\Xheditor\xheditor_skin\vista\ui.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\WvWebApp\Views\web.config" />
+    <Content Include="Areas\WvWebApp\Views\Shared\_AppLayout.cshtml" />
+    <Content Include="Areas\WvWebApp\Views\Yield\Index.cshtml" />
+    <Content Include="Areas\WvSys\Views\web.config" />
+    <Content Include="Areas\WvSys\Views\YieldExport\Index.cshtml" />
+    <Content Include="Areas\WvSys\Views\RuleMaintain\Index.cshtml" />
+    <Content Include="Areas\Resource\Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\WvSys\Views\WorkerMaintain\Index.cshtml" />
+    <Content Include="Content\kendo\2017.2.504\kendo.black.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.black.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.blueopal.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.blueopal.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.bootstrap-v4.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.bootstrap.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.bootstrap.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-bootstrap.core.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-bootstrap.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-fiori.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-material.core.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-material.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-nova.core.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-nova.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common-office365.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common.core.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.common.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.black.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.blueopal.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.bootstrap.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.default.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.fiori.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.flat.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.highcontrast.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.material.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.materialblack.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.metro.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.metroblack.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.moonlight.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.nova.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.office365.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.silver.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.dataviz.uniform.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.default-v2.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.default.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.default.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.fiori.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.fiori.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.flat.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.flat.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.highcontrast.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.highcontrast.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.material.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.material.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.materialblack.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.materialblack.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metro.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metro.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metroblack.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.metroblack.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.all.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.android.dark.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.android.light.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.blackberry.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.common.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.fiori.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.flat.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.ios.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.material.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.meego.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.nova.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.office365.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.mobile.wp8.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.moonlight.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.moonlight.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.nova.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.nova.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.office365.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.office365.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.rtl.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.silver.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.silver.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.uniform.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\kendo.uniform.mobile.min.css.map" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\WebComponentsIcons.eot" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="Content\kendo\2017.2.504\fonts\glyphs\WebComponentsIcons.woff" />
+    <Content Include="Content\kendo\2017.2.504\images\kendoui.ttf" />
+    <Content Include="Content\kendo\2017.2.504\images\kendoui.woff" />
+    <Content Include="Areas\WvWebApp\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Areas\WvSys\Views\UserMenuRight\Index.cshtml" />
+    <Content Include="Areas\WvSys\Views\UserMaintain\Index.cshtml" />
+    <Content Include="Areas\WvWebApp\Views\SignalR\Chat.cshtml" />
+    <Content Include="Areas\GmoSys\Views\web.config" />
+    <Content Include="Areas\GmoSys\Views\Capex\CapexEdit.cshtml" />
+    <Content Include="Areas\GmoSys\Views\IdelAsset\IdelAssetEdit.cshtml" />
+    <Content Include="Areas\GmoSys\Views\IdelAsset\IdelAssetCreate.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\MyStatus.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\CapexDept.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\CapexStatus.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\BudgetQuarter.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Capex\CapexCreate.cshtml" />
+    <Content Include="Areas\GmoSys\Views\IdelAsset\IdelAssetAll.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Capex\CapexAll.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\DeptOfIdelAsset.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\_Admin.cshtml" />
+    <Content Include="Areas\WvSys\Views\Worker\Index.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WorkerClassTemplate.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\DeptTemplate.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\AuditTemplate.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WorkerTypeTemplate.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\QiangDanProcedureTemplate.cshtml" />
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\GEWEMS.pubxml" />
+    <None Include="Properties\PublishProfiles\GewPeApp.pubxml" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\GewPrdApp.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\kendo.modernizr.custom.js" />
+    <Content Include="Scripts\kendo\2017.2.504\angular.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\jquery.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\jszip.min.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.all-vsdoc.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.all.min.intellisense.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.all.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.angular.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.autocomplete.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.binder.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.button.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.calendar.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.color.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.colorpicker.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.columnmenu.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.columnsorter.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.combobox.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.core.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.odata.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.signalr.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.xml.min.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.dataviz-vsdoc.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.barcode.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.chart.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.core.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.diagram.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.gauge.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.map.min.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.dataviz.min.intellisense.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.mobile.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.qrcode.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.sparkline.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.stock.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.themes.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.treemap.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dateinput.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.datepicker.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.datetimepicker.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dialog.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dom.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.draganddrop.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.drawing.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dropdownlist.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.editable.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.editor.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.excel.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.filebrowser.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.filtercell.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.filtermenu.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.fx.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.gantt.list.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.gantt.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.gantt.timeline.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.grid.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.groupable.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.imagebrowser.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.list.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.listbox.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.listview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.maskedtextbox.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mediaplayer.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.menu.min.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.mobile-vsdoc.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.actionsheet.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.application.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.button.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.buttongroup.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.collapsible.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.drawer.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.listview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.loader.min.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.mobile.min.intellisense.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.modalview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.navbar.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.pane.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.popover.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.scroller.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.scrollview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.shim.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.splitview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.switch.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.tabstrip.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.view.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.multiselect.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.notification.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.numerictextbox.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.ooxml.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pager.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.panelbar.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pdf.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pivot.configurator.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pivot.fieldmenu.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pivotgrid.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.popup.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.progressbar.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.reorderable.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.resizable.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.responsivepanel.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.router.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.agendaview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.dayview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.monthview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.recurrence.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.timelineview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.view.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.selectable.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.slider.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.sortable.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.splitter.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.spreadsheet.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.tabstrip.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.timepicker.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.timezones.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.toolbar.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.tooltip.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.touch.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.treelist.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.treeview.draganddrop.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.treeview.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.upload.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.userevents.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.validator.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.view.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.virtuallist.min.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.web-vsdoc.js" />
+    <None Include="Scripts\kendo\2017.2.504\kendo.web.min.intellisense.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.web.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.webcomponents.js" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.window.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\pako_deflate.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\kendo\2017.2.504\jquery.min.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.all.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.angular.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.aspnetmvc.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.autocomplete.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.binder.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.button.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.calendar.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.color.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.colorpicker.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.columnmenu.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.columnsorter.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.combobox.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.core.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.odata.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.signalr.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.data.xml.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.barcode.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.chart.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.core.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.diagram.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.gauge.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.map.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.mobile.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.qrcode.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.sparkline.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.stock.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.themes.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dataviz.treemap.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dateinput.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.datepicker.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.datetimepicker.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dialog.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dom.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.draganddrop.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.drawing.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.dropdownlist.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.editable.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.editor.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.excel.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.filebrowser.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.filtercell.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.filtermenu.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.fx.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.gantt.list.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.gantt.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.gantt.timeline.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.grid.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.groupable.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.imagebrowser.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.list.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.listbox.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.listview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.maskedtextbox.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mediaplayer.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.menu.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.actionsheet.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.application.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.button.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.buttongroup.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.collapsible.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.drawer.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.listview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.loader.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.modalview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.navbar.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.pane.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.popover.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.scroller.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.scrollview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.shim.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.splitview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.switch.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.tabstrip.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.mobile.view.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.multiselect.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.notification.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.numerictextbox.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.ooxml.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pager.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.panelbar.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pdf.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pivot.configurator.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pivot.fieldmenu.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.pivotgrid.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.popup.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.progressbar.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.reorderable.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.resizable.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.responsivepanel.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.router.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.agendaview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.dayview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.monthview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.recurrence.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.timelineview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.scheduler.view.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.selectable.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.slider.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.sortable.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.splitter.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.spreadsheet.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.tabstrip.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.timepicker.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.timezones.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.toolbar.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.tooltip.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.touch.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.treelist.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.treeview.draganddrop.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.treeview.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.upload.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.userevents.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.validator.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.view.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.virtuallist.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.web.min.js.map" />
+    <Content Include="Scripts\kendo\2017.2.504\kendo.window.min.js.map" />
+    <None Include="Scripts\_references.js" />
+    <None Include="Scripts\SignalR\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\SignalR\jquery-1.6.4.js" />
+    <Content Include="Scripts\SignalR\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\SignalR\jquery.signalR-2.0.0.js" />
+    <Content Include="Scripts\SignalR\jquery.signalR-2.0.0.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
+    <Compile Include="Areas\Account\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Account\Controllers\CommonController.cs" />
+    <Compile Include="Areas\Account\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Account\Controllers\UserController.cs" />
+    <Compile Include="Areas\GmoSys\Controllers\CapexController.cs" />
+    <Compile Include="Areas\GmoSys\Controllers\IdelAssetController.cs" />
+    <Compile Include="Areas\GmoSys\GmoSysAreaRegistration.cs" />
+    <Compile Include="Areas\WvSys\Controllers\UserMaintainController.cs" />
+    <Compile Include="Areas\WvSys\Controllers\UserMenuRightController.cs" />
+    <Compile Include="Areas\WvSys\Controllers\WorkerMaintainController.cs" />
+    <Compile Include="Areas\Resource\Controllers\ApkController.cs" />
+    <Compile Include="Areas\Resource\ResourceAreaRegistration.cs" />
+    <Compile Include="Areas\WvSys\Controllers\RuleMaintainController.cs" />
+    <Compile Include="Areas\WvSys\Controllers\YieldExportController.cs" />
+    <Compile Include="Areas\WvSys\Models\UserMaintain\UserVm.cs" />
+    <Compile Include="Areas\WvSys\Models\UserMenuRight\PostedUserMenus.cs" />
+    <Compile Include="Areas\WvSys\Models\UserMenuRight\Menu.cs" />
+    <Compile Include="Areas\WvSys\Models\UserMenuRight\UserMenuViewModel.cs" />
+    <Compile Include="Areas\WvSys\WvSysAreaRegistration.cs" />
+    <Compile Include="Areas\WvWebApp\Controllers\ManageController.cs" />
+    <Compile Include="Areas\WvWebApp\Controllers\YieldController.cs" />
+    <Compile Include="Areas\WvWebApp\Models\ManageViewModels.cs" />
+    <Compile Include="Areas\WvWebApp\Models\WvYieldQueryViewModel.cs" />
+    <Compile Include="Areas\WvWebApp\SignalRController.cs" />
+    <Compile Include="Areas\WvWebApp\WvWebAppAreaRegistration.cs" />
+    <Compile Include="Common\AdminCacheContext.cs" />
+    <Compile Include="Common\AdminControllerBase.cs" />
+    <Compile Include="Common\AdminCookieContext.cs" />
+    <Compile Include="Common\AdminUserContext.cs" />
+    <Compile Include="Models\Wv\QiangDan\PushTarget.cs" />
+    <Compile Include="Models\Wv\QiangDan\HitedTaskInfoVm.cs" />
+    <Compile Include="Service\ConvertTimeController.cs" />
+    <Compile Include="Service\Pem\PemEmisQueryController.cs" />
+    <Compile Include="Service\HomeController.cs" />
+    <Compile Include="Service\Common\CommonController.cs" />
+    <Compile Include="Service\Test\ArticleController.cs" />
+    <Compile Include="Service\Test\TestController.cs" />
+    <Compile Include="Service\Wv\ProducePlusAndMinus\WvYieldController.cs" />
+    <Compile Include="Service\Wv\QiangDan\QiangDanController.cs" />
+    <Compile Include="Hub\PushHub.cs" />
+    <Compile Include="Service\Yd\SsCheckYarnController.cs" />
+    <Compile Include="FileUpload.ashx.cs">
+      <DependentUpon>FileUpload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Hub\ChatHub.cs" />
+    <Compile Include="Infrastructure\PropertyItem.cs" />
+    <Compile Include="Infrastructure\UserTypeFactory.cs" />
+    <Compile Include="Models\DropDownListBindingModel.cs" />
+    <Compile Include="Models\GetGfNoByMachineNameViewModel.cs" />
+    <Compile Include="Models\ItemViewModel.cs" />
+    <Compile Include="Models\Manage\Common\UserCardNoViewModel.cs" />
+    <Compile Include="Models\Manage\Common\QuerySingleValueBm.cs" />
+    <Compile Include="Models\MenuViewModel.cs" />
+    <Compile Include="Models\QueryResult.cs" />
+    <Compile Include="Models\UserInfoBindingModel.cs" />
+    <Compile Include="Models\UserMenuModel.cs" />
+    <Compile Include="Models\WvYieldCheckBindingModel.cs" />
+    <Compile Include="Models\Yd\RtCheckYarnBindingModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quartz\ReportJob.cs" />
+    <Compile Include="Quartz\ReportJobScheduler.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Assets\bootstrap-colorpicker\less\colorpicker.less" />
+    <Content Include="Assets\bootstrap-datepicker\less\datepicker.less" />
+    <Content Include="Assets\bootstrap-daterangepicker\README.md" />
+    <Content Include="Assets\bootstrap-timepicker\less\timepicker.less" />
+    <Content Include="Assets\bootstrap-timepicker\README.md" />
+    <Content Include="Assets\bootstrap-toggle-buttons\LICENSE" />
+    <Content Include="Assets\bootstrap-toggle-buttons\README.md" />
+    <Content Include="Assets\bootstrap-toggle-buttons\static\config.rb" />
+    <Content Include="Assets\bootstrap-toggle-buttons\static\sass\bootstrap-toggle-buttons.scss" />
+    <Content Include="Assets\bootstrap-tree\jsonexample.json" />
+    <Content Include="Assets\bootstrap-tree\README.md" />
+    <Content Include="Assets\bootstrap-wizard\README.md" />
+    <Content Include="Assets\breakpoints\README.md" />
+    <Content Include="Assets\chosen-bootstrap\Cakefile" />
+    <Content Include="Assets\chosen-bootstrap\chosen\lib\chosen.less" />
+    <Content Include="Assets\chosen-bootstrap\coffee\chosen.jquery.coffee" />
+    <Content Include="Assets\chosen-bootstrap\coffee\chosen.proto.coffee" />
+    <Content Include="Assets\chosen-bootstrap\coffee\lib\abstract-chosen.coffee" />
+    <Content Include="Assets\chosen-bootstrap\coffee\lib\select-parser.coffee" />
+    <Content Include="Assets\chosen-bootstrap\LICENSE.md" />
+    <Content Include="Assets\chosen-bootstrap\package.json" />
+    <Content Include="Assets\chosen-bootstrap\README.md" />
+    <Content Include="Assets\chosen-bootstrap\VERSION" />
+    <Content Include="Assets\ckeditor\CHANGES.md" />
+    <Content Include="Assets\ckeditor\LICENSE.md" />
+    <Content Include="Assets\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Assets\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Assets\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Assets\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Assets\ckeditor\README.md" />
+    <Content Include="Assets\ckeditor\samples\assets\posteddata.php" />
+    <Content Include="Assets\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
+    <Content Include="Assets\ckeditor\samples\sample_posteddata.php" />
+    <Content Include="Assets\ckeditor\skins\moono\readme.md" />
+    <Content Include="Assets\clockface\LICENSE-MIT" />
+    <Content Include="Assets\clockface\README.md" />
+    <Content Include="Assets\dropzone\css\stylus\basic.styl" />
+    <Content Include="Assets\dropzone\css\stylus\dropzone.styl" />
+    <Content Include="Assets\dropzone\upload.php" />
+    <Content Include="Assets\fancybox\CHANGELOG.md" />
+    <Content Include="Assets\fancybox\README.md" />
+    <Content Include="Assets\flot\examples\data-eu-gdp-growth-1.json" />
+    <Content Include="Assets\flot\examples\data-eu-gdp-growth-2.json" />
+    <Content Include="Assets\flot\examples\data-eu-gdp-growth-3.json" />
+    <Content Include="Assets\flot\examples\data-eu-gdp-growth-4.json" />
+    <Content Include="Assets\flot\examples\data-eu-gdp-growth-5.json" />
+    <Content Include="Assets\flot\examples\data-eu-gdp-growth.json" />
+    <Content Include="Assets\flot\examples\data-japan-gdp-growth.json" />
+    <Content Include="Assets\flot\examples\data-usa-gdp-growth.json" />
+    <Content Include="Assets\flot\Makefile" />
+    <Content Include="Assets\font-awesome\docs\assets\font\fontawesome-webfont.eot" />
+    <Content Include="Assets\font-awesome\docs\assets\font\fontawesome-webfont.ttf" />
+    <Content Include="Assets\font-awesome\docs\assets\font\fontawesome-webfont.woff" />
+    <Content Include="Assets\font-awesome\docs\assets\font\FontAwesome.otf" />
+    <Content Include="Assets\font-awesome\docs\assets\font\museo_slab_300-webfont.eot" />
+    <Content Include="Assets\font-awesome\docs\assets\font\museo_slab_300-webfont.ttf" />
+    <Content Include="Assets\font-awesome\docs\assets\font\museo_slab_500-webfont.eot" />
+    <Content Include="Assets\font-awesome\docs\assets\font\museo_slab_500-webfont.ttf" />
+    <Content Include="Assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.eot" />
+    <Content Include="Assets\font-awesome\docs\assets\font\proximanova-sbold-webfont.ttf" />
+    <Content Include="Assets\font-awesome\docs\assets\font\proximanova-webfont.eot" />
+    <Content Include="Assets\font-awesome\docs\assets\font\proximanova-webfont.ttf" />
+    <Content Include="Assets\font-awesome\docs\assets\img\icon-flag.pdf" />
+    <Content Include="Assets\font-awesome\docs\assets\less\font-awesome-ie7.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\font-awesome.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\font-site.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\mixins.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\site.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\accordion.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\alerts.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\bootstrap.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\breadcrumbs.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\button-groups.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\buttons.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\carousel.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\close.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\code.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\component-animations.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\dropdowns.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\forms.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\grid.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\hero-unit.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\labels-badges.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\layouts.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\media.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\mixins.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\modals.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\navbar.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\navs.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\pager.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\pagination.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\popovers.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\progress-bars.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\reset.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\responsive-1200px-min.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\responsive-767px-max.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\responsive-768px-979px.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\responsive-navbar.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\responsive-utilities.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\responsive.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\scaffolding.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\sprites.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tables.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\thumbnails.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\tooltip.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\type.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\utilities.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\variables.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\twbs-222\wells.less" />
+    <Content Include="Assets\font-awesome\docs\assets\less\variables.less" />
+    <Content Include="Assets\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Assets\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Assets\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Assets\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Assets\font-awesome\less\font-awesome-ie7.less" />
+    <Content Include="Assets\font-awesome\less\font-awesome.less" />
+    <Content Include="Assets\font-awesome\README.md" />
+    <Content Include="Assets\font-awesome\sass\font-awesome.sass" />
+    <Content Include="Assets\font-awesome\sass\font-awesome.scss" />
+    <Content Include="Assets\fullcalendar\demos\.DS_Store" />
+    <Content Include="Assets\fullcalendar\demos\json-events.php" />
+    <Content Include="Assets\glyphicons\fonts\glyphicons-regular.eot" />
+    <Content Include="Assets\glyphicons\fonts\glyphicons-regular.otf" />
+    <Content Include="Assets\glyphicons\fonts\glyphicons-regular.ttf" />
+    <Content Include="Assets\glyphicons\fonts\glyphicons-regular.woff" />
+    <Content Include="Assets\glyphicons\less\glyphicons.less" />
+    <Content Include="Assets\glyphicons\less\reset.less" />
+    <Content Include="Assets\glyphicons\less\site.less" />
+    <Content Include="Assets\glyphicons\less\style.less" />
+    <Content Include="Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.eot" />
+    <Content Include="Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.otf" />
+    <Content Include="Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.ttf" />
+    <Content Include="Assets\glyphicons_halflings\fonts\glyphiconshalflings-regular.woff" />
+    <Content Include="Assets\glyphicons_halflings\less\halflings.less" />
+    <Content Include="Assets\glyphicons_halflings\less\reset.less" />
+    <Content Include="Assets\glyphicons_halflings\less\site.less" />
+    <Content Include="Assets\glyphicons_halflings\less\style.less" />
+    <Content Include="Assets\gritter\README.markdown" />
+    <Content Include="Assets\jquery-file-upload\blueimp-file-upload.jquery.json" />
+    <Content Include="Assets\jquery-file-upload\CONTRIBUTING.md" />
+    <Content Include="Assets\jquery-file-upload\package.json" />
+    <Content Include="Assets\jquery-file-upload\README.md" />
+    <Content Include="Assets\jquery-file-upload\server\gae-go\app.yaml" />
+    <Content Include="Assets\jquery-file-upload\server\gae-go\app\main.go" />
+    <Content Include="Assets\jquery-file-upload\server\gae-python\app.yaml" />
+    <Content Include="Assets\jquery-file-upload\server\gae-python\main.py" />
+    <Content Include="Assets\jquery-file-upload\server\node\package.json" />
+    <Content Include="Assets\jquery-file-upload\server\php\files\.htaccess" />
+    <Content Include="Assets\jquery-file-upload\server\php\index.php" />
+    <Content Include="Assets\jquery-file-upload\server\php\UploadHandler.php" />
+    <Content Include="Assets\jquery-knob\README.md" />
+    <Content Include="Assets\jquery-nestable\README.md" />
+    <Content Include="Assets\jquery-slimscroll\README.md" />
+    <Content Include="Assets\jquery-slimscroll\slimScroll.jquery.json" />
+    <Content Include="Assets\jquery-tags-input\README.md" />
+    <Content Include="Assets\jquery-ui-touch-punch\README.md" />
+    <Content Include="Assets\jquery-validation\demo\captcha\fonts\Anorexia.ttf" />
+    <Content Include="Assets\jquery-validation\demo\captcha\images\image.php" />
+    <Content Include="Assets\jquery-validation\demo\captcha\image_req.php" />
+    <Content Include="Assets\jquery-validation\demo\captcha\index.php" />
+    <Content Include="Assets\jquery-validation\demo\captcha\newsession.php" />
+    <Content Include="Assets\jquery-validation\demo\captcha\process.php" />
+    <Content Include="Assets\jquery-validation\demo\captcha\rand.php" />
+    <Content Include="Assets\jquery-validation\demo\form.php" />
+    <Content Include="Assets\jquery-validation\demo\form.phps" />
+    <Content Include="Assets\jquery-validation\demo\marketo\emails.php" />
+    <Content Include="Assets\jquery-validation\demo\marketo\emails.phps" />
+    <Content Include="Assets\jquery-validation\demo\milk\emails.php" />
+    <Content Include="Assets\jquery-validation\demo\milk\emails.phps" />
+    <Content Include="Assets\jquery-validation\demo\milk\users.php" />
+    <Content Include="Assets\jquery-validation\demo\milk\users.phps" />
+    <Content Include="Assets\jquery-validation\package.json" />
+    <Content Include="Assets\jquery-validation\README.md" />
+    <Content Include="Assets\jqvmap\README.md" />
+    <Content Include="Assets\uniform\README.textile" />
+    <Content Include="Content\Uploadify\uploadify.fla" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.Edit.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_Theme.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="FileUpload.ashx" />
+    <Content Include="Areas\Account\Views\web.config" />
+    <Content Include="Areas\Account\Views\Auth\Index.cshtml" />
+    <Content Include="Areas\Account\Views\Auth\Login.cshtml" />
+    <Content Include="Areas\Account\Views\Auth\ModifyPwd.cshtml" />
+    <Content Include="Areas\Account\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Account\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Account\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Account\Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Views\Shared\_AirCompressLayout.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Account\Models\" />
+    <Folder Include="Areas\Account\Views\Shared\" />
+    <Folder Include="Areas\GmoSys\Models\" />
+    <Folder Include="Areas\Resource\Models\" />
+    <Folder Include="Areas\Resource\Views\Apk\" />
+    <Folder Include="Areas\Resource\Views\Shared\" />
+    <Folder Include="Assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Service\Fn\" />
+    <Folder Include="Service\Pr\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EMIS.DAL\EMIS.DAL.csproj">
+      <Project>{30E520E6-0D32-403C-ADF9-82CDC829A9FD}</Project>
+      <Name>EMIS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Account.BLL\GMS.Account.BLL.csproj">
+      <Project>{ed6576ea-b882-449f-ad95-79f16c81289d}</Project>
+      <Name>GMS.Account.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Account.Contract\GMS.Account.Contract.csproj">
+      <Project>{926145f7-d0ca-4044-8df9-58f713264467}</Project>
+      <Name>GMS.Account.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Account.DAL\GMS.Account.DAL.csproj">
+      <Project>{dcf064f3-10c1-4361-8844-9d0ecd3eb09e}</Project>
+      <Name>GMS.Account.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Core.Cache\GMS.Core.Cache.csproj">
+      <Project>{cb106e0c-7e1b-45f5-a2e2-37a614aea450}</Project>
+      <Name>GMS.Core.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Core.Config\GMS.Core.Config.csproj">
+      <Project>{02d1cfc2-dadc-438a-bb09-96ff0bdf15a3}</Project>
+      <Name>GMS.Core.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Core.Module\GMS.Core.Module.csproj">
+      <Project>{8004c686-1bd8-4b38-a143-ae1aacd740ad}</Project>
+      <Name>GMS.Core.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Core.Upload\GMS.Core.Upload.csproj">
+      <Project>{cd682d26-2fd3-43e6-b083-2d0127f21357}</Project>
+      <Name>GMS.Core.Upload</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Framework.BLL\GMS.Framework.BLL.csproj">
+      <Project>{ed3d32c0-50d6-496d-853c-310bcac12562}</Project>
+      <Name>GMS.Framework.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Framework.Contract\GMS.Framework.Contract.csproj">
+      <Project>{2e9eb716-4441-4da9-b2bc-63eeea2df639}</Project>
+      <Name>GMS.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Framework.DAL\GMS.Framework.DAL.csproj">
+      <Project>{a1dfd980-cf4f-4d64-8589-c4c3fc967035}</Project>
+      <Name>GMS.Framework.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Framework.Utility\GMS.Framework.Utility.csproj">
+      <Project>{7729d171-2242-4686-b2a4-194a08a020f1}</Project>
+      <Name>GMS.Framework.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Framework.Web\GMS.Framework.Web.csproj">
+      <Project>{35f8e8ba-1caf-4065-ba94-3808c427b408}</Project>
+      <Name>GMS.Framework.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GMS.Web\GMS.Web.csproj">
+      <Project>{1789b3dc-e0f0-44c6-9a81-c2bc36dc9dad}</Project>
+      <Name>GMS.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Monitor_WV.DAL\Monitor_WV.DAL.csproj">
+      <Project>{7603e6e9-cc4b-4c13-8e89-6a407c36a41f}</Project>
+      <Name>Monitor_WV.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PbRead.DAL\PbRead.DAL.csproj">
+      <Project>{d0cbaa49-4fb6-4c06-afa7-6e946bc56412}</Project>
+      <Name>PbRead.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrdDb.DAL\PrdDb.DAL.csproj">
+      <Project>{8459d72c-e5a1-4bd3-9ddc-b36b7079bb56}</Project>
+      <Name>PrdDb.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53483</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53488/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties UseCdnSupport="False" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

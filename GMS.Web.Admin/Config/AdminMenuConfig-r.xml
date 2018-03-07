@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AdminMenuConfig>
+  <AdminMenuGroups>
+    <AdminMenuGroup name="管理首页" url="/gewems/Account/Auth/Index" icon="icon-home" info="欢迎登录GMS系统！">
+    </AdminMenuGroup> 
+    <AdminMenuGroup name="系统管理" icon="icon-cog">
+      <AdminMenuArray>
+        <AdminMenu name="用户管理" url="/gewems/Account/User/Index" info="添加修改删除用户" permission="AccountManage_User" />
+        <AdminMenu name="角色管理" url="/gewems/Account/Role/Index" info="添加修改删除角色" permission="AccountManage_Role" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+    <!--******************************报警管理子系统*************************************-->
+    <AdminMenuGroup name="报警子系统" icon="icon-warning-sign">
+      <AdminMenuArray>
+        <AdminMenu name="报警查询" url="/gewems/AlarmSys/AlarmMessage/Index" info="报警查询" permission="AlarmMessage" />
+        <AdminMenu name="染纱报警管理" url="/gewems/AlarmSys/YdAlarmSysEdit/EditView" info="染纱报警管理" permission="YdAlarmSysEdit" />
+        <AdminMenu name="准备报警管理" url="/gewems/AlarmSys/PrAlarmSysEdit/EditView" info="准备报警管理" permission="PrAlarmSysEdit" />
+        <AdminMenu name="织造报警管理" url="/gewems/AlarmSys/WvAlarmSysEdit/EditView" info="织造报警管理" permission="WvAlarmSysEdit" />
+        <AdminMenu name="后整报警管理" url="/gewems/AlarmSys/FnAlarmSysEdit/EditView" info="后整报警管理" permission="FnAlarmSysEdit" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+    <!--******************************染纱子系统*************************************-->
+    <AdminMenuGroup name="染纱子系统实时" icon="icon-magic">
+      <AdminMenuArray>
+        <AdminMenu name="染纱电表布局" url="/gewems/YD/YarnDye/YDLayout" info="实时" permission="YdPart1" />
+        <AdminMenu name="蒸汽管网" url="/gewems/YD/Steam/SteamWeb" info="实时" permission="YdPart2" />
+        <AdminMenu name="高温热水系统运行图" url="/gewems/YD/HighTempWater/Index" info="实时" permission="YdPart3" />
+
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+    <AdminMenuGroup name="染纱趋势图汇总" icon="icon-magic">
+      <AdminMenuArray>
+        <AdminMenu name="染纱动力单耗趋势" url="/gewems/YD/YdElectricConsume/Yd2RtView" info="趋势图" permission="YdPart4" />
+        <AdminMenu name="染纱风机趋势" url="/gewems/YD/YDEleTrend/Yd1Fan1View" info="趋势图" permission="YdPart5" />
+        <AdminMenu name="蒸汽单耗趋势" url="/gewems/YD/SteamTrend/Index" info="趋势图" permission="YdPart6" />
+        <AdminMenu name="热水系统相关参数趋势" url="/gewems/YD/HighTempWaterTrend/HighTempWaterTrendYD1View1" info="趋势图" permission="YdPart7" />
+
+        <AdminMenu name="高频烘干机电耗" url="/gewems/YD/GaopinHongganji/Yd1DryerDView" info="趋势图" permission="YdPart8" />
+        <AdminMenu name="压力烘干机单耗" url="/gewems/YD/YdElectricConsume/Yd1P1DryerView" info="趋势图" permission="YdPart9" />
+        <AdminMenu name="松纱动力单耗" url="/gewems/YD/SongLuoFenBing/Yd1SongshaView" info="趋势图" permission="YdPart10" />
+        <AdminMenu name="络筒动力单耗" url="/gewems/YD/SongLuoFenBing/Yd2LuoTongView" info="趋势图" permission="YdPart11" />
+
+        <AdminMenu name="分筒动力单耗" url="/gewems/YD/SongLuoFenBing/Yd1FenTongView" info="趋势图" permission="YdPart12" />
+        <AdminMenu name="并捻动力单耗" url="/gewems/YD/SongLuoFenBing/Yd1BingNianView" info="趋势图" permission="YdPart13" />
+        <AdminMenu name="空调用电趋势" url="/gewems/YD/YDEleTrend/AirConView" info="趋势图" permission="YdPart14" />
+
+      </AdminMenuArray>
+    </AdminMenuGroup>
+    <!--******************************准备子系统*************************************-->
+
+    <AdminMenuGroup name="准备子系统实时" icon="icon-list-alt">
+      <AdminMenuArray>
+        <AdminMenu name="准备电表布局" url="/gewems/PR/PREleLayout/PR1View" info="实时" permission="PREleLayout" />
+        <AdminMenu name="准备蒸汽管网" url="/gewems/PR/PRSteamWeb/PR1SteamView" info="实时" permission="PRSteamWeb" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+    <AdminMenuGroup name="准备趋势图汇总" icon="icon-list-alt">
+      <AdminMenuArray>
+        <AdminMenu name="浆纱动力单耗" url="/gewems/PR/PR1Sizing/Pr1AllSizingView" info="趋势图" permission="PR1Sizing" />
+        <AdminMenu name="整经动力单耗" url="/gewems/PR/PRTrim/Pr1TrimView" info="趋势图" permission="PRTrim" />
+        <AdminMenu name="蒸汽单耗" url="/gewems/PR/PRSteam/PR1aView" info="趋势图" permission="PRSteam" />
+        <AdminMenu name="小样中心" url="/gewems/PR/PR2Sample/SampleCenterView" info="趋势图" permission="PR2Sample" />
+        <AdminMenu name="风机趋势" url="/gewems/PR/PRFanEleTrend/Pr1SLFan1View" info="趋势图" permission="PRFanEleTrend" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+    <!--******************************织造子系统*************************************-->
+
+    <AdminMenuGroup name="织造子系统实时" icon="icon-th">
+      <AdminMenuArray>
+        <AdminMenu name="织造电表布局" url="/gewems/WV/WVEleLayout/WV1LayoutView" info="实时" permission="WVEleLayout" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+    <AdminMenuGroup name="织造趋势图汇总" icon="icon-th">
+      <AdminMenuArray>
+        <AdminMenu name="织造动力单耗" url="/gewems/WV/WVLoomEle/Wv1View" info="趋势图" permission="WVLoomEle" />
+        <AdminMenu name="织造用气单耗" url="/gewems/WV/WVLoomAir/Wv1AirView" info="趋势图" permission="WVLoomAir" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+    <!--******************************后整子系统*************************************-->
+
+    <AdminMenuGroup name="后整子系统实时" icon="icon-wrench">
+      <AdminMenuArray>
+        <AdminMenu name="后整电表布局" url="/gewems/FN/FNEleLayout/FNEleLayoutView" info="实时" permission="FNEleLayout" />
+        <AdminMenu name="蒸汽管网" url="/gewems/FN/FNSteam/FN1SteamWebView" info="实时" permission="FNSteam" />
+
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+    <AdminMenuGroup name="后整趋势图汇总" icon="icon-wrench">
+      <AdminMenuArray>
+        <AdminMenu name="后整电单耗趋势" url="/gewems/FN/FNEleUnitConsumption/FNgSetter2View" info="趋势图" permission="FNEleUnitConsumption" />
+        <AdminMenu name="后整蒸汽单耗趋势" url="/gewems/FN/FNSteamUnitConsumption/SumOfFn1SteamView" info="趋势图" permission="FNSteamUnitConsumption" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+    <!--******************************远程监控系统*************************************-->
+    <AdminMenuGroup name="远程监控系统" url="/gewems/AirCompress/AirCompress/Index" icon="icon-eye-open" info="远程监控系统">
+      
+    </AdminMenuGroup>
+    
+  </AdminMenuGroups>
+  
+</AdminMenuConfig>

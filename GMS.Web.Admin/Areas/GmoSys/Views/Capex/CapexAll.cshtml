@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "CapexAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Kendo.Mvc.UI
+
+@(Html.Kendo().Grid<PrdDb.DAL.GmoCapex>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.AnnualBudgetId).Title("Annual Budget Id").Width(130);//u
+          columns.Bound(c => c.DeptName).Title("部门").Width(100);//u
+          columns.Bound(c => c.PrjLeader).Title("项目跟进人").Width(100);//e
+          columns.Bound(c => c.PrjName).Title("项目名称").Width(100);//u
+          columns.Bound(c => c.YusuanMoney).Title("Capex预算金额(RMB)").Width(150).Filterable(false);//u
+          columns.Bound(c => c.BudgetQuarter).Title("Budget Quarter").Width(120);//u
+          columns.Bound(c => c.Status).Title("项目状态").Width(100);//e
+          columns.Bound(c => c.JinduMiaoshu).Title("进度描述").Width(100).Filterable(false);//e
+          columns.Bound(c => c.CapexId).Title("Capex编号").Width(100);//e
+          columns.Bound(c => c.ShenqingMoney).Title("Capex申请金额(RMB)").Width(150).Filterable(false);//e
+          columns.Bound(c => c.HuiguJieguo).Title("Capex回顾结果描述").Width(200).Filterable(false);//e
+          //columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Template(@<text>
+                               <div class="toolbar">
+                                   <label>
+                                       <a class="k-button k-button-icontext k-grid-excel" href="#"><span class="k-icon k-i-excel"></span>导出Excel</a>
+                                       <input id="showAllCheckBox" type="checkbox" value="" onclick="onClickHander(this)"/>
+                                       显示全部
+                                   </label>
+                               </div>
+                            </text>);
+
+      })
+      .Excel(excel => excel.FileName("Capex.xlsx").ProxyURL(Url.Action("Excel_Export_Save", "Capex")).AllPages(true))
+      .Pageable()
+      .Selectable(selectable =>
+      {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+          .Filterable(filterable => filterable.Mode(GridFilterMode.Row))
+      .Scrollable(s => s.Height(340))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("GmoCapexes_ReadAll", "Capex").Data("getFilter"))
+          //.Create(create => create.Action("GmoCapexes_Create", "Capex"))
+          //.Update(update => update.Action("GmoCapexes_Update", "Capex"))
+          //.Destroy(destroy => destroy.Action("GmoCapexes_Destroy", "Capex"))
+      )
+      .Resizable(resize => resize.Columns(true)) 
+)
+
+<script>
+    var _showAll = false;
+    function getFilter() {
+        var filter = {
+            // todo:增加“是否显示回顾完成和取消”的过滤条件
+            showAll: _showAll
+        };
+        return filter;
+    }
+    // 重新从服务器读取数据
+    function onClickHander(obj) {
+        var grid = $("#grid");
+        if (obj.checked) {
+            _showAll = true;
+            grid.data("kendoGrid").dataSource.read();
+        } else {
+            _showAll = false;
+            grid.data("kendoGrid").dataSource.read();
+        }
+    }
+</script>

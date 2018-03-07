@@ -1,0 +1,157 @@
+﻿@using GMS.Core.Config
+@using GMS.Web
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>@CachedConfigContext.Current.SettingConfig.WebSiteTitle</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link href="~/Content/images/ems-icon.png" rel="shortcut icon" />
+    <link href="@Url.Content("~/assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/css/metro.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/bootstrap/css/bootstrap-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/font-awesome/css/font-awesome.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/css/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/css/style_responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/assets/css/style_default.css")" rel="stylesheet" id="style_color" />
+    <link href="@Url.Content("~/assets/fancybox/source/jquery.fancybox.css")" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/uniform/css/uniform.default.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/chosen-bootstrap/chosen/chosen.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/assets/data-tables/DT_bootstrap.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/uniform/css/uniform.default.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/assets/jquery-ui/jquery-ui-1.10.1.custom.min.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/content/styles/admin.main.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/content/styles/jquery.thickbox.css")" />
+    <script src="@Url.Content("~/assets/js/jquery-1.8.3.min.js")"></script>
+    <link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2016.3.1118/kendo.dataviz.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2016.3.1118/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2016.3.1118/kendo.aspnetmvc.min.js")"></script>
+    @RenderSection("PageSpecificStyleSheetIncludes", required: false)
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <!-- BEGIN LOGO -->
+                <a class="brand" href="@Url.Action("Index", "Auth")">
+                    <img src="@Url.Content("~/content/images/logo.png")" alt="logo" />
+                    @*<h4 style="color: #FFFFFF">GEW能源管理系统</h4>*@
+                </a>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+        <!-- BEGIN SIDEBAR -->
+        @*@Html.Partial("_Menu")*@
+        <!-- END SIDEBAR -->
+        <!-- BEGIN PAGE -->
+        <div class="page-content">
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div id="portlet-config" class="modal hide">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"></button>
+                    <h3>portlet Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here will be a configuration form</p>
+                </div>
+            </div>
+            <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <!-- BEGIN PAGE CONTAINER-->
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+                <div class="row-fluid">
+                    <div class="span12" id="navigation">
+                        <!-- BEGIN STYLE CUSTOMIZER -->
+                        @*@Html.Partial("_Theme")*@
+                        <!-- END BEGIN STYLE CUSTOMIZER -->
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                        <h3 class="page-title">
+                            <span>空压查询</span>　<small>介绍</small>
+                        </h3>
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <span>首页</span>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li>
+                                <span>空压查询</span>
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li><span>空压机</span></li>
+                        </ul>
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN PAGE CONTENT-->
+                @RenderBody()
+                <!-- END PAGE CONTENT-->
+            </div>
+            <!-- END PAGE CONTAINER-->
+        </div>
+        <!-- END PAGE -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    @Html.Partial("_Footer")
+    <!-- END FOOTER -->
+    <!-- BEGIN JAVASCRIPTS -->
+    <script type="text/javascript">
+    var staticFileRoot = "@Url.StaticFile()";
+    </script>
+
+    <script src="@Url.Content("~/assets/breakpoints/breakpoints.js")"></script>
+    <script src="@Url.Content("~/assets/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/assets/js/jquery.blockui.js")"></script>
+    <script src="@Url.Content("~/assets/js/jquery.cookie.js")"></script>
+    <!-- ie8 fixes -->
+    <!--[if lt IE 9]>
+    <script src="@Url.Content("~/assets/js/excanvas.js")"></script>
+    <script src="@Url.Content("~/assets/js/respond.js")"></script>
+    <![endif]-->
+    <script type="text/javascript" src="@Url.Content("~/assets/uniform/jquery.uniform.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/data-tables/jquery.dataTables.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/data-tables/DT_bootstrap.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/jquery.pulsate.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/app.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/scripts/jquery.thickbox.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/scripts/jquery.numeric.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/scripts/jquery.ui.datapicker-zh-CN.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/content/scripts/admin.main.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            // initiate layout and plugins
+            App.init();
+        });
+    </script>
+    @RenderSection("PageSpecificJavascriptIncludes", required: false)
+</body>
+<!-- END BODY -->
+</html>

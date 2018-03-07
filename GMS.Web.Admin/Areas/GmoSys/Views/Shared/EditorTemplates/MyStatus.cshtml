@@ -1,0 +1,14 @@
+﻿@model System.String
+@using Kendo.Mvc.UI;
+@(Html.Kendo().DropDownListFor(e => e).BindTo(new string[]{
+      "继续闲置"
+      ,
+      "报废中"
+      ,
+      "已报废"
+      ,
+      "转部门"
+      ,
+      "已启用"
+  
+  }).HtmlAttributes(new { style="width:100%" }))

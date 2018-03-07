@@ -1,0 +1,45 @@
+﻿@using Kendo.Mvc.UI
+@using PrdDb.DAL
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@(Html.Kendo().Grid<peAppWvRule>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.code).Title("编号");
+          columns.Bound(c => c.itemname).Title("规则名");
+          columns.Bound(c => c.value1).Title("加产值");
+          columns.Bound(c => c.value2).Title("减产值");
+          columns.Bound(c => c.type).Title("类型");
+          columns.Bound(c => c.WorkerType).Title("工种");
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+            toolbar.Excel();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable(pager => pager
+                  .PageSizes(true)
+
+                  .Messages(messages => messages.ItemsPerPage("项每页")))
+      .Selectable(selectable => {
+            selectable.Mode(GridSelectionMode.Single);
+            selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable(filter => filter.Mode(GridFilterMode.Row))
+          .Scrollable(s => s.Height(1000))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("peAppWvRules_Read", "RuleMaintain")).PageSize(50)
+          .Create(create => create.Action("peAppWvRules_Create", "RuleMaintain"))
+          .Update(update => update.Action("peAppWvRules_Update", "RuleMaintain"))
+          .Destroy(destroy => destroy.Action("peAppWvRules_Destroy", "RuleMaintain"))
+      )
+)

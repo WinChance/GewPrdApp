@@ -1,0 +1,13 @@
+﻿@using Kendo.Mvc.UI;
+@(
+ Html.Kendo().MultiSelectFor(m => m)
+        .BindTo(new string[]{
+            "起机"
+            ,
+            "上轴"
+            ,
+            "机修"
+            ,
+            "织布"
+        })
+)

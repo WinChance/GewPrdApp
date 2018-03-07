@@ -1,0 +1,41 @@
+﻿@using GMS.Web.Admin.Areas.WvSys.Models.UserMaintain
+@using Kendo.Mvc.UI
+@using PrdDb.DAL
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@(Html.Kendo().Grid<UserVm>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.code).Title("员工号");
+          columns.Bound(c => c.name).Title("姓名");
+          columns.Bound(c => c.dept).Title("部门简写");
+          columns.Bound(c => c.SubDept).Title("子部门缩写");
+          
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+                              toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+          .Pageable(pager => pager
+              .PageSizes(true)
+              .Messages(messages => messages.ItemsPerPage("项每页")))
+      .Selectable(selectable => {
+                                    selectable.Mode(GridSelectionMode.Single);
+                                    selectable.Type(GridSelectionType.Row);
+      })
+      .Filterable(filterable => filterable.Mode(GridFilterMode.Row))
+      .Scrollable(s => s.Height(1000))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("peAppWvUsers_Read", "UserMaintain")).PageSize(20)
+              .Create(create => create.Action("peAppWvUsers_Create", "UserMaintain"))
+              .Update(update => update.Action("peAppWvUsers_Update", "UserMaintain"))
+              .Destroy(destroy => destroy.Action("peAppWvUsers_Destroy", "UserMaintain"))
+      )
+      )
+

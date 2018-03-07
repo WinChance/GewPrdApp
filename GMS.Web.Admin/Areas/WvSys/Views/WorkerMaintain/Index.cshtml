@@ -1,0 +1,83 @@
+﻿@using Kendo.Mvc.UI
+@using PrdDb.DAL
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@(Html.Kendo().Grid<peAppWvWorker>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.factory).Title("部门").EditorTemplateName("DeptTemplate");
+          columns.Bound(c => c.name).Title("姓名");
+          columns.Bound(c => c.cardno).Title("工号");
+          columns.Bound(c => c._class).Title("班次").EditorTemplateName("WorkerClassTemplate");
+          columns.Bound(c => c.classdes).Title("班次描述");
+          columns.Bound(c => c.jobs).Title("工种");
+          columns.Bound(c => c.Audit).Title("审核权限").EditorTemplateName("AuditTemplate");
+          columns.Bound(c => c.GroupName).Title("分组名").ClientTemplate("<div class=\"forTooltips\">#=GroupName#</div>").HtmlAttributes(new { @class = "overridePadding" });
+          columns.Bound(c => c.WorkerType).Title("工种类型").EditorTemplateName("WorkerTypeTemplate");
+          columns.Bound(c => c.Remark).Title("抢单工序").EditorTemplateName("QiangDanProcedureTemplate");
+
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Selectable(selectable => {
+            selectable.Mode(GridSelectionMode.Single);
+            selectable.Type(GridSelectionType.Row);
+      })
+          .Filterable(filter => filter.Mode(GridFilterMode.Row))
+          .Scrollable(s => s.Height(900))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Events(events => events.Error("onError"))
+          .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("peAppWvWorkers_Read", "WorkerMaintain")).PageSize(20)
+              .Create(create => create.Action("peAppWvWorkers_Create", "WorkerMaintain"))
+              .Update(update => update.Action("peAppWvWorkers_Update", "WorkerMaintain"))
+              .Destroy(destroy => destroy.Action("peAppWvWorkers_Destroy", "WorkerMaintain"))
+      ))
+
+@(Html.Kendo().Tooltip()
+      .For("#grid")
+      .Filter(".forTooltips")
+      .ContentHandler("getRatingTooltip")
+      .Position(TooltipPosition.Left)
+      .AutoHide(false)
+      )
+<style>
+    /*the grid cells have some padding,
+        so if you do not like this behavior you would probably have to fall back to n-th child selectors to get the cells
+        or remove the padding form the cells by overriding the built-in CSS
+       */
+    .forTooltips {
+        width: 100%;
+        height: 100%;
+        padding: .929em 1.286em;
+    }
+
+    td.overridePadding {
+        padding: 0;
+    }
+</style>
+
+<script>
+    function onError(e, status) {
+        if (e.status == "customerror") {
+            alert(e.errors);
+            alert("不能插入重复的数据！");
+        }
+        else {
+            alert("出错，请刷新！");
+        }
+    }
+
+    function getRatingTooltip(e) {
+        var content = "如需分东西区，组名请以西/东字开头";
+        return content;
+    }
+</script>

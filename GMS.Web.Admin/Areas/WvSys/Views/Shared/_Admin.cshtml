@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - GEW APP</title>
+    @Scripts.Render("~/bundles/modernizr")
+    <!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/Kendo/2017.2.504/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Kendo/2017.2.504/kendo.common-bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Kendo/2017.2.504/kendo.bootstrap.mobile.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Kendo/2017.2.504/kendo.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Assets/bootstrap/css/bootstrap-responsive.min.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.Content("~/Assets/element-ui/index.css")" rel="stylesheet" type="text/css" />
+    <!-- 引入样式 -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/Scripts/Kendo/2017.2.504/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Kendo/2017.2.504/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Kendo/2017.2.504/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/Kendo/2017.2.504/kendo.aspnetmvc.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+</head>
+<body>
+
+    <div id="body">
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+</body>
+</html>

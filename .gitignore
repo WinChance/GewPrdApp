@@ -301,3 +301,13 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+GMS.Web.Admin/Scripts/kendo
+GMS.Web.Admin/Content
+GMS.Web.Admin/Assets
+GMS.Web.Admin/bower_components
+GMS.Web.Admin/fonts
+*.dgml
+*.png
+*.gif
+*.xsd

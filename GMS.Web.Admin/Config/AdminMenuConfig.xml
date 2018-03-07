@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AdminMenuConfig>
+  <AdminMenuGroups>
+    <!--发布环境的目录名称：GEWProductivityApp/-->
+    <!--******************************系统菜单*************************************-->
+    <AdminMenuGroup name="首页" url="/Account/Auth/Index" icon="icon-home" info="欢迎登录GEW PE APP 后台管理！">
+    </AdminMenuGroup>
+    <AdminMenuGroup name="系统管理" icon="icon-cog">
+      <AdminMenuArray>
+        <AdminMenu name="用户管理" url="/Account/User/Index" info="添加修改删除用户" permission="AccountManage_User" />
+        <AdminMenu name="角色管理" url="/Account/Role/Index" info="添加修改删除角色" permission="AccountManage_Role" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="APP用户名单维护" url="/WvSys/UserMaintain/Index" info="添加员工APP账号，APP默认登录密码：6个1" permission="AppUserMaintain" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="APP用户权限维护" url="/WvSys/UserMenuRight/Index" info="决定员工能使用哪些界面" permission="AppUserMenuRight" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+
+    <!--******************************染纱子系统*************************************-->
+
+    <!--******************************准备子系统*************************************-->
+
+
+    <!--******************************织造子系统*************************************-->
+
+    <AdminMenuGroup name="织造" icon="icon-th">
+      <AdminMenuArray>
+        <AdminMenu name="织造产量导出" url="/WvSys/YieldExport/Index" info="织造产量导出" permission="WvYieldExport" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="织造规则维护" url="/WvSys/RuleMaintain/Index" info="织造规则维护" permission="WvRule" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="织造工人表维护" url="/WvSys/WorkerMaintain/Index" info="织造工人表维护" permission="WvWorker" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+
+    <!--******************************后整子系统*************************************-->
+
+    <AdminMenuGroup name="总经室" icon="icon-th">
+      <AdminMenuArray>
+        <AdminMenu name="闲置资产查看" url="/GmoSys/IdelAsset/IdelAssetAll" info="查看" permission="IdelAssetQuery" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="闲置资产新增" url="/GmoSys/IdelAsset/IdelAssetCreate" info="新增" permission="IdelAssetCreate" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="闲置资产状态维护" url="/GmoSys/IdelAsset/IdelAssetEdit" info="编辑" permission="IdelAssetEdit" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="Capex查看" url="/GmoSys/Capex/CapexAll" info="查看" permission="CapexQuery" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="Capex新增" url="/GmoSys/Capex/CapexCreate" info="新增" permission="CapexCreate" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="Capex状态维护" url="/GmoSys/Capex/CapexEdit" info="编辑" permission="CapexEdit" />
+      </AdminMenuArray>
+      <AdminMenuArray>
+        <AdminMenu name="测试页" url="/GmoSys/Test/Index" info="test" permission="Test" />
+      </AdminMenuArray>
+    </AdminMenuGroup>
+
+  </AdminMenuGroups>
+
+</AdminMenuConfig>

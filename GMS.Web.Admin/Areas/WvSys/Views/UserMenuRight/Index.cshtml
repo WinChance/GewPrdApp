@@ -1,0 +1,64 @@
+﻿@using MvcCheckBoxList.Model
+@model GMS.Web.Admin.Areas.WvSys.Models.UserMenuRight.UserMenuViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userCode = TempData["userCode"] as string;
+}
+<body>
+    <header>
+        <style>
+            div.checker {
+                display: block
+            }
+        </style>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span4">
+                <form method="get" action="@Url.Action("Index")"
+                      data-otf-ajax="true" data-otf-target="#restaurantList">
+                    <input type="search" placeholder="请输入员工号" name="userCode" />
+                    <button type="submit" id="primaryTextButton" class="btn blue">搜索</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+
+    </div>
+
+    <section class="checkBoxListFor">
+        <p>
+            <label>@Html.Raw(@ViewBag.userName)的权限如下:</label>
+            @using (Html.BeginForm("Index", "UserMenuRight", FormMethod.Post))
+            {
+                TempData["userCode"] = userCode;
+                @Html.CheckBoxListFor(model => model.PostedUserMenus.MenuIds,
+                                model => model.AvailableMenus,
+                                menu => menu.Id,
+                                menu => menu.Name,
+                                model => model.SelectedMenus,
+                                Position.Horizontal)
+
+            <input type="submit" class="btn red" value="保存权限" />
+
+            }
+        </p>
+    </section>
+
+<script>
+   
+    $(document).ready(function(){
+        $("div").css("display","inline");
+    });
+    function queryOnClick()
+    {
+        @ViewBag.userCode = document.getElementById("input_userCode").value;
+        window.location.reload();
+    }
+</script>
+
+</body>

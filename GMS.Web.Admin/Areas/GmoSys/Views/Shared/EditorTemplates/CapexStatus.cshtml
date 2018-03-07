@@ -1,0 +1,27 @@
+﻿
+@model System.String
+@using Kendo.Mvc.UI;
+@(Html.Kendo().DropDownListFor(e => e).BindTo(new string[]{
+      "未启动"
+      ,
+      "研究中"
+      ,
+      "CAPEX审批中"
+      ,
+      "CAPEX已批"
+      ,
+      "项目完成"
+      ,
+      "项目回顾中"
+      ,
+      "项目回顾完成"
+      ,
+      "取消"
+
+  }).HtmlAttributes(new { style = "width:200px" }))
+
+@*
+
+    可选：未启动、研究中、CAPEX审批中、CAPEX已批、项目完成、项目回顾中、项目回顾完成、取消
+
+*@

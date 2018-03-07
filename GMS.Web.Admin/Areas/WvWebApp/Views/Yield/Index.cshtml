@@ -1,0 +1,116 @@
+﻿@using GMS.Web.Admin.Areas.WvWebApp.Models
+@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/WvWebApp/Views/Shared/_AppLayout.cshtml";
+
+}
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @* 设置网页字体默认为10px  *@
+    <style>
+        html {
+            font-size: 12px;
+        }
+
+        .k-grid table {
+            min-width: 800px;
+        }
+
+        .k-grid {
+            font-size: 12px;
+        }
+        .smaller-than-zero {
+  color: red;
+ }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span4">
+                <h5>开始日期：</h5>
+                @Html.Kendo().DatePicker().Name("date_from").Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(-1).Day))
+            </div>
+            <div class="span4">
+                <h5>结束日期：</h5>
+                @(Html.Kendo().DatePicker().Name("date_to").Value(DateTime.Today))
+            </div>
+            <div class="span4">
+                <h5>输入员工号GET0..</h5>
+                <div class="input-group">
+                    <input id="input_name" type="text" value="@ViewBag.codeno" class="form-control-static">
+                    <span class="input-group-btn">
+                        <input class="btn btn-primary" name="queryButton" type="submit" onclick="QueryBtnOnClick()" value="查询" />
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container-fluid">
+        <hr />
+        <div class="row-fluid">
+            <div class="span12">
+                @(Html.Kendo().Grid<WvYieldQueryViewModel>().Name("grid")
+                .Columns(columns =>
+              {
+                  columns.Bound(c => c.inputdate).Title("日期").Format("{0:MM/dd}").Filterable(false).Width(15);
+                  columns.Bound(c => c.itemname).Title("原因").Filterable(false).Width(30);
+                  columns.Bound(c => c.value1).Title("加值").Filterable(false).Width(15);
+                  columns.Bound(c => c.value2).Title("减值").Filterable(false).Width(15);
+                  columns.Bound(c => c.name).Title("姓名").Filterable(false).Width(30);
+                  columns.Bound(c => c.machineno).Title("机台").Filterable(false).Width(30);
+                  columns.Bound(c => c.gfno).Title("品名").Filterable(false).Width(60);
+                  
+              }).Pageable(pager => pager
+                              .PageSizes(true)
+
+                              .Messages(messages => messages.ItemsPerPage("项每页"))).Sortable(sortable =>
+                              {
+                                  sortable.SortMode(GridSortMode.SingleColumn);
+                              })
+                              .Selectable(selectable =>
+                              {
+                                  selectable.Mode(GridSelectionMode.Single);
+                                  selectable.Type(GridSelectionType.Row);
+                              })
+                      .Filterable()
+                              .Scrollable(s => s.Height(400)).DataSource(dataSource => dataSource
+                                  .Ajax()
+                                          .Read(read => read.Action("peAppWvQijiYields_Read", "Yield").Data("yieldTbFilter")).PageSize(50)
+                              ).AutoBind(false))
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    function QueryBtnOnClick() {
+        refreshGrid();
+    }
+    // 返回json格式
+    function yieldTbFilter() {
+        var beginDate = $("#date_from").data("kendoDatePicker");
+        var endDate = $("#date_to").data("kendoDatePicker");
+        var employeeNumber = document.getElementById("input_name").value;
+
+        var filter = {
+            beginDate: beginDate.value(),
+            endDate: endDate.value(),
+            employeeNumber: employeeNumber
+        }
+        return filter;
+    }
+    // 这个函数将调用网格的 读 行动。
+    function refreshGrid() {
+        var yieldTb = $("#grid").data("kendoGrid");
+        // 调用相应控件的数据源读方法
+        yieldTb.dataSource.read();
+    }
+</script>
+

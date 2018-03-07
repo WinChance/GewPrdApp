@@ -1,0 +1,80 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "CapexEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@(Html.Kendo().Grid<PrdDb.DAL.GmoCapex>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.AnnualBudgetId).Title("Annual Budget Id").Width(130);//u
+          columns.Bound(c => c.DeptName).Title("部门").Width(100);//u
+          columns.Bound(c => c.PrjLeader).Title("项目跟进人").Width(100);//e
+          columns.Bound(c => c.PrjName).Title("项目名称").Width(100);//u
+          columns.Bound(c => c.YusuanMoney).Title("Capex预算金额(RMB)").Width(150).Filterable(false);//u
+          columns.Bound(c => c.BudgetQuarter).Title("Budget Quarter").Width(120);//u
+          columns.Bound(c => c.Status).Title("项目状态").EditorTemplateName("CapexStatus").Width(100);//e
+          columns.Bound(c => c.JinduMiaoshu).Title("进度描述").Width(100).Filterable(false);//e
+          columns.Bound(c => c.CapexId).Title("Capex编号").Width(100);//e
+          columns.Bound(c => c.ShenqingMoney).Title("Capex申请金额(RMB)").Width(150).Filterable(false);//e
+          columns.Bound(c => c.HuiguJieguo).Title("Capex回顾结果描述").Width(200).Filterable(false);//e
+        columns.Command(command => { command.Edit();}).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Excel();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Events(e=>e.Save("grid_saveChange"))
+      .Selectable(selectable => {
+            selectable.Mode(GridSelectionMode.Single);
+            selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable(filterable => filterable.Mode(GridFilterMode.Row))
+      .Scrollable(s => s.Height(340))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model =>
+          {
+              model.Id(p => p.Id);
+              model.Field(p => p.AnnualBudgetId).Editable(false);
+              model.Field(p=>p.DeptName).Editable(false);
+              model.Field(p => p.PrjName).Editable(false);
+              model.Field(p => p.YusuanMoney).Editable(false);
+              model.Field(p => p.BudgetQuarter).Editable(false);
+              model.Field(p => p.YusuanMoney).Editable(false);
+          })
+            .Read(read => read.Action("GmoCapexes_Read", "Capex").Data("getFilter"))
+            .Update(update => update.Action("GmoCapexes_Update", "Capex").Data("getFilter"))
+      )
+      .Resizable(resize => resize.Columns(true)) 
+      )
+<script>
+    var _userID=@GMS.Web.Admin.Common.AdminUserContext.Current.peAppLoginInfo.UserID.ToString();
+    function getFilter() {
+        var filter = {
+            userID:_userID
+        };
+        return filter;
+    }
+    function grid_saveChange(e) {
+        //Handle the dataBound event.
+        gridObj = $("#grid").data("kendoGrid");
+        var selectedRow = gridObj.dataItem($(e.container).closest("tr"));
+        if (selectedRow.Status == "CAPEX审批中"|| selectedRow.Status == "CAPEX已批"|| selectedRow.Status == "项目完成"|| selectedRow.Status == "项目回顾中"|| selectedRow.Status == "项目回顾完成") {
+            if (selectedRow.ShenqingMoney <= 0) {
+                alert("请输入大于0的Capex 申请金额！！");
+                gridObj.cancelChanges();
+            }
+        }
+        if (selectedRow.Status=="项目回顾完成") {
+            if (selectedRow.HuiguJieguo == ""||selectedRow.HuiguJieguo ==null) {
+                alert("此项不能为空！！");
+                gridObj.cancelChanges();
+            }
+        }
+    }
+</script>
