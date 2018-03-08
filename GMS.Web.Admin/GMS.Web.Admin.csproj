@@ -2215,8 +2215,6 @@
     <Compile Include="Service\Pem\PemEmisQueryController.cs" />
     <Compile Include="Service\HomeController.cs" />
     <Compile Include="Service\Common\CommonController.cs" />
-    <Compile Include="Service\Test\ArticleController.cs" />
-    <Compile Include="Service\Test\TestController.cs" />
     <Compile Include="Service\Wv\ProducePlusAndMinus\WvYieldController.cs" />
     <Compile Include="Service\Wv\QiangDan\QiangDanController.cs" />
     <Compile Include="Hub\PushHub.cs" />
@@ -2458,6 +2456,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

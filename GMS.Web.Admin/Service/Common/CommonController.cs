@@ -284,7 +284,35 @@ select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].
                 throw;
             }
         }
+        /// <summary>
+        /// 用员工号绑定NFC
+        /// </summary>
+        /// <param name="empoNo"></param>
+        /// <param name="nfcCardNo"></param>
+        /// <returns></returns>
+        [Route("BindEmpoNoToNfc"), HttpPost]
+        public IHttpActionResult BindEmpoNoToNfc([FromUri] string empoNo, string nfcCardNo)
+        {
+            try
+            {
+                prdAppDb.peAppWvUsers.Where(u => u.code.Equals(empoNo, StringComparison.CurrentCultureIgnoreCase)).Update(
+                    u => new peAppWvUser()
+                    {
+                        NfcCardNo = nfcCardNo
+                    });
+                prdAppDb.SaveChanges();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
 
+        /// <summary>
+        /// 回收
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
