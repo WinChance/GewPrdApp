@@ -7,7 +7,7 @@ namespace GMS.Web.Admin.Areas.WvWebApp.Controllers
 {
     public class ManageController : Controller
     {
-        private PrdAppContext db = new PrdAppContext();
+        private PrdAppDbContext db = new PrdAppDbContext();
 
         // GET: WvWebApp/Manage
         public ActionResult ChangePassword(ManageViewModels.ChangePasswordViewModel model)

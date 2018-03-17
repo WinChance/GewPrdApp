@@ -11,7 +11,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
 {
     public class UserMenuRightController : Controller
     {
-        PrdAppContext dbContext = new PrdAppContext();
+        PrdAppDbContext dbContext = new PrdAppDbContext();
 
         // GET: WvSys/UserMenuRight
         public ActionResult Index(string userCode)

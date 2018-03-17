@@ -21,7 +21,7 @@ namespace GMS.Web.Admin.Service.Common
     [RoutePrefix("api")]
     public class CommonController : ApiController
     {
-        private PrdAppContext prdAppDb = new PrdAppContext();
+        private PrdAppDbContext prdAppDb = new PrdAppDbContext();
         private PbReadContext pbRead = new PbReadContext();
         /// <summary>
         /// 工人刷卡，返回菜单

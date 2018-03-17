@@ -10,7 +10,7 @@ namespace GMS.Web.Admin.Service.Yd
     [RoutePrefix("api/Yd")]
     public class SsCheckYarnController : ApiController
     {
-        private PrdAppContext db = new PrdAppContext();
+        private PrdAppDbContext db = new PrdAppDbContext();
         [Route("AddRtCheckYarn")]
         [HttpPost]
         public IHttpActionResult AddSsCheckYarn([FromBody] SsCheckYarnBindingModel SsCheckYarn)

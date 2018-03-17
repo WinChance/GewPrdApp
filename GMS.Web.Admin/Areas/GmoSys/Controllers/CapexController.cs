@@ -16,7 +16,7 @@ namespace GMS.Web.Admin.Areas.GmoSys.Controllers
 {
     public class CapexController : Controller
     {
-        private PrdAppContext db = new PrdAppContext();
+        private PrdAppDbContext db = new PrdAppDbContext();
         /// <summary>
         /// 查询所有Capex信息
         /// </summary>

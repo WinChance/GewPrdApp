@@ -19,7 +19,7 @@ namespace GMS.Web.Admin.Areas.GmoSys.Controllers
     /// </summary>
     public class IdelAssetController : Controller
     {
-        private PrdAppContext db = new PrdAppContext();
+        private PrdAppDbContext db = new PrdAppDbContext();
         /// <summary>
         /// 公共查看页面
         /// </summary>

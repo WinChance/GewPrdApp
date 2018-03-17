@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
-using GMS.Web.Admin.Hub;
+using GMS.Web.Admin.Service.SignalR;
 using Quartz;
 
-namespace GMS.Web.Admin.Quartz
+namespace GMS.Web.Admin.Service.Quartz
 {
     public class ReportJob : IJob
     {

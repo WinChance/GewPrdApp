@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PrdAppContext.cs" />
+    <Compile Include="PrdAppDbContext.cs" />
     <Compile Include="peAppWvMenu.cs" />
     <Compile Include="peAppWvRule.cs" />
     <Compile Include="peAppWvUserMenu.cs" />

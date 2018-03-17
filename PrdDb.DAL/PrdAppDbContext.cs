@@ -6,16 +6,16 @@ namespace PrdDb.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class PrdAppContext : DbContext
+    public partial class PrdAppDbContext : DbContext
     {
         /// <summary>
         /// NT62服务器数据库
         /// </summary>
-        public PrdAppContext()
+        public PrdAppDbContext()
             : base("name=GewPrdAppDB")
         {
             // 需要在EF 4.3上关闭数据库初始化策略
-            Database.SetInitializer<PrdAppContext>(null);
+            Database.SetInitializer<PrdAppDbContext>(null);
         }
 
         public virtual DbSet<peAppWvMenu> peAppWvMenus { get; set; }

@@ -9,7 +9,7 @@ namespace GMS.Web.Admin.Areas.WvWebApp.Controllers
 {
     public class YieldController : Controller
     {
-        private PrdAppContext db = new PrdAppContext();
+        private PrdAppDbContext db = new PrdAppDbContext();
 
         /// <summary>
         /// 查询产量页面

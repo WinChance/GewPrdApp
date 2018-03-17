@@ -86,16 +86,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -1889,6 +1885,7 @@
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\AuditTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WorkerTypeTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\QiangDanProcedureTemplate.cshtml" />
+    <Content Include="App.config" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2215,9 +2212,11 @@
     <Compile Include="Service\Pem\PemEmisQueryController.cs" />
     <Compile Include="Service\HomeController.cs" />
     <Compile Include="Service\Common\CommonController.cs" />
+    <Compile Include="Service\Quartz\Yd2PrShouSongZhouPushJob.cs" />
+    <Compile Include="Service\Quartz\Yd2PrShouSongZhouPushJobScheduler.cs" />
     <Compile Include="Service\Wv\ProducePlusAndMinus\WvYieldController.cs" />
     <Compile Include="Service\Wv\QiangDan\QiangDanController.cs" />
-    <Compile Include="Hub\PushHub.cs" />
+    <Compile Include="Service\SignalR\PushHub.cs" />
     <Compile Include="Service\Yd\SsCheckYarnController.cs" />
     <Compile Include="FileUpload.ashx.cs">
       <DependentUpon>FileUpload.ashx</DependentUpon>
@@ -2225,7 +2224,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hub\ChatHub.cs" />
     <Compile Include="Infrastructure\PropertyItem.cs" />
     <Compile Include="Infrastructure\UserTypeFactory.cs" />
     <Compile Include="Models\DropDownListBindingModel.cs" />
@@ -2240,8 +2238,8 @@
     <Compile Include="Models\WvYieldCheckBindingModel.cs" />
     <Compile Include="Models\Yd\RtCheckYarnBindingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quartz\ReportJob.cs" />
-    <Compile Include="Quartz\ReportJobScheduler.cs" />
+    <Compile Include="Service\Quartz\ReportJob.cs" />
+    <Compile Include="Service\Quartz\ReportJobScheduler.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

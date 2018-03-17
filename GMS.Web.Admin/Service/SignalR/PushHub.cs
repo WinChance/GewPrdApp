@@ -8,7 +8,7 @@ using Monitor_WV.DAL;
 using PrdDb.DAL;
 using Z.EntityFramework.Plus;
 
-namespace GMS.Web.Admin.Hub
+namespace GMS.Web.Admin.Service.SignalR
 {
     [HubName("pushHub")]
     public class PushHub : Microsoft.AspNet.SignalR.Hub
@@ -30,7 +30,7 @@ namespace GMS.Web.Admin.Hub
         /// <returns></returns>
         public override Task OnDisconnected(bool stopCalled)
         {
-            using (PrdAppContext prdAppDb = new PrdAppContext())
+            using (PrdAppDbContext prdAppDb = new PrdAppDbContext())
             {
                 var user = prdAppDb.peAppWvUsers.FirstOrDefault(u => u.ConnectionId == Context.ConnectionId);
 
@@ -50,7 +50,7 @@ namespace GMS.Web.Admin.Hub
         /// <param name="subDept">分厂</param>
         public void OnLogined(string empoNo, string subDept)
         {
-            using (PrdAppContext prdAppDb = new PrdAppContext())
+            using (PrdAppDbContext prdAppDb = new PrdAppDbContext())
             {
                 var deptGroup = prdAppDb.peAppWvUsers.FirstOrDefault(u => u.SubDept.Equals(subDept));
                 if (deptGroup != null)
@@ -64,6 +64,23 @@ namespace GMS.Web.Admin.Hub
                     }
                 }
             }
+        }
+        /// <summary>
+        /// 推送染纱待拉轴信息到准备车间的拉轴工
+        /// </summary>
+        public void PushYdDaiSongZhouInfo()
+        {
+            using (PrdAppDbContext prdAppDb = new PrdAppDbContext())
+            {
+                //int daiSongZhouCounts = ydmDb.SongZhouinfoes.Count(s => s.properattime == null);
+                List<string> conIds = prdAppDb.peAppWvUsers.Where(u => u.SubDept.Contains("PrSz") && u.IsLogin == true)
+                    .Select(u => u.ConnectionId).ToList();
+
+                // 调用客户端的方法，在消息栏显示消息
+                GlobalHost.ConnectionManager.GetHubContext<PushHub>().Clients.Clients(conIds)
+                    .receiveNewTaskInfo("任务", "222");
+            }
+
         }
 
         /// <summary>
@@ -109,7 +126,7 @@ namespace GMS.Web.Admin.Hub
             //List<string> connectedUsers=new List<string>();
             int undoTasks = 0;
             using (MonitorWvDb monitorWvDb = new MonitorWvDb())
-            using (PrdAppContext prdAppDb = new PrdAppContext())
+            using (PrdAppDbContext prdAppDb = new PrdAppDbContext())
             {
                 if (deptId<1)
                 {
@@ -167,27 +184,35 @@ namespace GMS.Web.Admin.Hub
 
         }
 
+
         /*
-         using (MonitorWvDb monitorWvDb = new MonitorWvDb())
-            using (PrdAppContext prdAppDb = new PrdAppContext())
-            {
-                var connectedUsers = prdAppDb.peAppWvUsers.Where(u => u.SubDept.Equals("WV2") && u.IsLogin == true)
-                    .ToList();
-                if (connectedUsers.Count > 0)
-                {
-                    var wv1NewTasks =
-                        monitorWvDb.QiangDanTasks.Count(
-                            t => (t.TaskStatus == 0 || t.TaskStatus == 10 || t.TaskStatus == 20));
-                    IList<string> conId = new List<string>();
-                    foreach (var u in connectedUsers)
-                    {
-                        conId.Add(u.ConnectionId);
-                    }
-                    // 调用客户端的方法，在消息栏显示消息
-                    GlobalHost.ConnectionManager.GetHubContext<PushHub>().Clients.Clients(conId).receiveNewTaskInfo("任务", wv1NewTasks.ToString());
-                }
-            }
+         GlobalHost.ConnectionManager.GetHubContext<PushHub>().Clients.Clients(pushTarget.ConnectIds)
+                    .receiveNewTaskInfo("任务", pushTarget.TaskCounts.ToString());
          */
+
+
+
+        /*
+ using (MonitorWvDb monitorWvDb = new MonitorWvDb())
+    using (PrdAppContext prdAppDb = new PrdAppContext())
+    {
+        var connectedUsers = prdAppDb.peAppWvUsers.Where(u => u.SubDept.Equals("WV2") && u.IsLogin == true)
+            .ToList();
+        if (connectedUsers.Count > 0)
+        {
+            var wv1NewTasks =
+                monitorWvDb.QiangDanTasks.Count(
+                    t => (t.TaskStatus == 0 || t.TaskStatus == 10 || t.TaskStatus == 20));
+            IList<string> conId = new List<string>();
+            foreach (var u in connectedUsers)
+            {
+                conId.Add(u.ConnectionId);
+            }
+            // 调用客户端的方法，在消息栏显示消息
+            GlobalHost.ConnectionManager.GetHubContext<PushHub>().Clients.Clients(conId).receiveNewTaskInfo("任务", wv1NewTasks.ToString());
+        }
+    }
+ */
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

@@ -13,13 +13,31 @@ using PrdDb.DAL;
 
 namespace GMS.Web.Admin.Service.Wv.QiangDan
 {
+    /*
+    SELECT TOP 1000 [Id]
+,[SLID]
+,[CardNo]
+,[MachineName]
+,[Department]
+,[HitTime]
+,[BeginTime]
+,[EndTime]
+,[TaskStatus]
+,[AssignType]
+,[IsActive]
+,[FeedBack]
+,[Remark]
+FROM [Monitor_WV2].[dbo].[QiangDanTask] WHERE (BeginTime > '2018-03-06' ) AND IsActive=1 AND TaskStatus=20 ORDER BY BeginTime
+
+--AND BeginTime< '2018-03-10'
+     */
     /// <summary>
     /// 织造抢单系统
     /// </summary>
     [RoutePrefix("api/Wv")]
     public class QiangDanController : ApiController
     {
-        private PrdAppContext prdAppDb = new PrdAppContext();
+        private PrdAppDbContext prdAppDb = new PrdAppDbContext();
         private MonitorWvDb monitorWvDb = new MonitorWvDb();
 
         /// <summary>

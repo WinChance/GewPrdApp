@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Quartz;
+﻿using Quartz;
 using Quartz.Impl;
 
-namespace GMS.Web.Admin.Quartz
+namespace GMS.Web.Admin.Service.Quartz
 {
     public class ReportJobScheduler
     {

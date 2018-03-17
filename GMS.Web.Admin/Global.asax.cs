@@ -3,7 +3,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using GMS.Web.Admin.Quartz;
+using GMS.Web.Admin.Service.Quartz;
 using Microsoft.AspNet.SignalR;
 using StackExchange.Profiling;
 using StackExchange.Profiling.EntityFramework6;
@@ -48,6 +48,7 @@ namespace GMS.Web.Admin
 
             //在这里调用
             ReportJobScheduler.Start();
+            Yd2PrShouSongZhouPushJobScheduler.Start();
 
             //RouteTable.Routes.MapHubs();
             GlobalHost.Configuration.ConnectionTimeout = TimeSpan.FromSeconds(50);

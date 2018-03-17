@@ -24,7 +24,7 @@ namespace GMS.Web.Admin.Service.Wv.ProducePlusAndMinus
     [RoutePrefix("api/Wv")]
     public class WvYieldController : ApiController
     {
-        private PrdAppContext db = new PrdAppContext();
+        private PrdAppDbContext db = new PrdAppDbContext();
 
         // 通用接口，参数1：下拉类型stting；2：扩展参数1，字符类型,参数2：string，参数3：int，参数4：int
 

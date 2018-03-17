@@ -13,7 +13,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
 {
     public class RuleMaintainController : Controller
     {
-        private PrdAppContext db = new PrdAppContext();
+        private PrdAppDbContext db = new PrdAppDbContext();
 
         public ActionResult Index()
         {
