@@ -11,7 +11,7 @@ using Z.EntityFramework.Plus;
 namespace GMS.Web.Admin.Service.SignalR
 {
     [HubName("pushHub")]
-    public class PushHub : Microsoft.AspNet.SignalR.Hub
+    public class PushHub : Hub
     {
         /// <summary>
         /// 工厂方法
@@ -184,7 +184,11 @@ namespace GMS.Web.Admin.Service.SignalR
 
         }
 
-
+        //public void SendMsg(string name, string message)
+        //{
+        //    // 关键代码
+        //    GlobalHost.ConnectionManager.GetHubContext<ChatHub>().Clients.All.addNewMessageToPage(name, message);
+        //}
         /*
          GlobalHost.ConnectionManager.GetHubContext<PushHub>().Clients.Clients(pushTarget.ConnectIds)
                     .receiveNewTaskInfo("任务", pushTarget.TaskCounts.ToString());

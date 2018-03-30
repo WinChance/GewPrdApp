@@ -20,6 +20,7 @@ namespace GMS.Web.Admin.Service.Quartz
             File.AppendAllText(dailyReportFullPath, logContent);
             // 定时推送消息
             PushHub.Instance.SendNewTaskInfo();
+            //ChatHub.Instance.Send("hyc","棒棒哒！");
         }
     }
 }

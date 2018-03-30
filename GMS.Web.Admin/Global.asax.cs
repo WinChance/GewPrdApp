@@ -47,8 +47,8 @@ namespace GMS.Web.Admin
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //在这里调用
-            ReportJobScheduler.Start();
-            Yd2PrShouSongZhouPushJobScheduler.Start();
+            //ReportJobScheduler.Start();
+            //Yd2PrShouSongZhouPushJobScheduler.Start();
 
             //RouteTable.Routes.MapHubs();
             GlobalHost.Configuration.ConnectionTimeout = TimeSpan.FromSeconds(50);
@@ -65,6 +65,7 @@ namespace GMS.Web.Admin
             //解决应用池回收问题 
             System.Threading.Thread.Sleep(5000);
             string strUrl = "192.168.7.38/GEWProductivityApp";
+            //string strUrl = "192.168.22.125:8888";
             System.Net.HttpWebRequest _HttpWebRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(strUrl);
             System.Net.HttpWebResponse _HttpWebResponse = (System.Net.HttpWebResponse)_HttpWebRequest.GetResponse();
             System.IO.Stream _Stream = _HttpWebResponse.GetResponseStream();//得到回写的字节流 

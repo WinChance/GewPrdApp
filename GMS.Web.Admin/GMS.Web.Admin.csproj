@@ -64,10 +64,6 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Esquel.Util.Extention, Version=1.0.6159.26356, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Esquel.Util.Extention.dll</HintPath>
-    </Reference>
     <Reference Include="Kendo.Mvc, Version=2017.2.504.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\KENDOUIMVC\2017.2.504.545\Kendo.Mvc.dll</HintPath>
@@ -86,12 +82,16 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -1885,7 +1885,6 @@
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\AuditTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WorkerTypeTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\QiangDanProcedureTemplate.cshtml" />
-    <Content Include="App.config" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1897,6 +1896,9 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\kendo.modernizr.custom.js" />
@@ -2160,11 +2162,6 @@
     <Content Include="Scripts\kendo\2017.2.504\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\2017.2.504\kendo.window.min.js.map" />
     <None Include="Scripts\_references.js" />
-    <None Include="Scripts\SignalR\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Scripts\SignalR\jquery-1.6.4.js" />
-    <Content Include="Scripts\SignalR\jquery-1.6.4.min.js" />
-    <Content Include="Scripts\SignalR\jquery.signalR-2.0.0.js" />
-    <Content Include="Scripts\SignalR\jquery.signalR-2.0.0.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2214,6 +2211,7 @@
     <Compile Include="Service\Common\CommonController.cs" />
     <Compile Include="Service\Quartz\Yd2PrShouSongZhouPushJob.cs" />
     <Compile Include="Service\Quartz\Yd2PrShouSongZhouPushJobScheduler.cs" />
+    <Compile Include="Service\SignalR\SignalRChat.cs" />
     <Compile Include="Service\Wv\ProducePlusAndMinus\WvYieldController.cs" />
     <Compile Include="Service\Wv\QiangDan\QiangDanController.cs" />
     <Compile Include="Service\SignalR\PushHub.cs" />

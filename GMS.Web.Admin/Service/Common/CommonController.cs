@@ -150,6 +150,7 @@ select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].
                     code = cardNo,
                     name = prdDbUsers.First().name,
                     dept = prdDbUsers.First().dept,
+                    SubDept = prdDbUsers.First().SubDept,
                     menu = list.OrderBy(a => a.id)
                 };
                 return userMenuViewModel;

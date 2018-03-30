@@ -12,7 +12,7 @@ namespace GMS.Web.Admin.Service.Quartz
             IJobDetail job = JobBuilder.Create<ReportJob>().Build();//创建一个作业
             ITrigger trigger = TriggerBuilder.Create()
                 .WithSimpleSchedule(t =>
-                    t.WithIntervalInSeconds(10) //触发执行，60s一次
+                    t.WithIntervalInSeconds(5) //触发执行，60s一次
                         .RepeatForever())          //重复执行
                 .Build();
             scheduler.ScheduleJob(job, trigger);       //把作业，触发器加入调度器。 
