@@ -1,8 +1,11 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace PrdDb.DAL
+namespace WMIS.DAL.WVMDB
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
     [Table("peAppWvWorker")]
     public partial class peAppWvWorker
     {
@@ -22,6 +25,7 @@ namespace PrdDb.DAL
 
         [Column("class")]
         [Required]
+        [StringLength(40)]
         public string _class { get; set; }
 
         [StringLength(20)]
@@ -33,6 +37,7 @@ namespace PrdDb.DAL
         [StringLength(1)]
         public string Audit { get; set; }
 
+        [StringLength(20)]
         public string WorkerType { get; set; }
 
         [StringLength(10)]

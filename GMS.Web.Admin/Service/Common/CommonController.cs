@@ -21,8 +21,9 @@ namespace GMS.Web.Admin.Service.Common
     [RoutePrefix("api")]
     public class CommonController : ApiController
     {
-        private PrdAppDbContext prdAppDb = new PrdAppDbContext();
+        private readonly PrdAppDbContext prdAppDb = new PrdAppDbContext();
         private PbReadContext pbRead = new PbReadContext();
+        private WvmDbContext wvmDb = new WvmDbContext();
         /// <summary>
         /// 工人刷卡，返回菜单
         /// </summary>
@@ -37,9 +38,7 @@ namespace GMS.Web.Admin.Service.Common
 UNION ALL
 select 'GET'+right('0000000'+convert(varchar(10),b.WeaverNo),7) from [getnt103].Monitor_WV2.dbo.tweaver AS b WHERE b.NewCardNo=@p0
 UNION ALL
-select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].Monitor_WV3.dbo.tweaver  AS c WHERE c.NewCardNo=@p0";
-
-            
+select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].Monitor_WV3.dbo.tweaver  AS c WHERE c.NewCardNo=@p0";        
             try
             {
                 string userCardNo = null;
@@ -122,7 +121,6 @@ select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].
             List<peAppWvMenu> peAppWvMenuQuery =
                 prdAppDb.Database.SqlQuery<peAppWvMenu>(query, cardNo).ToList();
             var list = new List<ItemViewModel>();
-
             // 如果在prd数据库找到该员工号
             if (prdDbUsers.Any())
             {
@@ -182,7 +180,7 @@ select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].
             paramArray.Add(param);
             try
             {
-                List<ItemViewModel> rtnList = prdAppDb.Database.SqlQuery<ItemViewModel>("EXEC dbo.usp_peAppDropDownListGet @param1,@param2,@param3,@param4,@param5,@rtn out",
+                List<ItemViewModel> rtnList = wvmDb.Database.SqlQuery<ItemViewModel>("EXEC dbo.usp_peAppDropDownListGet @param1,@param2,@param3,@param4,@param5,@rtn out",
                        paramArray.ToArray()).ToList();
                 if ((int)paramArray[5].Value > 0)
                 {
@@ -199,7 +197,6 @@ select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].
 
                 throw;
             }
-
 
             return NotFound();
         }

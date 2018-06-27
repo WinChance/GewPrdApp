@@ -3,14 +3,14 @@ using System.Linq;
 using System.Web.Mvc;
  using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
- using PrdDb.DAL;
  using StackExchange.Profiling;
+ using WMIS.DAL.WVMDB;
 
 namespace GMS.Web.Admin.Areas.WvSys.Controllers
 {
     public class YieldExportController : Controller
     {
-        private PrdAppDbContext db = new PrdAppDbContext();
+        private WvmDbContext wvmDb = new WvmDbContext();
 
         public ActionResult Index()
         {
@@ -25,7 +25,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
             using (profiler.Step("查询产量数据"))
             {
                 var peappwvyields =
-                    db.peAppWvYields.Join(db.peAppWvWorkers, y => y.name, w => w.cardno, (y, w) => new { y, w })
+                    wvmDb.peAppWvYields.Join(wvmDb.peAppWvWorkers, y => y.name, w => w.cardno, (y, w) => new { y, w })
                         .Select(@t => new
                         {
                             Id = @t.y.Id,
@@ -74,7 +74,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            wvmDb.Dispose();
             base.Dispose(disposing);
         }
     }

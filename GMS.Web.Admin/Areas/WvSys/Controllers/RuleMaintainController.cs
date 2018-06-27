@@ -7,13 +7,13 @@
  using GMS.Framework.Utility;
  using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
- using PrdDb.DAL;
+ using WMIS.DAL.WVMDB;
 
 namespace GMS.Web.Admin.Areas.WvSys.Controllers
 {
     public class RuleMaintainController : Controller
     {
-        private PrdAppDbContext db = new PrdAppDbContext();
+        private WvmDbContext wvmDb = new WvmDbContext();
 
         public ActionResult Index()
         {
@@ -54,8 +54,8 @@ DROP TABLE #Tb1,#Tb2
 //       value2 ,
 //       type ,
 //       WorkerType  FROM  [dbo].[peAppWvRule]  ORDER BY CAST(SUBSTRING(code,2,10) AS int)";
-//            IQueryable<peAppWvRule> peappwvrules = db.Database.SqlQuery<peAppWvRule>(sqlText).AsQueryable();
-            IQueryable<peAppWvRule> peappwvrules = db.peAppWvRules.ToList().OrderBy(r => int.Parse(r.code.Substring(1))).AsQueryable();
+//            IQueryable<peAppWvRule> peappwvrules = wvmDb.Database.SqlQuery<peAppWvRule>(sqlText).AsQueryable();
+            IQueryable<peAppWvRule> peappwvrules = wvmDb.peAppWvRules.ToList().OrderBy(r => int.Parse(r.code.Substring(1))).AsQueryable();
             DataSourceResult result = peappwvrules.ToDataSourceResult(request, peAppWvRule => new {
                 Id = peAppWvRule.Id,
                 code = peAppWvRule.code,
@@ -84,8 +84,8 @@ DROP TABLE #Tb1,#Tb2
                     WorkerType = peAppWvRule.WorkerType
                 };
 
-                db.peAppWvRules.Add(entity);
-                db.SaveChanges();
+                wvmDb.peAppWvRules.Add(entity);
+                wvmDb.SaveChanges();
                 peAppWvRule.Id = entity.Id;
             }
 
@@ -108,9 +108,9 @@ DROP TABLE #Tb1,#Tb2
                     WorkerType = peAppWvRule.WorkerType
                 };
 
-                db.peAppWvRules.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
+                wvmDb.peAppWvRules.Attach(entity);
+                wvmDb.Entry(entity).State = EntityState.Modified;
+                wvmDb.SaveChanges();
             }
 
             return Json(new[] { peAppWvRule }.ToDataSourceResult(request, ModelState));
@@ -132,9 +132,9 @@ DROP TABLE #Tb1,#Tb2
                     WorkerType = peAppWvRule.WorkerType
                 };
 
-                db.peAppWvRules.Attach(entity);
-                db.peAppWvRules.Remove(entity);
-                db.SaveChanges();
+                wvmDb.peAppWvRules.Attach(entity);
+                wvmDb.peAppWvRules.Remove(entity);
+                wvmDb.SaveChanges();
             }
 
             return Json(new[] { peAppWvRule }.ToDataSourceResult(request, ModelState));
@@ -150,7 +150,7 @@ DROP TABLE #Tb1,#Tb2
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            wvmDb.Dispose();
             base.Dispose(disposing);
         }
     }

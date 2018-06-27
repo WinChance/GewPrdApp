@@ -37,7 +37,7 @@ namespace PrdDb.DAL
         public DateTime BeginDate { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(400)]
         public string Reason { get; set; }
 
         [Required]
@@ -54,14 +54,10 @@ namespace PrdDb.DAL
 
         public decimal? JingZhi { get; set; }
 
-        //[Required]
-        //[StringLength(10)]
         public string Inputer { get; set; }
 
         public DateTime? InputDatetime { get; set; }
 
-        //[Required]
-        //[StringLength(10)]
         public string Modifier { get; set; }
 
         public DateTime? ModifyDatetime { get; set; }

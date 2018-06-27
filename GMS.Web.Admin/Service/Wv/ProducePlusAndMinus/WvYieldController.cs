@@ -12,8 +12,9 @@ using GMS.Framework.Utility;
 using GMS.Web.Admin.Models;
 using Newtonsoft.Json.Linq;
 using PbRead.DAL;
-using PrdDb.DAL;
+using WMIS.DAL.WVMDB;
 using Z.EntityFramework.Plus;
+using WvmDbContext = WMIS.DAL.WVMDB.WvmDbContext;
 
 // 织造上轴、挡车，机修和织布工加减产/分
 namespace GMS.Web.Admin.Service.Wv.ProducePlusAndMinus
@@ -24,7 +25,7 @@ namespace GMS.Web.Admin.Service.Wv.ProducePlusAndMinus
     [RoutePrefix("api/Wv")]
     public class WvYieldController : ApiController
     {
-        private PrdAppDbContext db = new PrdAppDbContext();
+        private WvmDbContext wvmDb = new WvmDbContext();
 
         // 通用接口，参数1：下拉类型stting；2：扩展参数1，字符类型,参数2：string，参数3：int，参数4：int
 
@@ -77,7 +78,7 @@ left join peAppWvWorker f on c.name3=f.cardno
 where c.inputclass IN (SELECT DISTINCT g.class FROM dbo.peAppWvWorker AS g WHERE g.name=@p0) AND c.WorkerType=@p1 AND d.factory IN (SELECT  g.factory FROM dbo.peAppWvWorker AS g WHERE g.name=@p0) and c.name1 like 'GET%'
 ";
                 List<peAppWvYieldCheck> yieldCheckQuery =
-                    db.Database.SqlQuery<peAppWvYieldCheck>(query, name, WorkerType).ToList();
+                    wvmDb.Database.SqlQuery<peAppWvYieldCheck>(query, name, WorkerType).ToList();
 
                 List<WvYieldCheckBindingModel> rtnList = new List<WvYieldCheckBindingModel>();
                 foreach (var y in yieldCheckQuery)
@@ -133,8 +134,8 @@ where c.inputclass IN (SELECT DISTINCT g.class FROM dbo.peAppWvWorker AS g WHERE
                 remark = yieldCheck.Remark,
                 WorkerType = yieldCheck.WorkerType
             };
-            db.peAppWvYieldChecks.Add(addYield);
-            db.SaveChanges();
+            wvmDb.peAppWvYieldChecks.Add(addYield);
+            wvmDb.SaveChanges();
             return Ok();
         }
         /// <summary>
@@ -159,7 +160,7 @@ where c.inputclass IN (SELECT DISTINCT g.class FROM dbo.peAppWvWorker AS g WHERE
 
                 try
                 {
-                    db.Database.ExecuteSqlCommand("EXEC dbo.usp_peAppWvYieldAudit @Id,@reviewer,@rtn out",
+                    wvmDb.Database.ExecuteSqlCommand("EXEC dbo.usp_peAppWvYieldAudit @Id,@reviewer,@rtn out",
                         paramArray.ToArray());
                 }
                 catch (Exception)
@@ -189,8 +190,8 @@ where c.inputclass IN (SELECT DISTINCT g.class FROM dbo.peAppWvWorker AS g WHERE
         [HttpDelete]
         public IHttpActionResult DelYieldCheck([FromUri] int Id, string reviewer)
         {
-            db.peAppWvYieldChecks.Where(y => y.Id == Id).Delete();
-            db.SaveChanges();
+            wvmDb.peAppWvYieldChecks.Where(y => y.Id == Id).Delete();
+            wvmDb.SaveChanges();
             return Ok();
         }
 
@@ -204,7 +205,7 @@ where c.inputclass IN (SELECT DISTINCT g.class FROM dbo.peAppWvWorker AS g WHERE
         [HttpGet]
         public HttpResponseMessage GetFactory([FromUri] string cardno, string WorkerType)
         {
-            var factory = db.peAppWvWorkers.Where(w => w.cardno.Equals(cardno) && w.WorkerType.Contains(WorkerType));
+            var factory = wvmDb.peAppWvWorkers.Where(w => w.cardno.Equals(cardno) && w.WorkerType.Contains(WorkerType));
             try
             {
                 if (factory.Any())
@@ -254,7 +255,7 @@ where c.inputclass IN (SELECT DISTINCT g.class FROM dbo.peAppWvWorker AS g WHERE
 
             try
             {
-                db.Database.ExecuteSqlCommand("EXEC dbo.[usp_peAppWvCalculateDangtaiValue] @hours,@machineNums,@rtn OUTPUT",
+                wvmDb.Database.ExecuteSqlCommand("EXEC dbo.[usp_peAppWvCalculateDangtaiValue] @hours,@machineNums,@rtn OUTPUT",
                     paramArray.ToArray());
             }
             catch (Exception)
@@ -331,7 +332,7 @@ where MachineName='1001' and pc.status=0
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            wvmDb.Dispose();
             base.Dispose(disposing);
         }
     }

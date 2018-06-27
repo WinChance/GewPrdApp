@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
- using System.Data.Entity.Core.Common.CommandTrees;
- using System.Linq;
+using System.Data.Entity.Core.Common.CommandTrees;
+using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -51,7 +51,7 @@ namespace GMS.Web.Admin.Areas.GmoSys.Controllers
             IQueryable<GmoCapex> gmocapexes;
             if (showAll)
             {
-                gmocapexes = db.GmoCapexes; 
+                gmocapexes = db.GmoCapexes;
             }
             else
             {
@@ -122,7 +122,7 @@ namespace GMS.Web.Admin.Areas.GmoSys.Controllers
         {
             int _userID = userID.ToInt();
             var _userInfo = db.peAppUsers.Where(u => u.ID.Equals(_userID)).Select(u => new { u.Dept, u.LoginName }).FirstOrDefault();
-            IQueryable<GmoCapex> gmocapexes = db.GmoCapexes.Where(c => c.DeptName.Equals(_userInfo.Dept, StringComparison.CurrentCultureIgnoreCase)&&c.InputDatetime>DateTime.Today);
+            IQueryable<GmoCapex> gmocapexes = db.GmoCapexes.Where(c => c.DeptName.Equals(_userInfo.Dept, StringComparison.CurrentCultureIgnoreCase) && c.InputDatetime > DateTime.Today);
             DataSourceResult result = gmocapexes.ToDataSourceResult(request, gmoCapex => new
             {
                 Id = gmoCapex.Id,
@@ -260,6 +260,7 @@ namespace GMS.Web.Admin.Areas.GmoSys.Controllers
                         Modifier = _userInfo.LoginName ?? "",
                         ModifyDatetime = DateTime.Now
                     };
+
                     entities.Add(entity);
                     db.GmoCapexes.Attach(entity);
                     db.Entry(entity).State = EntityState.Modified;
@@ -322,7 +323,7 @@ namespace GMS.Web.Admin.Areas.GmoSys.Controllers
                 //    ModifyDatetime = gmoCapex.ModifyDatetime
                 //};
 
-                
+
                 db.SaveChanges();
             }
 

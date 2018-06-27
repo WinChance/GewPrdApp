@@ -1879,7 +1879,6 @@
     <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\GmoSys\Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\_Admin.cshtml" />
-    <Content Include="Areas\WvSys\Views\Worker\Index.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WorkerClassTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\DeptTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\AuditTemplate.cshtml" />
@@ -2539,6 +2538,10 @@
     <ProjectReference Include="..\PrdDb.DAL\PrdDb.DAL.csproj">
       <Project>{8459d72c-e5a1-4bd3-9ddc-b36b7079bb56}</Project>
       <Name>PrdDb.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WMIS.DAL\WMIS.DAL.csproj">
+      <Project>{e0af4430-185c-4e80-8dcc-807e7027588c}</Project>
+      <Name>WMIS.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

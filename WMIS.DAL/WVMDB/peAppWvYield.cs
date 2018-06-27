@@ -1,4 +1,4 @@
-namespace PrdDb.DAL
+namespace WMIS.DAL.WVMDB
 {
     using System;
     using System.Collections.Generic;
@@ -6,8 +6,8 @@ namespace PrdDb.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("peAppWvYieldCheck")]
-    public partial class peAppWvYieldCheck
+    [Table("peAppWvYield")]
+    public partial class peAppWvYield
     {
         public int Id { get; set; }
 
@@ -18,13 +18,7 @@ namespace PrdDb.DAL
         public string inputclass { get; set; }
 
         [StringLength(10)]
-        public string name1 { get; set; }
-
-        [StringLength(10)]
-        public string name2 { get; set; }
-
-        [StringLength(10)]
-        public string name3 { get; set; }
+        public string name { get; set; }
 
         [StringLength(10)]
         public string machineno { get; set; }
@@ -33,15 +27,16 @@ namespace PrdDb.DAL
         public string gfno { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(50)]
         public string itemname { get; set; }
 
         public decimal value1 { get; set; }
 
         public decimal value2 { get; set; }
 
+        [Required]
         [StringLength(10)]
-        public string Audit { get; set; }
+        public string Reviewer { get; set; }
 
         [StringLength(250)]
         public string remark { get; set; }

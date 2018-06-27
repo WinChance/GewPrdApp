@@ -6,6 +6,7 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Monitor_WV.DAL;
 using PrdDb.DAL;
+using WMIS.DAL.WVMDB;
 using Z.EntityFramework.Plus;
 
 namespace GMS.Web.Admin.Service.SignalR
@@ -126,6 +127,7 @@ namespace GMS.Web.Admin.Service.SignalR
             //List<string> connectedUsers=new List<string>();
             int undoTasks = 0;
             using (MonitorWvDb monitorWvDb = new MonitorWvDb())
+            using (WvmDbContext wvmDb = new WvmDbContext())
             using (PrdAppDbContext prdAppDb = new PrdAppDbContext())
             {
                 if (deptId<1)
@@ -134,7 +136,7 @@ namespace GMS.Web.Admin.Service.SignalR
                         monitorWvDb.QiangDanTasks.Count(
                             t => (t.TaskStatus == taskStatus)&&t.IsActive==true);
                     var connectedUsers = prdAppDb.peAppWvUsers
-                        .Join(prdAppDb.peAppWvWorkers, u => u.code, w => w.cardno, (u, w) => new { u, w })
+                        .Join(wvmDb.peAppWvWorkers, u => u.code, w => w.cardno, (u, w) => new { u, w })
                         .Where(t => t.u.SubDept.Equals(subDept) && t.u.IsLogin == true && t.w.Remark.Equals(remark))
                         .Select(t => t.u.ConnectionId).ToList();
                     if (connectedUsers.Count > 0)
@@ -152,7 +154,7 @@ namespace GMS.Web.Admin.Service.SignalR
                     if (deptId==1)
                     {
                          var connectedUsers = prdAppDb.peAppWvUsers
-                            .Join(prdAppDb.peAppWvWorkers, u => u.code, w => w.cardno, (u, w) => new { u, w })
+                            .Join(wvmDb.peAppWvWorkers, u => u.code, w => w.cardno, (u, w) => new { u, w })
                             .Where(t => t.u.SubDept.Equals(subDept) && t.u.IsLogin == true && t.w.Remark.Equals(remark) && t.w.GroupName.Contains("西"))
                             .Select(t => t.u.ConnectionId).ToList();
                         if (connectedUsers.Count > 0)
@@ -166,7 +168,7 @@ namespace GMS.Web.Admin.Service.SignalR
                     else
                     {
                         var connectedUsers = prdAppDb.peAppWvUsers
-                            .Join(prdAppDb.peAppWvWorkers, u => u.code, w => w.cardno, (u, w) => new { u, w })
+                            .Join(wvmDb.peAppWvWorkers, u => u.code, w => w.cardno, (u, w) => new { u, w })
                             .Where(t => t.u.SubDept.Equals(subDept) && t.u.IsLogin == true && t.w.Remark.Equals(remark) && t.w.GroupName.Contains("东"))
                             .Select(t => t.u.ConnectionId).ToList();
                         if (connectedUsers.Count > 0)
@@ -184,39 +186,7 @@ namespace GMS.Web.Admin.Service.SignalR
 
         }
 
-        //public void SendMsg(string name, string message)
-        //{
-        //    // 关键代码
-        //    GlobalHost.ConnectionManager.GetHubContext<ChatHub>().Clients.All.addNewMessageToPage(name, message);
-        //}
-        /*
-         GlobalHost.ConnectionManager.GetHubContext<PushHub>().Clients.Clients(pushTarget.ConnectIds)
-                    .receiveNewTaskInfo("任务", pushTarget.TaskCounts.ToString());
-         */
-
-
-
-        /*
- using (MonitorWvDb monitorWvDb = new MonitorWvDb())
-    using (PrdAppContext prdAppDb = new PrdAppContext())
-    {
-        var connectedUsers = prdAppDb.peAppWvUsers.Where(u => u.SubDept.Equals("WV2") && u.IsLogin == true)
-            .ToList();
-        if (connectedUsers.Count > 0)
-        {
-            var wv1NewTasks =
-                monitorWvDb.QiangDanTasks.Count(
-                    t => (t.TaskStatus == 0 || t.TaskStatus == 10 || t.TaskStatus == 20));
-            IList<string> conId = new List<string>();
-            foreach (var u in connectedUsers)
-            {
-                conId.Add(u.ConnectionId);
-            }
-            // 调用客户端的方法，在消息栏显示消息
-            GlobalHost.ConnectionManager.GetHubContext<PushHub>().Clients.Clients(conId).receiveNewTaskInfo("任务", wv1NewTasks.ToString());
-        }
-    }
- */
+  
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

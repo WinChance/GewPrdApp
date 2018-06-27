@@ -62,6 +62,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C977A3
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMIS.DAL", "WMIS.DAL\WMIS.DAL.csproj", "{E0AF4430-185C-4E80-8DCC-807E7027588C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -154,6 +156,10 @@ Global
 		{E3E96DBC-EAE9-4379-BA0F-00988FA12B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3E96DBC-EAE9-4379-BA0F-00988FA12B89}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3E96DBC-EAE9-4379-BA0F-00988FA12B89}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E0AF4430-185C-4E80-8DCC-807E7027588C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0AF4430-185C-4E80-8DCC-807E7027588C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0AF4430-185C-4E80-8DCC-807E7027588C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0AF4430-185C-4E80-8DCC-807E7027588C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -180,5 +186,6 @@ Global
 		{7603E6E9-CC4B-4C13-8E89-6A407C36A41F} = {857E25BB-3934-4B58-AC75-0642265A0BAE}
 		{D0CBAA49-4FB6-4C06-AFA7-6E946BC56412} = {857E25BB-3934-4B58-AC75-0642265A0BAE}
 		{E3E96DBC-EAE9-4379-BA0F-00988FA12B89} = {857E25BB-3934-4B58-AC75-0642265A0BAE}
+		{E0AF4430-185C-4E80-8DCC-807E7027588C} = {857E25BB-3934-4B58-AC75-0642265A0BAE}
 	EndGlobalSection
 EndGlobal

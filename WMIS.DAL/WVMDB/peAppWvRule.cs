@@ -1,4 +1,4 @@
-namespace PrdDb.DAL
+namespace WMIS.DAL.WVMDB
 {
     using System;
     using System.Collections.Generic;

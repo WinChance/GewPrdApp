@@ -3,13 +3,13 @@ using System.Linq;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using PrdDb.DAL;
+using WMIS.DAL.WVMDB;
 
 namespace GMS.Web.Admin.Areas.WvWebApp.Controllers
 {
     public class YieldController : Controller
     {
-        private PrdAppDbContext db = new PrdAppDbContext();
+        private WvmDbContext db = new WvmDbContext();
 
         /// <summary>
         /// 查询产量页面

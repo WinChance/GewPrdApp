@@ -10,6 +10,7 @@ using GMS.Framework.Contract;
 using GMS.Web.Admin.Models.Wv.QiangDan;
 using Monitor_WV.DAL;
 using PrdDb.DAL;
+using WMIS.DAL.WVMDB;
 
 namespace GMS.Web.Admin.Service.Wv.QiangDan
 {
@@ -37,7 +38,7 @@ FROM [Monitor_WV2].[dbo].[QiangDanTask] WHERE (BeginTime > '2018-03-06' ) AND Is
     [RoutePrefix("api/Wv")]
     public class QiangDanController : ApiController
     {
-        private PrdAppDbContext prdAppDb = new PrdAppDbContext();
+        private WvmDbContext wvmDb = new WvmDbContext();
         private MonitorWvDb monitorWvDb = new MonitorWvDb();
 
         /// <summary>
@@ -53,7 +54,7 @@ FROM [Monitor_WV2].[dbo].[QiangDanTask] WHERE (BeginTime > '2018-03-06' ) AND Is
             {
                 var taskCounts = 0;
                 // 查询：传入：分厂，工种类型；返回：状态为0/10/20的任务
-                var empoInfo = prdAppDb.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(empoNo, StringComparison.CurrentCultureIgnoreCase));
+                var empoInfo = wvmDb.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(empoNo, StringComparison.CurrentCultureIgnoreCase));
                 string _factory = "";
                 switch (empoInfo.factory)
                 {
@@ -130,10 +131,10 @@ FROM [Monitor_WV2].[dbo].[QiangDanTask] WHERE (BeginTime > '2018-03-06' ) AND Is
         {
             if (empoNo != null)
             {
-                var empoInfo = prdAppDb.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(empoNo, StringComparison.CurrentCultureIgnoreCase));
+                var empoInfo = wvmDb.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(empoNo, StringComparison.CurrentCultureIgnoreCase));
                 string _factory = "";
                 // 伙伴：同一工种，同一分组的人
-                var partnersInfos = prdAppDb.peAppWvWorkers.Where(w => w.GroupName.Equals(empoInfo.GroupName) && !w.cardno.Equals(empoInfo.cardno)&&w.Remark.Equals(empoInfo.Remark))
+                var partnersInfos = wvmDb.peAppWvWorkers.Where(w => w.GroupName.Equals(empoInfo.GroupName) && !w.cardno.Equals(empoInfo.cardno)&&w.Remark.Equals(empoInfo.Remark))
                     .Select(w => new { w.name, w.cardno }).Distinct().ToList();
                 String[] partnerArray = { "", "", "", "" };
                 int indexOfArr = 0;
@@ -223,7 +224,7 @@ FROM [Monitor_WV2].[dbo].[QiangDanTask] WHERE (BeginTime > '2018-03-06' ) AND Is
         {
             if (disposing)
             {
-                prdAppDb.Dispose();
+                wvmDb.Dispose();
                 monitorWvDb.Dispose();
             }
             base.Dispose(disposing);

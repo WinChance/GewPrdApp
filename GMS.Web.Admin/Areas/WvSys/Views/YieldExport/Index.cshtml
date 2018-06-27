@@ -1,5 +1,5 @@
 ﻿@using Kendo.Mvc.UI
-@using PrdDb.DAL
+@using WMIS.DAL.WVMDB
 
 
 @{
@@ -19,7 +19,6 @@
           columns.Bound(c => c.value1).Title("加产(分)").Filterable(false).Width(55);
           columns.Bound(c => c.value2).Title("减产(分)").Filterable(false).Width(55);
           columns.Bound(c => c.Reviewer).Title("审核人");
-          //columns.Bound(c => c.remark).Title("备注").Filterable(false);
           columns.Bound(c => c.input_time).Title("输入时间").Format("{0:yy/MM/dd HH:mm}").Filterable(false);
           columns.Bound(c => c.WorkerType).Title("工种");
       })

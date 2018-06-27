@@ -4,14 +4,15 @@ using System.Web.Http.Results;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
-using PrdDb.DAL;
+using WMIS.DAL.WVMDB;
 using Z.EntityFramework.Plus;
+
 
 namespace GMS.Web.Admin.Areas.WvSys.Controllers
 {
     public class WorkerMaintainController : Controller
     {
-        private PrdAppDbContext db = new PrdAppDbContext();
+        private WvmDbContext wvmDb = new WvmDbContext();
 
         public ActionResult Index()
         {
@@ -20,7 +21,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
 
         public ActionResult peAppWvWorkers_Read([DataSourceRequest]DataSourceRequest request)
         {
-            IQueryable<peAppWvWorker> peappwvworkers = db.peAppWvWorkers;
+            IQueryable<peAppWvWorker> peappwvworkers = wvmDb.peAppWvWorkers;
             DataSourceResult result = peappwvworkers.ToDataSourceResult(request, peAppWvWorker => new {
                 Id = peAppWvWorker.Id,
                 factory = peAppWvWorker.factory,
@@ -42,7 +43,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult peAppWvWorkers_Create([DataSourceRequest]DataSourceRequest request, peAppWvWorker peAppWvWorker)
         {
-            var checkIfExisted=db.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(peAppWvWorker.cardno)&&w.name.Equals(peAppWvWorker.name));
+            var checkIfExisted=wvmDb.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(peAppWvWorker.cardno)&&w.name.Equals(peAppWvWorker.name));
             if (checkIfExisted!=null)
             {
                 return Json(new DataSourceResult
@@ -68,8 +69,8 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                         Remark = peAppWvWorker.Remark
                     };
 
-                    db.peAppWvWorkers.Add(entity);
-                    db.SaveChanges();
+                    wvmDb.peAppWvWorkers.Add(entity);
+                    wvmDb.SaveChanges();
                     peAppWvWorker.Id = entity.Id;
                 }
 
@@ -99,14 +100,14 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                 //// 联动修改所有工人的工种备注
                 //if (peAppWvWorker.Remark.Length > 0)
                 //{
-                //    db.peAppWvWorkers.Where(w => w.cardno.Equals(peAppWvWorker.cardno)).Update(w => new peAppWvWorker
+                //    wvmDb.peAppWvWorkers.Where(w => w.cardno.Equals(peAppWvWorker.cardno)).Update(w => new peAppWvWorker
                 //    {
                 //        Remark = peAppWvWorker.Remark
                 //    });
                 //}
-                db.peAppWvWorkers.Attach(entity);
-                db.Entry(entity).State = EntityState.Modified;
-                db.SaveChanges();
+                wvmDb.peAppWvWorkers.Attach(entity);
+                wvmDb.Entry(entity).State = EntityState.Modified;
+                wvmDb.SaveChanges();
             }
 
             return Json(new[] { peAppWvWorker }.ToDataSourceResult(request, ModelState));
@@ -132,9 +133,9 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                     Remark = peAppWvWorker.Remark
                 };
 
-                db.peAppWvWorkers.Attach(entity);
-                db.peAppWvWorkers.Remove(entity);
-                db.SaveChanges();
+                wvmDb.peAppWvWorkers.Attach(entity);
+                wvmDb.peAppWvWorkers.Remove(entity);
+                wvmDb.SaveChanges();
             }
 
             return Json(new[] { peAppWvWorker }.ToDataSourceResult(request, ModelState));
@@ -142,7 +143,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            wvmDb.Dispose();
             base.Dispose(disposing);
         }
     }
