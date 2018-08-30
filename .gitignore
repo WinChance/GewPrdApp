@@ -307,9 +307,11 @@ GMS.Web.Admin/Content
 GMS.Web.Admin/Assets
 GMS.Web.Admin/bower_components
 GMS.Web.Admin/fonts
+GMS.Web.Admin/Web.config
+GMS.Web.Admin/Web.Release.config
 *.dgml
 *.png
 *.gif
 *.xsd
 IIS-数据库账号密码.txt
-IIS-数据库账号密码.txt
+
