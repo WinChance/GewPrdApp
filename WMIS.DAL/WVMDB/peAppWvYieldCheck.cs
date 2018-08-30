@@ -9,6 +9,7 @@ namespace WMIS.DAL.WVMDB
     [Table("peAppWvYieldCheck")]
     public partial class peAppWvYieldCheck
     {
+
         public int Id { get; set; }
 
         [Column(TypeName = "date")]

@@ -11,7 +11,9 @@ using GMS.Web.Admin.Models;
 using GMS.Web.Admin.Models.Manage.Common;
 using PbRead.DAL;
 using PrdDb.DAL;
+using WMIS.DAL.WVMDB;
 using Z.EntityFramework.Plus;
+using WvmDbContext = WMIS.DAL.WVMDB.WvmDbContext;
 
 namespace GMS.Web.Admin.Service.Common
 {
@@ -184,7 +186,6 @@ select 'GET'+right('0000000'+convert(varchar(10),c.WeaverNo),7) from [getnt103].
                        paramArray.ToArray()).ToList();
                 if ((int)paramArray[5].Value > 0)
                 {
-
                     return Json(rtnList);
                 }
                 else

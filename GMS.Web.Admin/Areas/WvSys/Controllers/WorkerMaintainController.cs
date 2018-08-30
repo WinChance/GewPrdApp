@@ -43,16 +43,16 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult peAppWvWorkers_Create([DataSourceRequest]DataSourceRequest request, peAppWvWorker peAppWvWorker)
         {
-            var checkIfExisted=wvmDb.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(peAppWvWorker.cardno)&&w.name.Equals(peAppWvWorker.name));
-            if (checkIfExisted!=null)
-            {
-                return Json(new DataSourceResult
-                {
-                    Errors = "不能插入重复的数据！"
-                });
-            }
-            else
-            {
+            //var checkIfExisted=wvmDb.peAppWvWorkers.FirstOrDefault(w => w.cardno.Equals(peAppWvWorker.cardno)&&w.name.Equals(peAppWvWorker.name));
+            //if (checkIfExisted!=null)
+            //{
+            //    return Json(new DataSourceResult
+            //    {
+            //        Errors = "不能插入重复的数据！"
+            //    });
+            //}
+            //else
+            //{
                 if (ModelState.IsValid)
                 {
                     var entity = new peAppWvWorker
@@ -75,7 +75,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                 }
 
                 return Json(new[] { peAppWvWorker }.ToDataSourceResult(request, ModelState));
-            }
+//            }
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -97,14 +97,6 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                     GroupName = peAppWvWorker.GroupName,
                     Remark = peAppWvWorker.Remark
                 };
-                //// 联动修改所有工人的工种备注
-                //if (peAppWvWorker.Remark.Length > 0)
-                //{
-                //    wvmDb.peAppWvWorkers.Where(w => w.cardno.Equals(peAppWvWorker.cardno)).Update(w => new peAppWvWorker
-                //    {
-                //        Remark = peAppWvWorker.Remark
-                //    });
-                //}
                 wvmDb.peAppWvWorkers.Attach(entity);
                 wvmDb.Entry(entity).State = EntityState.Modified;
                 wvmDb.SaveChanges();

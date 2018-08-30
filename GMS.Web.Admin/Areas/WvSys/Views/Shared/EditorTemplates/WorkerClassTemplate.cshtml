@@ -1,19 +1,17 @@
 ﻿@using Kendo.Mvc.UI;
-@(
-    Html.Kendo().MultiSelectFor(m => m)
-        .BindTo(new string[]{
-            "A1"
-            ,
-            "A2"
-            ,
-            "B1"
-            ,
-            "B2"
-            ,
-            "C1"
-            ,
-            "C2"
-            ,
-            "D"
-        })
-      )
+@(Html.Kendo().DropDownListFor(e => e).BindTo(new string[]{
+      "A1"
+      ,
+      "A2"
+      ,
+      "B1"
+      ,
+      "B2"
+      ,
+      "C1"
+      ,
+      "C2"
+      ,
+      "D"
+
+  }).HtmlAttributes(new { style = "width:100%" }))
