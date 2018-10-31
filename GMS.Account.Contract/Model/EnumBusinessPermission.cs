@@ -34,6 +34,13 @@ namespace GMS.Account.Contract.Model
         [EnumTitle("APP用户名单维护")]
         AppUserMaintain = 1304,
 
+        [EnumTitle("产量审核")]
+        WvYieldCheck = 1305,
+
+        [EnumTitle("抢单后台")]
+        QiangDan = 1306,
+
+
         //****************************************  GMO网页需求  ***************************************//
 
         [EnumTitle("闲置资产查看")]

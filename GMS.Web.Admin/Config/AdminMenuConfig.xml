@@ -3,7 +3,7 @@
   <AdminMenuGroups>
     <!--发布环境的目录名称：GEWProductivityApp/-->
     <!--******************************系统菜单*************************************-->
-    <AdminMenuGroup name="首页" url="/Account/Auth/Index" icon="icon-home" info="欢迎登录GEW PE APP 后台管理！">
+    <AdminMenuGroup name="首页" url="/Account/Auth/Index" icon="icon-home" info="欢迎登录溢生产APP后台管理！">
     </AdminMenuGroup>
     <AdminMenuGroup name="系统管理" icon="icon-cog">
       <AdminMenuArray>
@@ -36,6 +36,12 @@
       <AdminMenuArray>
         <AdminMenu name="织造工人表维护" url="/WvSys/WorkerMaintain/Index" info="织造工人表维护" permission="WvWorker" />
       </AdminMenuArray>
+        <AdminMenuArray>
+            <AdminMenu name="审核产量数据" url="/WvSys/WvYieldCheck/Index" info="审核产量数据" permission="WvYieldCheck" />
+        </AdminMenuArray>
+        <AdminMenuArray>
+            <AdminMenu name="已抢单管理" url="/WvSys/QiangDan/Index" info="已抢单" permission="QiangDan" />
+        </AdminMenuArray>
     </AdminMenuGroup>
 
 

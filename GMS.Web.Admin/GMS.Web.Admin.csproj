@@ -1884,6 +1884,10 @@
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\AuditTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WorkerTypeTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\QiangDanProcedureTemplate.cshtml" />
+    <Content Include="Areas\WvSys\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\WvSys\Views\QiangDan\Index.cshtml" />
+    <Content Include="Areas\WvSys\Views\WvYieldCheck\Index.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2180,12 +2184,14 @@
     <Compile Include="Areas\GmoSys\Controllers\CapexController.cs" />
     <Compile Include="Areas\GmoSys\Controllers\IdelAssetController.cs" />
     <Compile Include="Areas\GmoSys\GmoSysAreaRegistration.cs" />
+    <Compile Include="Areas\WvSys\Controllers\QiangDanController.cs" />
     <Compile Include="Areas\WvSys\Controllers\UserMaintainController.cs" />
     <Compile Include="Areas\WvSys\Controllers\UserMenuRightController.cs" />
     <Compile Include="Areas\WvSys\Controllers\WorkerMaintainController.cs" />
     <Compile Include="Areas\Resource\Controllers\ApkController.cs" />
     <Compile Include="Areas\Resource\ResourceAreaRegistration.cs" />
     <Compile Include="Areas\WvSys\Controllers\RuleMaintainController.cs" />
+    <Compile Include="Areas\WvSys\Controllers\WvYieldCheck.cs" />
     <Compile Include="Areas\WvSys\Controllers\YieldExportController.cs" />
     <Compile Include="Areas\WvSys\Models\UserMaintain\UserVm.cs" />
     <Compile Include="Areas\WvSys\Models\UserMenuRight\PostedUserMenus.cs" />

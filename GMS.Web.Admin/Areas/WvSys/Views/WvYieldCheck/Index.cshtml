@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "WvYieldCheck";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using Kendo.Mvc.UI
+@using WMIS.DAL.WVMDB
+
+@(Html.Kendo().Grid<peAppWvYieldCheck>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.inputdate).Title("日期").Format("{0:yyyy/MM/dd}");
+          columns.Bound(c => c.inputclass).Title("班别").Filterable(ftb => ftb.Multi(true));
+          columns.Bound(c => c.WorkerType).Title("工种").Filterable(ftb => ftb.Multi(true));
+//        columns.Bound(c => c.name1).ClientTemplate("#:name1==null?'':name1# #:name2==null? '':name2# #:name3==null?'':name3#").Title("姓名");
+          columns.Bound(c => c.name1).Title("姓名1");
+          columns.Bound(c => c.name2).Title("姓名2");
+          columns.Bound(c => c.name3).Title("姓名3");
+          columns.Bound(c => c.machineno).Title("机台");
+          columns.Bound(c => c.gfno).Title("品名");
+          columns.Bound(c => c.itemname).Title("原因");
+          columns.Bound(c => c.value1).Title("加");
+          columns.Bound(c => c.value2).Title("减");
+          columns.Command(command =>
+          {
+              command.Custom("审核").Click("checkWvYield");
+              command.Destroy();
+              command.Edit(); 
+          }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Excel();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Selectable(selectable =>
+      {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable(s => s.Height(450))
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("peAppWvYieldChecks_Read", "WvYieldCheck"))
+          .Update(update => update.Action("peAppWvYieldChecks_Update", "WvYieldCheck"))
+          .Destroy(destroy => destroy.Action("peAppWvYieldChecks_Destroy", "WvYieldCheck"))
+      )
+      )
+
+<script type="text/javascript">
+
+    var _userID=@GMS.Web.Admin.Common.AdminUserContext.Current.peAppLoginInfo.UserID.ToString();
+    function getFilter() {
+        var filter = {
+            userID:_userID
+        };
+        return filter;
+    }
+    function checkWvYield(e) {
+        // 获取当前行
+        e.preventDefault();
+        var grid = $("#grid").data("kendoGrid");
+        var crrentDataItem = this.dataItem($(e.currentTarget).closest("tr"));
+
+
+        var _data = {
+            "Id": crrentDataItem.Id,
+            "reviewer": _userID
+        };
+        $.ajax({
+            url: '@Url.Action("ExecYieldAudit")',
+            type: "POST",//此参数在这必须要设置,否则服务端无法获取参数值
+            async: false,
+            data: _data,
+            dataType: "json",
+            success: function (data) {
+                if (data.result === "error") {
+                    alert(data.msg);
+                }
+                else {
+                    grid.dataSource.remove(crrentDataItem);
+                    console.log("success");
+                }
+            },
+            error: function () {
+            }
+        });
+    }
+
+
+</script>

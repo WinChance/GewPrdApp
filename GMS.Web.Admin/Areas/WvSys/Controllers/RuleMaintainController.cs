@@ -47,15 +47,7 @@ DROP TABLE #Tb1,#Tb2
         #endregion
         public ActionResult peAppWvRules_Read([DataSourceRequest]DataSourceRequest request)
         {
-//            string sqlText = @"SELECT Id ,
-//       code ,
-//       itemname ,
-//       value1 ,
-//       value2 ,
-//       type ,
-//       WorkerType  FROM  [dbo].[peAppWvRule]  ORDER BY CAST(SUBSTRING(code,2,10) AS int)";
-//            IQueryable<peAppWvRule> peappwvrules = wvmDb.Database.SqlQuery<peAppWvRule>(sqlText).AsQueryable();
-            IQueryable<peAppWvRule> peappwvrules = wvmDb.peAppWvRules.ToList().OrderBy(r => int.Parse(r.code.Substring(1))).AsQueryable();
+            IQueryable<peAppWvRule> peappwvrules = wvmDb.peAppWvRules.OrderBy(r => r.code).ToList().AsQueryable();
             DataSourceResult result = peappwvrules.ToDataSourceResult(request, peAppWvRule => new {
                 Id = peAppWvRule.Id,
                 code = peAppWvRule.code,
