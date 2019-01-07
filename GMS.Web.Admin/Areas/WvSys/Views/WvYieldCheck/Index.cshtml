@@ -49,7 +49,7 @@
       .DataSource(dataSource => dataSource
           .Ajax()
           .Model(model => model.Id(p => p.Id))
-          .Read(read => read.Action("peAppWvYieldChecks_Read", "WvYieldCheck"))
+          .Read(read => read.Action("peAppWvYieldChecks_Read", "WvYieldCheck").Data("getFilter"))
           .Update(update => update.Action("peAppWvYieldChecks_Update", "WvYieldCheck"))
           .Destroy(destroy => destroy.Action("peAppWvYieldChecks_Destroy", "WvYieldCheck"))
       )
@@ -57,10 +57,10 @@
 
 <script type="text/javascript">
 
-    var _userID=@GMS.Web.Admin.Common.AdminUserContext.Current.peAppLoginInfo.UserID.ToString();
+    var _userId=@GMS.Web.Admin.Common.AdminUserContext.Current.peAppLoginInfo.UserID.ToString();
     function getFilter() {
         var filter = {
-            userID:_userID
+            userId:_userId
         };
         return filter;
     }
@@ -73,7 +73,7 @@
 
         var _data = {
             "Id": crrentDataItem.Id,
-            "reviewer": _userID
+            "reviewer": _userId
         };
         $.ajax({
             url: '@Url.Action("ExecYieldAudit")',

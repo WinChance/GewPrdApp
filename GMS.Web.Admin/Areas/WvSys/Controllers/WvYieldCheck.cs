@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Http.Results;
 using System.Web.Mvc;
+using GMS.Framework.Utility;
 using GMS.Web.Admin.Models;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
@@ -26,8 +27,24 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
             return View();
         }
 
-        public ActionResult peAppWvYieldChecks_Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult peAppWvYieldChecks_Read([DataSourceRequest]DataSourceRequest request,string userId)
         {
+            int _userID = userId.ToInt();
+            var _userInfo = prdAppDb.peAppUsers.Where(u => u.ID.Equals(_userID)).Select(u => new { u.Dept, u.LoginName }).FirstOrDefault();
+
+            string _factory = "";
+            switch (_userInfo.Dept)
+            {
+                case "WV1":
+                    _factory = "织一";
+                    break;
+                case "WV2":
+                    _factory = "织二";
+                    break;
+                case "WV3":
+                    _factory = "织三";
+                    break;
+            }
             var query =
                 @"
 SELECT DISTINCT c.Id ,
@@ -48,10 +65,10 @@ SELECT DISTINCT c.Id ,
 left join peAppWvWorker d on c.name1=d.cardno
 left join peAppWvWorker e on c.name2=e.cardno
 left join peAppWvWorker f on c.name3=f.cardno
-where  c.name1 like 'GET%'order by c.inputdate
+where c.name1 like 'GET%'AND d.factory=@p0 order by c.inputdate
 ";
             List<peAppWvYieldCheck> yieldCheckQuery =
-                wvmDb.Database.SqlQuery<peAppWvYieldCheck>(query).ToList();
+                wvmDb.Database.SqlQuery<peAppWvYieldCheck>(query, _factory).ToList();
 
             return Json(yieldCheckQuery.ToDataSourceResult(request));
         }

@@ -11,7 +11,6 @@ namespace Monitor_WV.DAL
 
         public int? SLID { get; set; }
 
-        [Required]
         [StringLength(20)]
         public string CardNo { get; set; }
 
@@ -46,8 +45,6 @@ namespace Monitor_WV.DAL
 
         [StringLength(10)]
         public string WeaverGroup { get; set; }
-
-        //public DateTime? ChangeTime { get; set; }
 
         public DateTime? HitTime { get; set; }
 

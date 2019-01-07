@@ -1888,6 +1888,7 @@
     <Content Include="Areas\WvSys\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\WvSys\Views\QiangDan\Index.cshtml" />
     <Content Include="Areas\WvSys\Views\WvYieldCheck\Index.cshtml" />
+    <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WvDeptTemplates.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2214,12 +2215,8 @@
     <Compile Include="Service\Pem\PemEmisQueryController.cs" />
     <Compile Include="Service\HomeController.cs" />
     <Compile Include="Service\Common\CommonController.cs" />
-    <Compile Include="Service\Quartz\Yd2PrShouSongZhouPushJob.cs" />
-    <Compile Include="Service\Quartz\Yd2PrShouSongZhouPushJobScheduler.cs" />
-    <Compile Include="Service\SignalR\SignalRChat.cs" />
     <Compile Include="Service\Wv\ProducePlusAndMinus\WvYieldController.cs" />
     <Compile Include="Service\Wv\QiangDan\QiangDanController.cs" />
-    <Compile Include="Service\SignalR\PushHub.cs" />
     <Compile Include="Service\Yd\SsCheckYarnController.cs" />
     <Compile Include="FileUpload.ashx.cs">
       <DependentUpon>FileUpload.ashx</DependentUpon>
@@ -2241,8 +2238,6 @@
     <Compile Include="Models\WvYieldCheckBindingModel.cs" />
     <Compile Include="Models\Yd\RtCheckYarnBindingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\Quartz\ReportJob.cs" />
-    <Compile Include="Service\Quartz\ReportJobScheduler.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

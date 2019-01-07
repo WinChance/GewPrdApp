@@ -1,0 +1,11 @@
+﻿
+@model System.String
+@using Kendo.Mvc.UI;
+@(Html.Kendo().DropDownListFor(e => e).BindTo(new string[]{
+      "WV1"
+      ,
+      "WV2"
+      ,
+      "WV3"
+
+  }).HtmlAttributes(new { style = "width:100%" }))

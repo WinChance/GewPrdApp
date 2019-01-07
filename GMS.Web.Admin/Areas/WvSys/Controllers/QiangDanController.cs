@@ -73,11 +73,11 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                     WeaverClass = qiangDanTask.WeaverClass,
                     WeaverGroup = qiangDanTask.WeaverGroup,
                     HitTime = qiangDanTask.HitTime,
-                    BeginTime = qiangDanTask.BeginTime,
+                    BeginTime = DateTime.Now,
                     EndTime = qiangDanTask.EndTime,
                     TaskStatus = qiangDanTask.TaskStatus,
                     AssignType = qiangDanTask.AssignType,
-                    IsActive = qiangDanTask.IsActive,
+                    IsActive = true,
                     FeedBack = qiangDanTask.FeedBack,
                     Remark = qiangDanTask.Remark
                 };
@@ -115,7 +115,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                     EndTime = qiangDanTask.EndTime,
                     TaskStatus = qiangDanTask.TaskStatus,
                     AssignType = qiangDanTask.AssignType,
-                    IsActive = qiangDanTask.IsActive,
+                    IsActive = true,
                     FeedBack = qiangDanTask.FeedBack,
                     Remark = qiangDanTask.Remark
                 };
@@ -139,34 +139,6 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                     IsActive = false
                 });
                 db.SaveChanges();
-                //                var entity = new QiangDanTask
-                //                {
-                //                    Id = qiangDanTask.Id,
-                //                    SLID = qiangDanTask.SLID,
-                //                    CardNo = qiangDanTask.CardNo,
-                //                    MachineName = qiangDanTask.MachineName,
-                //                    Department = qiangDanTask.Department,
-                //                    WeaverNo1 = qiangDanTask.WeaverNo1,
-                //                    WeaverName1 = qiangDanTask.WeaverName1,
-                //                    WeaverNo2 = qiangDanTask.WeaverNo2,
-                //                    WeaverName2 = qiangDanTask.WeaverName2,
-                //                    WeaverNo3 = qiangDanTask.WeaverNo3,
-                //                    WeaverName3 = qiangDanTask.WeaverName3,
-                //                    WeaverClass = qiangDanTask.WeaverClass,
-                //                    WeaverGroup = qiangDanTask.WeaverGroup,
-                //                    HitTime = qiangDanTask.HitTime,
-                //                    BeginTime = qiangDanTask.BeginTime,
-                //                    EndTime = qiangDanTask.EndTime,
-                //                    TaskStatus = qiangDanTask.TaskStatus,
-                //                    AssignType = qiangDanTask.AssignType,
-                //                    IsActive = qiangDanTask.IsActive,
-                //                    FeedBack = qiangDanTask.FeedBack,
-                //                    Remark = qiangDanTask.Remark
-                //                };
-                //
-                //                db.QiangDanTasks.Attach(entity);
-                //                db.QiangDanTasks.Remove(entity);
-                //                db.SaveChanges();
             }
 
             return Json(new[] { qiangDanTask }.ToDataSourceResult(request, ModelState));
