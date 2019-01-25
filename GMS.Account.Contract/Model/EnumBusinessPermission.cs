@@ -37,8 +37,14 @@ namespace GMS.Account.Contract.Model
         [EnumTitle("产量审核")]
         WvYieldCheck = 1305,
 
-        [EnumTitle("抢单后台")]
-        QiangDan = 1306,
+        [EnumTitle("任务单管理")]
+        TaskManage = 1306,
+
+        [EnumTitle("已抢单")]
+        YiQiangDan = 1307,
+
+        [EnumTitle("历史删除任务单")]
+        QueryDeledTasks = 1308,
 
 
         //****************************************  GMO网页需求  ***************************************//

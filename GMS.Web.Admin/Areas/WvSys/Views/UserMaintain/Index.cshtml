@@ -11,13 +11,13 @@
       {
           columns.Bound(c => c.code).Title("员工号");
           columns.Bound(c => c.name).Title("姓名");
+          columns.Bound(c => c.password).Title("密码");
           columns.Bound(c => c.dept).Title("部门简写");
           columns.Bound(c => c.SubDept).Title("子部门缩写");
-          
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
       .ToolBar(toolbar => {
-                              toolbar.Create();
+          toolbar.Create();
       })
       .Editable(editable => editable.Mode(GridEditMode.InLine))
           .Pageable(pager => pager

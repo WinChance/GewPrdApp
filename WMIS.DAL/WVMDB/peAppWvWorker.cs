@@ -28,8 +28,8 @@ namespace WMIS.DAL.WVMDB
         [StringLength(40)]
         public string _class { get; set; }
 
-        [StringLength(20)]
-        public string classdes { get; set; }
+        //[StringLength(20)]
+        //public string classdes { get; set; }
 
         [StringLength(20)]
         public string jobs { get; set; }

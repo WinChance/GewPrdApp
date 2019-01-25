@@ -1886,9 +1886,10 @@
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\QiangDanProcedureTemplate.cshtml" />
     <Content Include="Areas\WvSys\Views\_ViewStart.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\WvSys\Views\QiangDan\Index.cshtml" />
+    <Content Include="Areas\WvSys\Views\QiangDan\YiQiangDan.cshtml" />
     <Content Include="Areas\WvSys\Views\WvYieldCheck\Index.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WvDeptTemplates.cshtml" />
+    <Content Include="Areas\WvSys\Views\QiangDan\TasksManage.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

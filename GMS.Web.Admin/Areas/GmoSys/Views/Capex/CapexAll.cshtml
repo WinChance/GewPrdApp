@@ -51,9 +51,6 @@
           .Ajax()
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("GmoCapexes_ReadAll", "Capex").Data("getFilter"))
-          //.Create(create => create.Action("GmoCapexes_Create", "Capex"))
-          //.Update(update => update.Action("GmoCapexes_Update", "Capex"))
-          //.Destroy(destroy => destroy.Action("GmoCapexes_Destroy", "Capex"))
       )
       .Resizable(resize => resize.Columns(true)) 
 )
@@ -62,7 +59,6 @@
     var _showAll = false;
     function getFilter() {
         var filter = {
-            // todo:增加“是否显示回顾完成和取消”的过滤条件
             showAll: _showAll
         };
         return filter;

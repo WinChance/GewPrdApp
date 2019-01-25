@@ -30,6 +30,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                 code = peAppWvUser.code,
                 name = peAppWvUser.name,
                 dept = peAppWvUser.dept,
+                password=peAppWvUser.password,
                 SubDept = peAppWvUser.SubDept,
             });
 
@@ -71,6 +72,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                     name = vm.name,
                     dept = vm.dept,
                     SubDept = vm.SubDept,
+                    password = vm.password
                 });
                 db.SaveChanges();
 
@@ -91,6 +93,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Controllers
                     name = vm.name,
                     dept = vm.dept,
                     SubDept = vm.SubDept,
+                    password = vm.password
                 };
 
                 db.peAppWvUsers.Attach(entity);

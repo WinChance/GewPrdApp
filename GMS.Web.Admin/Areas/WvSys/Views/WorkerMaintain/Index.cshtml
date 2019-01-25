@@ -12,7 +12,7 @@
           columns.Bound(c => c.name).Title("姓名");
           columns.Bound(c => c.cardno).Title("工号");
           columns.Bound(c => c._class).Title("班次").EditorTemplateName("WorkerClassTemplate");
-          columns.Bound(c => c.classdes).Title("班次描述");
+          //columns.Bound(c => c.classdes).Title("班次描述");
           columns.Bound(c => c.jobs).Title("工种");
           columns.Bound(c => c.Audit).Title("审核权限").EditorTemplateName("AuditTemplate");
           columns.Bound(c => c.GroupName).Title("分组名").ClientTemplate("<div class=\"forTooltips\">#=GroupName#</div>").HtmlAttributes(new { @class = "overridePadding" });
@@ -39,7 +39,9 @@
               .Create(create => create.Action("peAppWvWorkers_Create", "WorkerMaintain"))
               .Update(update => update.Action("peAppWvWorkers_Update", "WorkerMaintain"))
               .Destroy(destroy => destroy.Action("peAppWvWorkers_Destroy", "WorkerMaintain"))
-      ))
+      )
+      .Resizable(resize => resize.Columns(true))
+      )
 
 @(Html.Kendo().Tooltip()
       .For("#grid")

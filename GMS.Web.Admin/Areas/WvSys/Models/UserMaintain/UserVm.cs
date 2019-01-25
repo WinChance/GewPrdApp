@@ -13,7 +13,7 @@ namespace GMS.Web.Admin.Areas.WvSys.Models.UserMaintain
 
         public string name { get; set; }
 
-        //public string password { get; set; }
+        public string password { get; set; }
 
         public string dept { get; set; }
 

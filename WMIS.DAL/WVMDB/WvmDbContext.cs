@@ -69,9 +69,9 @@ namespace WMIS.DAL.WVMDB
                 .Property(e => e._class)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<peAppWvWorker>()
-                .Property(e => e.classdes)
-                .IsUnicode(false);
+            //modelBuilder.Entity<peAppWvWorker>()
+            //    .Property(e => e.classdes)
+            //    .IsUnicode(false);
 
             modelBuilder.Entity<peAppWvWorker>()
                 .Property(e => e.jobs)

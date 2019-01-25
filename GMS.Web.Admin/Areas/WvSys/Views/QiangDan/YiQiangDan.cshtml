@@ -1,0 +1,72 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "WvYieldCheck";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@(Html.Kendo().Grid<Monitor_WV.DAL.QiangDanTask>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.CardNo).Title("卡号");
+          columns.Bound(c => c.MachineName).Title("机台号");
+          columns.Bound(c => c.Department).Title("部门").EditorTemplateName("WvDeptTemplates");
+//        columns.Bound(c => c.WeaverNo1).Title("工号1");
+          columns.Bound(c => c.WeaverName1).Title("姓名1");
+//        columns.Bound(c => c.WeaverNo2).Title("工号2");
+          columns.Bound(c => c.WeaverName2).Title("姓名2");
+//        columns.Bound(c => c.WeaverNo3).Title("工号3");
+          columns.Bound(c => c.WeaverName3).Title("姓名3");
+          columns.Bound(c => c.WeaverClass).Title("班次");
+          columns.Bound(c => c.WeaverGroup).Title("分组");
+          columns.Bound(c => c.HitTime).Title("抢单时间").Format("{0:MM/dd HH:mm}");
+          columns.Bound(c => c.BeginTime).Title("开始时间").Format("{0:MM/dd HH:mm}");
+//        columns.Bound(c => c.EndTime).Title("结束时间");
+          columns.Bound(c => c.TaskStatus).Title("任务状态码").ClientTemplate("<div class=\"forTooltips\">#=TaskStatus#</div>").HtmlAttributes(new { @class = "overridePadding" });
+//        columns.Bound(c => c.IsActive).Title("");
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+                              toolbar.Excel();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Selectable(selectable => {
+                                    selectable.Mode(GridSelectionMode.Single);
+                                    selectable.Type(GridSelectionType.Row);
+      })
+      .Filterable()
+      .Scrollable(s => s.Height(450))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("YiQiangTasks_Read", "QiangDan"))
+          .Update(update => update.Action("QiangDanTasks_Update", "QiangDan"))
+          .Destroy(destroy => destroy.Action("QiangDanTasks_Destroy", "QiangDan"))
+      )
+      .Resizable(resize => resize.Columns(true))
+      )
+@(Html.Kendo().Tooltip()
+      .For("#grid")
+      .Filter(".forTooltips")
+      .ContentHandler("getTooltip")
+      .Position(TooltipPosition.Left)
+      .AutoHide(false)
+      )
+
+<style>
+    .forTooltips {
+        width: 100%;
+        height: 100%;
+        padding: .929em 1.286em;
+    }
+
+    td.overridePadding {
+        padding: 0;
+    }
+</style>
+<script>
+    function getTooltip(e) {
+        var content = "0上轴待抢单；10组长待抢单；20机修待抢单";
+        return content;
+    }
+</script>
