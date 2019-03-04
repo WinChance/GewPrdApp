@@ -1890,6 +1890,8 @@
     <Content Include="Areas\WvSys\Views\WvYieldCheck\Index.cshtml" />
     <Content Include="Areas\WvSys\Views\Shared\EditorTemplates\WvDeptTemplates.cshtml" />
     <Content Include="Areas\WvSys\Views\QiangDan\TasksManage.cshtml" />
+    <Content Include="Areas\WvSys\Views\QiangDan\QueryDeledTasks.cshtml" />
+    <Content Include="Areas\WvSys\Views\Grid\Index.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2186,6 +2188,7 @@
     <Compile Include="Areas\GmoSys\Controllers\CapexController.cs" />
     <Compile Include="Areas\GmoSys\Controllers\IdelAssetController.cs" />
     <Compile Include="Areas\GmoSys\GmoSysAreaRegistration.cs" />
+    <Compile Include="Areas\WvSys\Controllers\GridController.cs" />
     <Compile Include="Areas\WvSys\Controllers\QiangDanController.cs" />
     <Compile Include="Areas\WvSys\Controllers\UserMaintainController.cs" />
     <Compile Include="Areas\WvSys\Controllers\UserMenuRightController.cs" />
@@ -2471,6 +2474,7 @@
     <Folder Include="Assets\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="Service\Fn\" />
     <Folder Include="Service\Pr\" />
+    <Folder Include="Views\Grid\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EMIS.DAL\EMIS.DAL.csproj">

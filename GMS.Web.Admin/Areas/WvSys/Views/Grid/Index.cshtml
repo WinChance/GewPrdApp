@@ -1,0 +1,39 @@
+﻿@using Kendo.Mvc.UI
+
+@(Html.Kendo().Grid<WMIS.DAL.WVMDB.peAppWvYield>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.inputdate);
+        columns.Bound(c => c.inputclass);
+        columns.Bound(c => c.name);
+        columns.Bound(c => c.machineno);
+        columns.Bound(c => c.gfno);
+        columns.Bound(c => c.itemname);
+        columns.Bound(c => c.value1);
+        columns.Bound(c => c.value2);
+        columns.Bound(c => c.Reviewer);
+        columns.Bound(c => c.remark);
+        columns.Bound(c => c.input_time);
+        columns.Bound(c => c.WorkerType);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+      })
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Selectable(selectable => {
+            selectable.Mode(GridSelectionMode.Single);
+            selectable.Type(GridSelectionType.Row);
+      })
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("peAppWvYields_Read", "Grid"))
+          .Create(create => create.Action("peAppWvYields_Create", "Grid"))
+          .Update(update => update.Action("peAppWvYields_Update", "Grid"))
+          .Destroy(destroy => destroy.Action("peAppWvYields_Destroy", "Grid"))
+      )
+)
